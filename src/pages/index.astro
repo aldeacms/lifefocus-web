@@ -14,77 +14,316 @@ import Footer from "../components/Footer.astro";
 
   <!-- Hero Section -->
   <Hero
-    eyebrow="Propósito y Eficiencia"
-    title="Sistemas Web que Trabajan para Ti."
-    description="Bienvenido a LifeFocus. Construimos plataformas digitales de alto impacto siguiendo los estándares Era 4, optimizadas para conversión y mantenibilidad."
-    primaryCta="Ver Proyectos"
-    secondaryCta="Agendar Consulta"
+    eyebrow="Life Focus WaaS"
+    title="Tu sitio web + IA + CRM, en un solo pago mensual."
+    description="Creamos, gestionamos y escalamos tu presencia digital mientras tú te enfocas en lo que mejor sabes hacer: cerrar negocios."
+    primaryCta="Ver Planes"
+    secondaryCta="Nuestra Metodología"
+    imageUrl="/images/life_focus_hero_digital_machinery.png"
   />
 
-  <!-- Componente Demo Genérico: Feature Grid -->
-  <section class="c-section" id="metodologia">
+  <!-- Sección: Qué es Life Focus -->
+  <section class="c-section" id="que-es">
     <div class="o-container">
-      <div class="o-grid" data-columns="3">
-        <article class="c-card">
-          <h2 class="h3 c-card__title">HTML Semántico</h2>
-          <p class="c-card__desc">
-            Landmarks y etiquetas consistentes para accesibilidad y rastreo de
-            Google.
+      <header class="c-section__header">
+        <span class="c-eyebrow">Nuestro Valor</span>
+        <h2 class="h2">La Maquinaria Digital que Impulsa tu Negocio</h2>
+        <p class="text-l">
+          Mucho más que una landing page; un ecosistema de ventas automatizado.
+        </p>
+      </header>
+
+      <div class="o-grid" data-columns="4">
+        <article class="c-feature-card">
+          <div class="c-feature-card__icon">🌐</div>
+          <h3 class="h4">Desarrollo Web Pro</h3>
+          <p>Sitios rápidos, hermosos y optimizados según estándares Era 4.</p>
+        </article>
+
+        <article class="c-feature-card">
+          <div class="c-feature-card__icon">🤖</div>
+          <h3 class="h4">Chatbot IA 24/7</h3>
+          <p>
+            Atención inmediata y calificada a tus prospectos en todo momento.
           </p>
         </article>
 
-        <article class="c-card">
-          <h2 class="h3 c-card__title">Componentes BEM</h2>
-          <p class="c-card__desc">
-            Uso estricto de Clases BEM. Cero "Class Soup" o abuso de Tailwind en
-            el DOM.
+        <article class="c-feature-card">
+          <div class="c-feature-card__icon">📥</div>
+          <h3 class="h4">Mini-CRM Focus</h3>
+          <p>
+            Gestiona tus leads sin complicaciones y nunca pierdas una
+            oportunidad.
           </p>
         </article>
 
-        <article class="c-card">
-          <h2 class="h3 c-card__title">Responsive Fluido</h2>
-          <p class="c-card__desc">
-            Soporte total para Container Queries y escalas tipográficas de
-            fluido nativo.
+        <article class="c-feature-card">
+          <div class="c-feature-card__icon">⚡</div>
+          <h3 class="h4">Mantenimiento Pro</h3>
+          <p>
+            Nos encargamos de todo el aspecto técnico, hosting y
+            actualizaciones.
           </p>
         </article>
       </div>
     </div>
   </section>
 
+  <!-- Sección: Para quién -->
+  <section class="c-section c-section--alt" id="para-quien">
+    <div class="o-container">
+      <header class="c-section__header">
+        <span class="c-eyebrow">El Match Ideal</span>
+        <h2 class="h2">¿Es Life Focus para ti?</h2>
+      </header>
+
+      <div class="o-grid" data-columns="2">
+        <div class="c-comparison-card" data-ideal="true">
+          <h3 class="h4">Ideal para ti si...</h3>
+          <ul class="o-list">
+            <li>Buscas delegar el 100% de lo técnico.</li>
+            <li>Quieres un sistema que genere leads calificados.</li>
+            <li>
+              Prefieres un pago mensual sin inversiones gigantes iniciales.
+            </li>
+            <li>Valoras el diseño premium y la velocidad de carga.</li>
+          </ul>
+        </div>
+        <div class="c-comparison-card" data-ideal="false">
+          <h3 class="h4">No es para ti si...</h3>
+          <ul class="o-list">
+            <li>Buscas el precio más barato del mercado (aunque sea lento).</li>
+            <li>Quieres acceso total al código para "meter mano" tú mismo.</li>
+            <li>No crees en el poder de la IA para atención al cliente.</li>
+            <li>Tienes un equipo técnico in-house dedicado.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección: Cómo funciona -->
+  <section class="c-section" id="como-funciona">
+    <div class="o-container">
+      <header class="c-section__header">
+        <span class="c-eyebrow">Metodología</span>
+        <h2 class="h2">De 0 a Lead en 4 pasos</h2>
+      </header>
+
+      <div class="c-timeline">
+        <div class="c-timeline__item">
+          <div class="c-timeline__number">01</div>
+          <div class="c-timeline__content">
+            <h3 class="h4">Diagnóstico & Estrategia</h3>
+            <p>
+              Definimos tu propuesta de valor y el flujo de conversión ideal
+              para tu nicho.
+            </p>
+          </div>
+        </div>
+        <div class="c-timeline__item">
+          <div class="c-timeline__number">02</div>
+          <div class="c-timeline__content">
+            <h3 class="h4">Desarrollo & Configuración</h3>
+            <p>
+              Construimos tu plataforma WaaS y entrenamos a tu nuevo Chatbot IA.
+            </p>
+          </div>
+        </div>
+        <div class="c-timeline__item">
+          <div class="c-timeline__number">03</div>
+          <div class="c-timeline__content">
+            <h3 class="h4">Lanzamiento & Optimización</h3>
+            <p>
+              Salimos a producción y empezamos a capturar leads en tiempo real.
+            </p>
+          </div>
+        </div>
+        <div class="c-timeline__item">
+          <div class="c-timeline__number">04</div>
+          <div class="c-timeline__content">
+            <h3 class="h4">Escalamiento</h3>
+            <p>
+              Potenciamos el flujo con pauta publicitaria y contenido de alto
+              impacto.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección: Add-ons / Servicios Complementarios -->
+  <section class="c-section c-section--alt" id="servicios">
+    <div class="o-container">
+      <header class="c-section__header">
+        <span class="c-eyebrow">Potencia tu Crecimiento</span>
+        <h2 class="h2">Soluciones Complementarias</h2>
+        <p class="text-l">
+          Lleva tu maquinaria de ventas al siguiente nivel con pauta y
+          contenido.
+        </p>
+      </header>
+
+      <div class="o-grid" data-columns="3">
+        <article class="c-addon-card">
+          <h3 class="h4">Google Ads</h3>
+          <p>
+            Domina las búsquedas locales en Miami y aparece ante quienes ya te
+            están buscando.
+          </p>
+          <a href="/precios" class="c-link">Ver detalles →</a>
+        </article>
+
+        <article class="c-addon-card">
+          <h3 class="h4">Meta Ads</h3>
+          <p>
+            Viraliza tu oferta en Instagram y Facebook con segmentación de alta
+            precisión.
+          </p>
+          <a href="/precios" class="c-link">Ver detalles →</a>
+        </article>
+
+        <article class="c-addon-card">
+          <h3 class="h4">Guiones Virales</h3>
+          <p>
+            Guiones estratégicos para Reels y TikTok diseñados para retener y
+            convertir.
+          </p>
+          <a href="/precios" class="c-link">Ver detalles →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <Footer slot="footer" />
+
+  <style>
+    .c-section {
+      padding-block: var(--section-space);
+    }
+
+    .c-section--alt {
+      background-color: var(--color-bg-alt);
+    }
+
+    .c-section__header {
+      text-align: center;
+      max-width: 70ch;
+      margin-inline: auto;
+      margin-block-end: var(--space-xl);
+    }
+
+    .o-grid {
+      display: grid;
+      gap: var(--space-m);
+    }
+
+    .o-grid[data-columns="4"] {
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+    }
+
+    .o-grid[data-columns="2"] {
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
+    }
+
+    .c-feature-card {
+      background-color: var(--color-surface);
+      padding: var(--space-l);
+      border-radius: var(--radius-m);
+      border: 1px solid var(--border-color);
+      transition: transform var(--transition-normal);
+    }
+
+    .c-feature-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary);
+    }
+
+    .c-feature-card__icon {
+      font-size: var(--text-xl);
+      margin-block-end: var(--space-s);
+    }
+
+    .c-comparison-card {
+      background-color: var(--color-surface);
+      padding: var(--space-xl);
+      border-radius: var(--radius-l);
+      border: 2px solid transparent;
+    }
+
+    .c-comparison-card[data-ideal="true"] {
+      border-color: var(--primary);
+      box-shadow: 0 0 20px oklch(0.69 0.14 var(--hue-primary) / 0.1);
+    }
+
+    .c-comparison-card[data-ideal="false"] {
+      opacity: 0.8;
+    }
+
+    .o-list {
+      list-style: none;
+      padding: 0;
+      margin-block-start: var(--space-m);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-s);
+    }
+
+    .c-comparison-card[data-ideal="true"] .o-list li::before {
+      content: "✅";
+      margin-inline-end: var(--space-xs);
+    }
+
+    .c-comparison-card[data-ideal="false"] .o-list li::before {
+      content: "❌";
+      margin-inline-end: var(--space-xs);
+    }
+
+    /* Timeline Styles */
+    .c-timeline {
+      display: grid;
+      gap: var(--space-l);
+      max-width: 800px;
+      margin-inline: auto;
+      position: relative;
+    }
+
+    .c-timeline__item {
+      display: flex;
+      gap: var(--space-m);
+      align-items: flex-start;
+    }
+
+    .c-timeline__number {
+      font-family: var(--font-heading);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-black);
+      color: var(--primary);
+      opacity: 0.3;
+      line-height: 1;
+    }
+
+    .c-timeline__content h3 {
+      margin-block-end: var(--space-xxs);
+    }
+
+    /* Addon Card Styles */
+    .c-addon-card {
+      background-color: var(--color-surface);
+      padding: var(--space-l);
+      border-radius: var(--radius-m);
+      border-left: 4px solid var(--secondary);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-s);
+    }
+
+    .c-link {
+      font-weight: var(--weight-bold);
+      font-size: var(--text-s);
+      text-decoration: none;
+      margin-block-start: auto;
+    }
+  </style>
 </BaseLayout>
-
-<style>
-  /* Estilos solo demostrativos para The Kitchen Sink */
-  .c-section {
-    padding-block: var(--section-space);
-    container-type: inline-size;
-  }
-
-  .o-grid {
-    display: grid;
-    gap: var(--space-m);
-  }
-
-  .o-grid[data-columns="3"] {
-    grid-template-columns: repeat(auto-fit, minmax(mi(min(100%, 300px)), 1fr));
-  }
-
-  .c-card {
-    background-color: var(--surface-2);
-    padding: var(--space-l);
-    border-radius: var(--radius-m);
-    border: 1px solid var(--border-color);
-  }
-
-  .c-card__title {
-    color: var(--heading-color);
-    margin-block-end: var(--space-xs);
-  }
-
-  .c-card__desc {
-    color: var(--text-color);
-    margin: 0;
-  }
-</style>

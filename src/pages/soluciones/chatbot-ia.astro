@@ -1,0 +1,118 @@
+---
+// chatbot-ia.astro
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Hero from "../../components/Hero.astro";
+import Footer from "../../components/Footer.astro";
+---
+
+<BaseLayout
+    title="Chatbot IA 24/7 | Soluciones Life Focus"
+    description="Atención automática y calificada para tus clientes en Miami."
+>
+    <Header slot="header" />
+
+    <Hero
+        eyebrow="Soluciones IA"
+        title="Tu mejor vendedor nunca duerme."
+        description="Implementamos agentes de IA entrenados específicamente con tu información para calificar prospectos y agendar citas 24/7."
+        imageUrl="/images/life_focus_hero_digital_machinery.png"
+    />
+
+    <section class="c-section">
+        <div class="o-container">
+            <div class="o-grid" data-columns="2">
+                <div>
+                    <h2 class="h2">¿Por qué un Chatbot IA?</h2>
+                    <p class="text-l">
+                        En el mercado de Miami, la velocidad de respuesta es la
+                        diferencia entre cerrar un negocio y perderlo ante la
+                        competencia.
+                    </p>
+                    <ul class="o-list">
+                        <li>
+                            <strong>Respuesta Instantánea:</strong> Cero tiempos
+                            de espera.
+                        </li>
+                        <li>
+                            <strong>Calificación Automática:</strong> Filtra curiosos
+                            de clientes reales.
+                        </li>
+                        <li>
+                            <strong>Integración con CRM:</strong> Cada lead va directo
+                            a tu bandeja.
+                        </li>
+                        <li>
+                            <strong>Multilingüe:</strong> Atiende en Inglés y Español
+                            sin problemas.
+                        </li>
+                    </ul>
+                </div>
+                <div class="c-feature-image">
+                    <!-- Placeholder for visual -->
+                    <div class="c-placeholder-visual">🤖</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="c-section c-section--cta">
+        <div class="o-container">
+            <div class="c-cta-banner">
+                <h2 class="h2">¿Listo para automatizar tu atención?</h2>
+                <a href="/precios" class="c-button" data-variant="primary"
+                    >Ver Planes con IA</a
+                >
+            </div>
+        </div>
+    </section>
+
+    <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+    .c-section {
+        padding-block: var(--section-space);
+    }
+
+    .o-grid {
+        display: grid;
+        gap: var(--space-xxl);
+        align-items: center;
+    }
+
+    .o-grid[data-columns="2"] {
+        grid-template-columns: repeat(
+            auto-fit,
+            minmax(mi(min(100%, 400px)), 1fr)
+        );
+    }
+
+    .o-list {
+        margin-block-start: var(--space-m);
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-s);
+    }
+
+    .c-placeholder-visual {
+        background-color: var(--color-bg-alt);
+        aspect-ratio: 1;
+        border-radius: var(--radius-xl);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 10rem;
+        border: 2px dashed var(--border-color);
+    }
+
+    .c-cta-banner {
+        text-align: center;
+        background-color: var(--color-surface);
+        padding: var(--space-xl);
+        border-radius: var(--radius-l);
+        border: 1px solid var(--primary);
+    }
+</style>

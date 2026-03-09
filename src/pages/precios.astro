@@ -1,0 +1,180 @@
+---
+// precios.astro
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import Footer from "../components/Footer.astro";
+import PriceCard from "../components/PriceCard.astro";
+---
+
+<BaseLayout
+    title="Precios y Planes | Life Focus WaaS"
+    description="Planes escalables para tu sitio web, chatbot IA y gestión de CRM. Sin inversión inicial gigante, solo resultados."
+>
+    <Header slot="header" />
+
+    <Hero
+        eyebrow="Planes WaaS"
+        title="El motor de tu crecimiento digital."
+        description="Precios claros, sin costos ocultos. Elige el plan que mejor se adapte a tu etapa actual."
+        imageUrl="/images/life_focus_hero_digital_machinery.png"
+    />
+
+    <!-- Sección: Planes Principales -->
+    <section class="c-section" id="planes">
+        <div class="o-container">
+            <div class="o-grid" data-columns="2">
+                <PriceCard
+                    title="Plan Landing"
+                    price="299"
+                    description="Ideal para validar ofertas y campañas específicas de captación."
+                    features={[
+                        "Landing Page de Alta Conversión",
+                        "Chatbot IA Entrenamiento Nivel 1",
+                        "Mini-CRM Focus Incluido",
+                        "Hosting y Dominio (.com)",
+                        "Mantenimiento Pro Ilimitado",
+                        "Reporte Mensual de Leads",
+                    ]}
+                    ctaText="Empezar con Landing"
+                />
+
+                <PriceCard
+                    title="Plan Corporativo"
+                    price="499"
+                    description="La solución completa para empresas que buscan autoridad y escala."
+                    isPopular={true}
+                    features={[
+                        "Sitio Web Completo (Pág. principal + 4)",
+                        "Blog Optimizado para SEO",
+                        "Chatbot IA Pro (Multilingüe/Avanzado)",
+                        "Mini-CRM Pro con Automatizaciones",
+                        "Hosting de Alta Velocidad",
+                        "Soporte Prioritario 24/7",
+                    ]}
+                    ctaText="Escalar mi Negocio"
+                />
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Add-ons -->
+    <section class="c-section c-section--alt" id="complementos">
+        <div class="o-container">
+            <header class="c-section__header">
+                <span class="c-eyebrow">Acelera el Paso</span>
+                <h2 class="h2">Servicios de Crecimiento</h2>
+            </header>
+
+            <div class="o-grid" data-columns="3">
+                <article class="c-addon-item">
+                    <h3 class="h4">Ads Management</h3>
+                    <p class="text-s">
+                        Google o Meta Ads desde <strong>$499/mes</strong>.
+                        Gestión profesional de tu pauta publicitaria.
+                    </p>
+                </article>
+                <article class="c-addon-item">
+                    <h3 class="h4">Viral Scripts</h3>
+                    <p class="text-s">
+                        Pack de 4 guiones de video viral por <strong
+                            >$299/mes</strong
+                        >. Diseñados para convertir visualizaciones en leads.
+                    </p>
+                </article>
+                <article class="c-addon-item">
+                    <h3 class="h4">CRM Integration</h3>
+                    <p class="text-s">
+                        Conectamos tu flujo con GoHighLevel o HubSpot. Consulta
+                        por proyectos a medida.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Bundles Destacados -->
+    <section class="c-section" id="bundles">
+        <div class="o-container">
+            <div class="c-bundle-banner">
+                <div class="c-bundle-banner__content">
+                    <span class="c-eyebrow">Oferta Especial</span>
+                    <h2 class="h3">Lead Gen Full Bundle</h2>
+                    <p>
+                        Plan Corporativo + Ads Management + 4 Guiones Virales.
+                        La maquinaria de ventas definitiva por un precio
+                        preferencial.
+                    </p>
+                </div>
+                <a href="/contacto" class="c-button" data-variant="primary"
+                    >Consultar Bundle</a
+                >
+            </div>
+        </div>
+    </section>
+
+    <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+    .c-section {
+        padding-block: var(--section-space);
+    }
+
+    .c-section--alt {
+        background-color: var(--color-bg-alt);
+    }
+
+    .c-section__header {
+        text-align: center;
+        margin-block-end: var(--space-xl);
+    }
+
+    .o-grid {
+        display: grid;
+        gap: var(--space-xl);
+    }
+
+    .o-grid[data-columns="2"] {
+        grid-template-columns: repeat(
+            auto-fit,
+            minmax(mi(min(100%, 400px)), 1fr)
+        );
+        max-width: 1000px;
+        margin-inline: auto;
+    }
+
+    .o-grid[data-columns="3"] {
+        grid-template-columns: repeat(
+            auto-fit,
+            minmax(mi(min(100%, 300px)), 1fr)
+        );
+    }
+
+    .c-addon-item {
+        background-color: var(--color-surface);
+        padding: var(--space-l);
+        border-radius: var(--radius-m);
+        border: 1px dashed var(--border-color);
+    }
+
+    .c-bundle-banner {
+        background: linear-gradient(
+            135deg,
+            var(--color-surface) 0%,
+            oklch(0.69 0.14 var(--hue-primary) / 0.1) 100%
+        );
+        padding: var(--space-xxl);
+        border-radius: var(--radius-xl);
+        border: 2px solid var(--primary);
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-xl);
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .c-bundle-banner__content {
+        flex: 1 1 40ch;
+    }
+</style>
