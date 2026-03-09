@@ -1,0 +1,129 @@
+/* ============================================================
+   LIFE FOCUS FRAMEWORK — lifefocus-animations.css
+   v3.0.0 (Era 4 Edition) | Daniel Aldea | 2026
+   ============================================================ */
+
+:root {
+    --anim-duration: 400ms;
+    --anim-ease: cubic-bezier(0.25, 1, 0.5, 1);
+    --anim-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* 1. KEYFRAMES */
+@keyframes lf-fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes lf-slide-up {
+    from {
+        opacity: 0;
+        transform: translateY(1.5rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lf-blur-in {
+    from {
+        opacity: 0;
+        filter: blur(10px);
+    }
+
+    to {
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+/* 2. ENTRANCES (Auto-trigger) */
+.anim-fade {
+    animation: lf-fade-in var(--anim-duration) var(--anim-ease) both;
+}
+
+.anim-rise {
+    animation: lf-slide-up var(--anim-duration) var(--anim-ease) both;
+}
+
+/* 3. REVEAL TRIGGERS (.is-visible) */
+.reveal {
+    opacity: 0;
+    transform: translateY(1rem);
+    transition: opacity var(--anim-duration) var(--anim-ease),
+        transform var(--anim-duration) var(--anim-ease);
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 4. STAGGER LOGIC */
+.stagger>* {
+    opacity: 0;
+    transform: translateY(1rem);
+    transition: opacity var(--anim-duration) var(--anim-ease),
+        transform var(--anim-duration) var(--anim-ease);
+}
+
+.stagger.is-visible>* {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger Delays (up to 8 items) */
+.stagger.is-visible>*:nth-child(1) {
+    transition-delay: 100ms;
+}
+
+.stagger.is-visible>*:nth-child(2) {
+    transition-delay: 200ms;
+}
+
+.stagger.is-visible>*:nth-child(3) {
+    transition-delay: 300ms;
+}
+
+.stagger.is-visible>*:nth-child(4) {
+    transition-delay: 400ms;
+}
+
+.stagger.is-visible>*:nth-child(5) {
+    transition-delay: 500ms;
+}
+
+.stagger.is-visible>*:nth-child(6) {
+    transition-delay: 600ms;
+}
+
+.stagger.is-visible>*:nth-child(7) {
+    transition-delay: 700ms;
+}
+
+.stagger.is-visible>*:nth-child(8) {
+    transition-delay: 800ms;
+}
+
+/* 5. INTERACTION ANIMATIONS */
+.hover-lift {
+    transition: transform var(--transition-normal);
+}
+
+.hover-lift:hover {
+    transform: translateY(-0.25rem);
+}
+
+/* 6. INFINITE SCROLL */
+@keyframes lf-infinite-scroll {
+    to {
+        transform: translateX(calc(-50% - (var(--space-xl) / 2)));
+    }
+}

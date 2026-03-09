@@ -1,0 +1,148 @@
+---
+// Hero.astro
+interface Props {
+  eyebrow?: string;
+  title: string;
+  description: string;
+  primaryCta?: string;
+  secondaryCta?: string;
+  imageUrl?: string;
+}
+
+const { 
+  eyebrow = "El Framework Definitivo", 
+  title = "Escala tu agencia con velocidad extrema y código limpio.", 
+  description = "No más deudas técnicas ni sopa de clases. Un builder enfocado en conversiones, rendimiento A1 y la filosofía Era 4.",
+  primaryCta = "Empezar Proyecto",
+  secondaryCta = "Ver Demo",
+  imageUrl = "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80"
+} = Astro.props;
+---
+
+<section class="c-hero" aria-labelledby="hero-heading">
+  <div class="o-container c-hero__container">
+    
+    <div class="c-hero__content">
+      <!-- Patrón Aldea (Tagline/Heading SEO) -->
+      {eyebrow && <h1 class="c-hero__eyebrow" id="hero-heading">{eyebrow}</h1>}
+      
+      <!-- Titular visual y persuasivo (Visualmente grande, semánticamente p si hay eyebrow) -->
+      {eyebrow ? (
+        <p class="h1 c-hero__title">{title}</p>
+      ) : (
+        <h1 class="c-hero__title" id="hero-heading">{title}</h1>
+      )}
+
+      <p class="c-hero__description text-l">
+        {description}
+      </p>
+
+      <div class="c-hero__actions">
+        {primaryCta && <a href="#" class="c-button" data-variant="primary">{primaryCta}</a>}
+        {secondaryCta && <a href="#" class="c-button" data-variant="outline">{secondaryCta}</a>}
+      </div>
+    </div>
+    
+    <div class="c-hero__media">
+      <!-- Media responsivo fluido con aspecto ratio -->
+      <figure class="c-hero__figure">
+        <img 
+          src={imageUrl} 
+          alt="Vista previa de tecnología y desarrollo limpio" 
+          class="c-hero__image"
+          loading="eager"
+          decoding="async"
+        />
+        <div class="c-hero__overlay" aria-hidden="true"></div>
+      </figure>
+    </div>
+
+  </div>
+</section>
+
+<style>
+/* 
+  Container Queries + Flex Wrap Intrínseco 
+  Workflow Era 4 de Responsividad Escalonada
+*/
+.c-hero {
+  padding-block: var(--section-space);
+  container-type: inline-size;
+}
+
+.c-hero__container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xl);
+  align-items: center;
+}
+
+.c-hero__content {
+  flex: 1 1 40ch; /* Minimum width de 40ch antes de romper hacia abajo */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
+}
+
+.c-hero__eyebrow {
+  color: var(--action-color);
+  font-family: var(--ff-base);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: var(--text-s);
+  margin: 0;
+}
+
+.c-hero__title {
+  color: var(--heading-color);
+  margin: 0;
+}
+
+.c-hero__description {
+  color: var(--text-color);
+  max-width: 60ch; /* Limitar longitud de línea para legibilidad */
+}
+
+.c-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-s);
+  margin-top: var(--space-s);
+}
+
+.c-hero__media {
+  flex: 1 1 40ch;
+}
+
+.c-hero__figure {
+  position: relative;
+  aspect-ratio: 4/3;
+  margin: 0;
+  border-radius: var(--radius-l);
+  overflow: hidden;
+  box-shadow: var(--shadow-l);
+}
+
+.c-hero__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.c-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top right, var(--surface-1), transparent);
+  opacity: 0.1;
+  mix-blend-mode: multiply;
+}
+
+/* Container Query explícito para ajustes menores si es necesario */
+@container (width < 60rem) {
+  .c-hero__content {
+    text-align: center;
+    align-items: center;
+  }
+}
+</style>

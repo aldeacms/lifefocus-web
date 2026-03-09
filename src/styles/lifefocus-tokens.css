@@ -1,0 +1,267 @@
+/* ============================================================
+   LIFE FOCUS FRAMEWORK — lifefocus-tokens.css
+   v3.0.0 (Era 4 Edition) | Daniel Aldea | 2026
+   ============================================================
+   CAPA 1: Core tokens (OKLCH, light-dark, fluid-scales)
+   ============================================================ */
+
+:root {
+  color-scheme: light dark;
+  scroll-behavior: smooth;
+
+  /* 1. BASE SETTINGS */
+  --root-font-size: 100%;
+  /* 1rem = 16px */
+  font-size: var(--root-font-size);
+
+  /* 2. COLOR SYSTEM (OKLCH + light-dark) */
+  /* Base brand hues (in degrees) */
+  --hue-primary: 225.4;
+  /* Cyan-ish */
+  --hue-secondary: 147.4;
+  /* Green */
+  --hue-accent: 286.3;
+  /* Indigo */
+
+  /* Semantic Colors with automatic Dark Mode support */
+  --primary: light-dark(oklch(0.65 0.107 var(--hue-primary)), oklch(0.65 0.107 var(--hue-primary)));
+  --primary-hover: light-dark(oklch(0.74 0.107 var(--hue-primary)), oklch(0.74 0.107 var(--hue-primary)));
+  --primary-ultra-light: light-dark(oklch(0.95 0.035 var(--hue-primary)), oklch(0.1 0.025 var(--hue-primary)));
+  --primary-ultra-dark: light-dark(oklch(0.1 0.025 var(--hue-primary)), oklch(0.95 0.035 var(--hue-primary)));
+
+  --secondary: light-dark(oklch(0.65 0.119 var(--hue-secondary)), oklch(0.65 0.119 var(--hue-secondary)));
+  --accent: light-dark(oklch(0.65 0.119 var(--hue-accent)), oklch(0.65 0.119 var(--hue-accent)));
+
+  --base: light-dark(oklch(0.15 0.02 220), oklch(0.98 0.01 220));
+  /* Background foundation */
+  --neutral: light-dark(oklch(0.50 0.01 220), oklch(0.60 0.01 220));
+
+  /* Surface Colors */
+  --color-surface: light-dark(oklch(1 0 0), oklch(0.18 0.03 220));
+  --color-surface-alt: light-dark(oklch(0.96 0.01 220), oklch(0.14 0.01 220));
+  --color-bg: light-dark(oklch(0.99 0.005 220), oklch(0.10 0.02 220));
+  --color-bg-alt: light-dark(oklch(0.96 0.01 220), oklch(0.14 0.03 220));
+  --color-bg-surface: var(--color-surface);
+  --color-bg-elevated: light-dark(oklch(1 0 0), oklch(0.22 0.04 220));
+  --color-bg-invert: light-dark(oklch(0.10 0.02 220), oklch(1 0 0));
+
+  /* Text Colors */
+  --color-text: light-dark(oklch(0.30 0.02 220), oklch(0.90 0.01 220));
+  --color-text-heading: light-dark(oklch(0.20 0.02 220), oklch(0.98 0.01 220));
+  --color-text-muted: light-dark(oklch(0.55 0.02 220), oklch(0.65 0.02 220));
+  --color-text-invert: light-dark(oklch(0.98 0.01 220), oklch(0.98 0.01 220));
+
+  /* Status Colors (from ACSS) */
+  --danger: light-dark(oklch(0.65 0.202 21), oklch(0.65 0.202 21));
+  --warning: light-dark(oklch(0.65 0.154 85), oklch(0.65 0.154 85));
+  --info: light-dark(oklch(0.65 0.11 212), oklch(0.65 0.11 212));
+  --success: light-dark(oklch(0.65 0.175 147), oklch(0.65 0.175 147));
+
+  /* 3. TYPOGRAPHY (Fluid Era 4) */
+  --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-heading: 'Outfit', var(--font-body);
+
+  /* X-Height based leading */
+  --leading-body: calc(0.5ex + 1rem);
+  --leading-heading: calc(0.2ex + 0.9em);
+  --leading-tight: 1.1;
+
+  /* Weights */
+  --weight-light: 300;
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-black: 900;
+
+  /* Fluid Text Scale (Min: 320px | Max: 1280px) */
+  --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --text-s: clamp(0.875rem, 0.8rem + 0.35vw, 1.0rem);
+  --text-m: clamp(1.0rem, 0.95rem + 0.5vw, 1.125rem);
+  --text-l: clamp(1.25rem, 1.1rem + 1vw, 1.75rem);
+  --text-xl: clamp(1.75rem, 1.5rem + 1.5vw, 2.5rem);
+  --text-xxl: clamp(2.5rem, 2rem + 2.5vw, 3.5rem);
+  --text-mega: clamp(3.5rem, 3rem + 4vw, 6rem);
+
+  /* Heading Aliases */
+  --h1: var(--text-xxl);
+  --h2: var(--text-xl);
+  --h3: var(--text-l);
+  --h4: var(--text-m);
+  --h5: var(--text-s);
+  --h6: var(--text-xs);
+
+  /* 4. SPACING (Fluid XS to XXL) */
+  --space-xxs: clamp(0.25rem, 0.2rem + 0.2vw, 0.375rem);
+  --space-xs: clamp(0.5rem, 0.45rem + 0.3vw, 0.75rem);
+  --space-s: clamp(1rem, 0.9rem + 0.5vw, 1.25rem);
+  --space-m: clamp(1.5rem, 1.35rem + 0.8vw, 2rem);
+  --space-l: clamp(2.5rem, 2.25rem + 1.5vw, 3.5rem);
+  --space-xl: clamp(4rem, 3.6rem + 2.5vw, 5.5rem);
+  --space-xxl: clamp(6.5rem, 5.8rem + 4vw, 9rem);
+
+  /* Section Spacing */
+  --section-space: var(--space-xl);
+  --section-space-l: var(--space-xxl);
+
+  /* Gutter (Horizontal Padding) */
+  --gutter: clamp(1rem, 0.8rem + 1.5vw, 2.5rem);
+
+  /* Layout Widths */
+  --width-max: 80rem;
+  /* 1280px */
+  --width-m: 64rem;
+  /* 1024px */
+  --width-s: 48rem;
+  /* 768px */
+  --width-max-safe: min(var(--width-max), 100% - (var(--gutter) * 2));
+
+  /* 5. UI TOKENS (Radii, Shadows, Transitions, Focus) */
+  --radius-xs: 0.125rem;
+  --radius-s: 0.25rem;
+  --radius-m: 0.5rem;
+  --radius-l: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* Organic Radii (Era 4) */
+  --radius-blob-1: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  --radius-blob-2: 30% 60% 70% 40% / 50% 60% 30% 60%;
+
+  /* 5.1 Z-INDEX SYSTEM */
+  --z-below: -1;
+  --z-default: 1;
+  --z-sticky: 100;
+  --z-drawer: 200;
+  --z-modal: 300;
+  --z-popover: 400;
+  --z-toast: 500;
+
+  /* 5.2 ALPHA MULTIPLIERS / OPACITY */
+  --trans-10: 0.1;
+  --trans-20: 0.2;
+  --trans-30: 0.3;
+  --trans-40: 0.4;
+  --trans-50: 0.5;
+  --trans-60: 0.6;
+  --trans-70: 0.7;
+  --trans-80: 0.8;
+  --trans-90: 0.9;
+
+  --shadow-s: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-m: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.06);
+  --shadow-l: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Focus Rings */
+  --focus-color: var(--primary);
+  --focus-width: 3px;
+  --focus-offset: 2px;
+}
+
+/* 6. GLOBAL BASE STYLES */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  font-size: var(--text-m);
+  line-height: var(--leading-body);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+  margin: 0;
+  font-family: var(--font-heading);
+  line-height: var(--leading-heading);
+  color: var(--color-text-heading);
+  font-weight: var(--weight-bold);
+}
+
+h1,
+.h1 {
+  font-size: var(--h1);
+}
+
+h2,
+.h2 {
+  font-size: var(--h2);
+}
+
+h3,
+.h3 {
+  font-size: var(--h3);
+}
+
+h4,
+.h4 {
+  font-size: var(--h4);
+}
+
+h5,
+.h5 {
+  font-size: var(--h5);
+}
+
+h6,
+.h6 {
+  font-size: var(--h6);
+}
+
+a {
+  color: var(--primary);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color var(--transition-normal);
+}
+
+a:hover {
+  color: var(--primary-hover);
+}
+
+img,
+video,
+iframe,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Accessibility Focus Ring */
+:focus-visible {
+  outline: var(--focus-width) solid var(--focus-color);
+  outline-offset: var(--focus-offset);
+  border-radius: var(--radius-xs);
+}
+
+/* 🌙 THEME TOGGLE SYNC (Manual Preference) */
+[data-theme="dark"] {
+  color-scheme: dark;
+  --color-surface: oklch(0.18 0.03 220);
+  --color-surface-alt: oklch(0.14 0.01 220);
+  --color-bg: oklch(0.10 0.02 220);
+  --color-text: oklch(0.90 0.01 220);
+  --color-text-heading: oklch(0.98 0.01 220);
+}

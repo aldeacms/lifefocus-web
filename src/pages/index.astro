@@ -1,0 +1,83 @@
+---
+// index.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout 
+  title="LifeFocus Builder | Framework Maestro Era 4"
+  description="Plantilla de agencia ultrarrápida impulsada por Astro, Tailwind CSS, y Directus CMS. Estándares BEM y SEO."
+>
+  <Header slot="header" />
+  
+  <!-- Hero Section -->
+  <Hero 
+    eyebrow="El Boilerplate de Agencia"
+    title="Desarrolla Rápido, Posiciona Fuerte."
+    description="Bienvenido al LifeFocus Builder. Esta página sirve como demo principal (Kitchen Sink) para todos tus componentes construidos bajo las normas Era 4 Web Standards."
+    primaryCta="Ver Documentación"
+    secondaryCta="Contacto"
+  />
+
+  <!-- Componente Demo Genérico: Feature Grid -->
+  <section class="c-section" id="metodologia">
+    <div class="o-container">
+      <div class="o-grid" data-columns="3">
+        
+        <article class="c-card">
+          <h2 class="h3 c-card__title">HTML Semántico</h2>
+          <p class="c-card__desc">Landmarks y etiquetas consistentes para accesibilidad y rastreo de Google.</p>
+        </article>
+
+        <article class="c-card">
+          <h2 class="h3 c-card__title">Componentes BEM</h2>
+          <p class="c-card__desc">Uso estricto de Clases BEM. Cero "Class Soup" o abuso de Tailwind en el DOM.</p>
+        </article>
+        
+        <article class="c-card">
+          <h2 class="h3 c-card__title">Responsive Fluido</h2>
+          <p class="c-card__desc">Soporte total para Container Queries y escalas tipográficas de fluido nativo.</p>
+        </article>
+        
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+/* Estilos solo demostrativos para The Kitchen Sink */
+.c-section {
+  padding-block: var(--section-space);
+  container-type: inline-size;
+}
+
+.o-grid {
+  display: grid;
+  gap: var(--space-m);
+}
+
+.o-grid[data-columns="3"] {
+  grid-template-columns: repeat(auto-fit, minmax(mi(min(100%, 300px)), 1fr));
+}
+
+.c-card {
+  background-color: var(--surface-2);
+  padding: var(--space-l);
+  border-radius: var(--radius-m);
+  border: 1px solid var(--border-color);
+}
+
+.c-card__title {
+  color: var(--heading-color);
+  margin-block-end: var(--space-xs);
+}
+
+.c-card__desc {
+  color: var(--text-color);
+  margin: 0;
+}
+</style>

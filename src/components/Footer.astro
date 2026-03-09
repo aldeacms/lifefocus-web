@@ -1,0 +1,140 @@
+---
+// Footer.astro
+const year = new Date().getFullYear();
+---
+
+<footer class="c-footer" aria-labelledby="footer-heading">
+  <h2 id="footer-heading" class="sr-only">Navegación del Pie de Página</h2>
+  <div class="o-container c-footer__container">
+    
+    <div class="c-footer__brand-col">
+      <!-- Insertar SVG del Logo aquí o importar -->
+      <span class="c-footer__brand-name h4">LifeFocus</span>
+      <p class="c-footer__description text-s">
+        Agencia de desarrollo web y crecimiento digital basada en el rendimiento, código limpio y estándares de la cuarta era.
+      </p>
+    </div>
+    
+    <div class="c-footer__nav-col">
+      <h3 class="c-footer__titulo">Plataforma</h3>
+      <ul class="c-footer__list" role="list">
+        <li><a href="#">Soluciones</a></li>
+        <li><a href="#">Casos de Uso</a></li>
+        <li><a href="#">Planes</a></li>
+      </ul>
+    </div>
+
+    <div class="c-footer__nav-col">
+      <h3 class="c-footer__titulo">Compañía</h3>
+      <ul class="c-footer__list" role="list">
+        <li><a href="#">Sobre Nosotros</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contacto</a></li>
+      </ul>
+    </div>
+    
+  </div>
+  
+  <div class="c-footer__bottom">
+    <div class="o-container c-footer__bottom-container">
+      <p class="text-xs">&copy; {year} LifeFocus Agency. Todos los derechos reservados.</p>
+      <div class="c-footer__legal-links">
+        <a href="#" class="text-xs">Privacidad</a>
+        <a href="#" class="text-xs">Términos</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+.c-footer {
+  background-color: var(--surface-2);
+  padding-block: var(--section-space) 0;
+  border-top: 1px solid var(--border-color);
+  margin-top: auto;
+}
+
+.c-footer__container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-xl);
+  padding-bottom: var(--space-xl);
+}
+
+.c-footer__brand-col {
+  /* Ocupar más espacio si está en pantallas anchas (auto-fit hace el resto) */
+  grid-column: span 1;
+}
+
+@media (width > 60rem) {
+  .c-footer__brand-col {
+    grid-column: span 2;
+  }
+}
+
+.c-footer__brand-name {
+  color: var(--heading-color);
+  margin-bottom: var(--space-xs);
+  display: block;
+}
+
+.c-footer__description {
+  color: var(--text-color);
+  max-width: 40ch;
+}
+
+.c-footer__titulo {
+  font-family: var(--ff-base);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--heading-color);
+  margin-bottom: var(--space-s);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.c-footer__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.c-footer__list a {
+  color: var(--text-color);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.c-footer__list a:hover {
+  color: var(--action-color);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.c-footer__bottom {
+  border-top: 1px solid var(--border-color);
+  padding-block: var(--space-m);
+}
+
+.c-footer__bottom-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-m);
+  color: var(--text-color);
+}
+
+.c-footer__legal-links {
+  display: flex;
+  gap: var(--space-m);
+}
+
+.c-footer__legal-links a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+</style>

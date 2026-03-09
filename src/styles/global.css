@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+/* 
+ * Era 4 Web Standards - Core Framework 
+ * Basado en la metodología de Kevin Geary
+ */
+@import "./lifefocus-tokens.css";
+@import "./lifefocus-animations.css";
+@import "./lifefocus-patterns.css";
+
+/* 
+ * Customizaciones Locales del Proyecto 
+ * Aquí irán las modificaciones específicas para cada cliente 
+ */
+@import "./lifefocus-local.css";

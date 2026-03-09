@@ -1,0 +1,786 @@
+/**
+ * ============================================================
+ *  LIFE FOCUS FRAMEWORK — lifefocus-patterns.css
+ *  v3.0.0 (Era 4 Edition) | Daniel Aldea | 2026
+ * ============================================================
+ *  CAPA 2: Patrones de Componentes (CQ-First, BEM, Smart Spacing)
+ * ============================================================ */
+
+/* ══════════════════════════════════════════════════
+   1. LAYOUT & SMART SPACING
+   ══════════════════════════════════════════════════ */
+
+/* Standard Section */
+section {
+    padding-block: var(--section-space);
+    padding-inline: var(--gutter);
+    display: flow-root;
+    /* Prevent margin collapse */
+}
+
+section--l {
+    padding-block: var(--section-space-l);
+}
+
+/* Container Logic */
+.container {
+    inline-size: var(--width-max-safe);
+    margin-inline: auto;
+}
+
+.container--m {
+    --width-max: var(--width-m);
+}
+
+.container--s {
+    --width-max: var(--width-s);
+}
+
+/* Auto-Grid (Intrinsic Responsiveness) */
+.auto-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(var(--grid-min-col, 20rem), 100%), 1fr));
+    gap: var(--grid-gap, var(--space-m));
+}
+
+.auto-grid>* {
+    container-type: inline-size;
+}
+
+/* Stack (Vertical Flow) */
+.stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--stack-gap, var(--space-m));
+}
+
+/* Smart Gaps for Prose */
+.prose {
+    max-inline-size: 72ch;
+}
+
+.prose>*+* {
+    margin-block-start: var(--space-s);
+}
+
+.prose>h2,
+.prose>h3 {
+    margin-block-start: var(--space-l);
+}
+
+/* ══════════════════════════════════════════════════
+   2. "HAS ME" PATTERN & COMPONENTS
+   ══════════════════════════════════════════════════ */
+
+/* Pattern: The Container Query Automation (Manual fallback) */
+.hero,
+.stat-block,
+.card-wrapper,
+.is-container {
+    container-type: inline-size;
+}
+
+/* -- HERO COMPONENT -- */
+.hero {
+    --_hero-bg: var(--primary-ultra-dark);
+    --_hero-text: var(--primary-ultra-light);
+
+    display: grid;
+    place-items: center;
+    min-block-size: 60svh;
+    background-color: var(--_hero-bg);
+    color: var(--_hero-text);
+    text-align: center;
+    padding: var(--section-space) var(--gutter);
+
+    &__content {
+        display: grid;
+        gap: var(--space-m);
+        max-inline-size: var(--width-m);
+    }
+
+    &__title {
+        font-size: var(--text-mega);
+        letter-spacing: -0.02em;
+        color: var(--_hero-text);
+    }
+
+    &__tagline {
+        font-size: var(--text-l);
+        opacity: 0.9;
+        text-wrap: balance;
+    }
+}
+
+/* -- SECTION HEADER COMPONENT (Eyebrow SEO Pattern) -- */
+.c-section-header {
+    margin-bottom: var(--space-xl);
+}
+
+.c-section-header--center {
+    text-align: center;
+}
+
+.c-section-header--center .c-section-header__tagline,
+.c-section-header--center .c-section-header__title {
+    margin-inline: auto;
+}
+
+.c-section-header__tagline {
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: var(--text-xs) !important;
+    font-weight: var(--weight-black) !important;
+    margin-bottom: var(--space-xs);
+    color: var(--primary);
+}
+
+.c-section-header__title {
+    margin-top: 0;
+    margin-bottom: var(--space-m);
+    color: var(--color-text-heading);
+    /* Requires .h1 or .h2 utility class for text sizing */
+}
+
+/* -- CARD COMPONENT (CQ-Optimized) -- */
+.card {
+    --_card-bg: var(--color-bg-surface);
+    --_card-padding: var(--space-m);
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+    padding: var(--_card-padding);
+    background-color: var(--_card-bg);
+    border-radius: var(--radius-l);
+    border: 1px solid light-dark(oklch(0.9 0.01 var(--hue-primary)), oklch(0.2 0.03 var(--hue-primary)));
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-m);
+    }
+
+    &__image {
+        aspect-ratio: 16 / 9;
+        background-color: var(--color-bg-alt);
+        border-radius: var(--radius-m);
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__body {
+        display: grid;
+        gap: var(--space-xs);
+    }
+
+    &__eyebrow {
+        font-size: var(--text-xs);
+        font-weight: var(--weight-bold);
+        color: var(--primary);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+    }
+
+    &__title {
+        font-size: var(--text-l);
+    }
+
+    /* Responsive behavior based ON PARENT CONTAINER */
+    @container (inline-size > 35rem) {
+        &.card--horizontal {
+            flex-direction: row;
+            align-items: center;
+            gap: var(--space-l);
+
+            .card__image {
+                flex: 0 0 40%;
+                aspect-ratio: 1 / 1;
+            }
+        }
+    }
+}
+
+/* -- BUTTONS -- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-xs) var(--space-l);
+    background-color: var(--primary);
+    color: var(--color-text-invert);
+    border-radius: var(--radius-m);
+    font-weight: var(--weight-bold);
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: filter var(--transition-normal), transform 150ms ease;
+
+    &:hover {
+        filter: brightness(1.1);
+    }
+
+    &:active {
+        transform: scale(0.98);
+    }
+
+    &--secondary {
+        background-color: var(--secondary);
+    }
+
+    &--accent {
+        background-color: var(--accent);
+    }
+
+    &--outline {
+        background-color: transparent;
+        border: 2px solid var(--primary);
+        color: var(--primary);
+
+        &:hover {
+            background-color: var(--primary-ultra-light);
+        }
+    }
+}
+
+/* ══════════════════════════════════════════════════
+   3. FORMS & INPUTS
+   ══════════════════════════════════════════════════ */
+
+/* Standard Accessible Form Controls */
+input:where([type="text"], [type="email"], [type="url"], [type="password"], [type="number"], [type="tel"], [type="search"]),
+select,
+textarea {
+    width: 100%;
+    padding: var(--space-xs) var(--space-s);
+    font-size: var(--text-m);
+    font-family: inherit;
+    color: var(--color-text);
+    background-color: var(--color-bg-surface);
+    border: 1px solid light-dark(oklch(0.85 0.01 220), oklch(0.3 0.02 220));
+    border-radius: var(--radius-s);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 var(--focus-width) light-dark(oklch(0.7 0.1 220), oklch(0.4 0.1 220));
+}
+
+label {
+    display: inline-block;
+    margin-bottom: var(--space-xxs);
+    font-weight: var(--weight-medium);
+    font-size: var(--text-s);
+    color: var(--color-text-heading);
+}
+
+/* ══════════════════════════════════════════════════
+   4. UTILITIES (Colors, Layout, Typography, Lists)
+   ══════════════════════════════════════════════════ */
+
+/* Backgrounds */
+.bg-primary {
+    background-color: var(--primary);
+    color: var(--color-text-invert);
+}
+
+.bg-secondary {
+    background-color: var(--secondary);
+    color: var(--color-text-invert);
+}
+
+.bg-accent {
+    background-color: var(--accent);
+    color: var(--color-text-invert);
+}
+
+.bg-surface {
+    background-color: var(--color-bg-surface);
+}
+
+.bg-elevated {
+    background-color: var(--color-bg-elevated);
+}
+
+.bg-alt {
+    background-color: var(--color-bg-alt);
+}
+
+/* Text Colors */
+.text-primary {
+    color: var(--primary);
+}
+
+.text-secondary {
+    color: var(--secondary);
+}
+
+.text-accent {
+    color: var(--accent);
+}
+
+.text-heading {
+    color: var(--color-text-heading);
+}
+
+.text-muted {
+    color: var(--color-text-muted);
+}
+
+.text-invert {
+    color: var(--color-text-invert);
+}
+
+/* Visual Heading Utilities (For SEO Eyebrow Pattern) */
+.h1 {
+    font-size: var(--text-mega) !important;
+    font-weight: var(--weight-black) !important;
+    line-height: var(--leading-tight) !important;
+    letter-spacing: -0.04em !important;
+}
+
+.h2 {
+    font-size: var(--text-xxl) !important;
+    font-weight: var(--weight-black) !important;
+    line-height: var(--leading-tight) !important;
+    letter-spacing: -0.03em !important;
+}
+
+.h3 {
+    font-size: var(--text-xl) !important;
+    font-weight: var(--weight-bold) !important;
+    line-height: var(--leading-tight) !important;
+    letter-spacing: -0.02em !important;
+}
+
+/* Typography Formatting */
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-balanced {
+    text-wrap: balance;
+}
+
+.text-pretty {
+    text-wrap: pretty;
+}
+
+.text-nowrap {
+    white-space: nowrap;
+}
+
+/* Lists */
+.list-clean {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.list-clean>*+* {
+    margin-block-start: var(--space-xs);
+}
+
+/* Layout Visibility */
+.visually-hidden,
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* ══════════════════════════════════════════════════
+   12. SCHEME SWITCH COMPONENT
+   ══════════════════════════════════════════════════ */
+.scheme-switch {
+    --switch-size: 16%;
+    --icon-size: 10em;
+    --moon-color: #d9fbff;
+    --star-color: var(--moon-color);
+    --sun-color: #ffc233;
+    inline-size: 36px;
+    block-size: 36px;
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    position: relative;
+    overflow: visible;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.scheme-switch__icon {
+    font-size: var(--switch-size);
+    display: flex;
+    inline-size: 100%;
+    block-size: 100%;
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline-start: 50%;
+    translate: -50% -50%;
+    border-radius: 50%;
+    transition:
+        rotate 400ms ease-in-out,
+        box-shadow 400ms ease-in-out,
+        background 400ms ease-in-out;
+}
+
+/* Sun State */
+[data-current-scheme='light' i] .scheme-switch__icon {
+    font-size: calc(var(--switch-size) * 1.2);
+    background: var(--sun-color);
+    inline-size: calc(var(--icon-size) * 0.7);
+    block-size: calc(var(--icon-size) * 0.7);
+    rotate: 0deg;
+    box-shadow:
+        3em 3em 0 5em var(--sun-color) inset,
+        0 -5em 0 -2.7em var(--sun-color),
+        3.5em -3.5em 0 -3em var(--sun-color),
+        5em 0 0 -2.7em var(--sun-color),
+        3.5em 3.5em 0 -3em var(--sun-color),
+        0 5em 0 -2.7em var(--sun-color),
+        -3.5em 3.5em 0 -3em var(--sun-color),
+        -5em 0 0 -2.7em var(--sun-color),
+        -3.5em -3.5em 0 -3em var(--sun-color);
+}
+
+/* Moon State */
+[data-current-scheme='dark' i] .scheme-switch__icon {
+    font-size: calc(var(--switch-size) * 1);
+    inline-size: var(--icon-size);
+    block-size: var(--icon-size);
+    background: transparent;
+    rotate: -75deg;
+    box-shadow:
+        3em 2.5em 0 0em var(--moon-color) inset,
+        color-mix(in hsl, var(--star-color, white) 70%, transparent) 0em -7em 0 -4.5em,
+        var(--star-color, white) 2em 6em 0 -4em,
+        var(--star-color, white) -4em -7em 0 -4.3em,
+        var(--star-color, white) 6em 2em 0 -4.2em,
+        color-mix(in hsl, var(--star-color, white) 70%, transparent) 4.5em 4em 0 -4.5em,
+        var(--star-color, white) -8em 0.5em 0 -4.4em,
+        color-mix(in hsl, var(--star-color, white) 70%, transparent) -6em -4em 0 -4.5em,
+        color-mix(in hsl, var(--star-color, white) 70%, transparent) -1em 7em 0 -4.5em;
+}
+
+/* ══════════════════════════════════════════════════
+   13. HEADER & FLEX NAV (Responsive Checkbox Pattern)
+   ══════════════════════════════════════════════════ */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-sticky, 100);
+    background-color: light-dark(rgba(255, 255, 255, 0.95), rgba(0, 0, 0, 0.6));
+    backdrop-filter: blur(10px);
+    padding-block: var(--space-s);
+    box-shadow: var(--shadow-s);
+}
+
+.site-header__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    max-width: var(--width-max);
+    margin: 0 auto;
+    padding-inline: var(--gutter);
+    gap: var(--space-s);
+}
+
+.site-header__logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+.site-header__logo-img {
+    height: clamp(40px, 5vw, 60px);
+    width: auto;
+    object-fit: contain;
+}
+
+/* Base Flex Nav */
+.site-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-m);
+    margin-inline: auto;
+}
+
+.site-nav__link {
+    text-decoration: none;
+    color: var(--color-text-heading);
+    font-weight: var(--weight-bold);
+    transition: color var(--transition-fast) ease;
+    font-size: var(--text-m);
+}
+
+.site-nav__link:hover {
+    color: var(--primary);
+}
+
+/* Mobile Toggle Checkbox Hack (CSS Only) */
+.nav-toggle-checkbox {
+    display: none;
+}
+
+.nav-toggle-label {
+    display: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--color-text-heading);
+    padding: 0.5rem;
+}
+
+@media (max-width: 900px) {
+    .nav-toggle-label {
+        display: block;
+        order: 2;
+        /* Put after CTA if using flex */
+    }
+
+    .site-nav {
+        display: none;
+        /* Hidden by default */
+        flex-direction: column;
+        width: 100%;
+        order: 3;
+        padding-block: var(--space-m);
+        background: var(--color-bg-surface);
+        border-radius: var(--radius-m);
+        box-shadow: var(--shadow-m);
+        gap: var(--space-s);
+    }
+
+    .nav-toggle-checkbox:checked~.site-nav {
+        display: flex;
+        /* Shown when checked */
+        animation: lf-slide-up var(--transition-normal);
+    }
+
+    .header-cta {
+        order: 1;
+        /* Keep CTA visible next to toggle */
+        margin-left: auto;
+    }
+}
+
+/* ══════════════════════════════════════════════════
+   14. CSS-ONLY SNAP CAROUSEL
+   ══════════════════════════════════════════════════ */
+.snap-carousel-wrapper {
+    position: relative;
+    max-width: var(--width-max);
+    margin: 0 auto;
+}
+
+.snap-carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    gap: var(--space-m);
+    padding-block: var(--space-m);
+    /* Magic calculation to align centered first card depending on viewport */
+    padding-inline: calc(50vw - min(var(--width-s)/2, 45vw));
+    scrollbar-width: none;
+    /* Hide scrollbar Firefox */
+    -ms-overflow-style: none;
+    /* Hide scrollbar IE */
+}
+
+.snap-carousel::-webkit-scrollbar {
+    display: none;
+    /* Hide scrollbar Chrome/Safari */
+}
+
+.snap-card {
+    flex: 0 0 min(400px, 85vw);
+    scroll-snap-align: center;
+    scroll-margin-inline: calc(50vw - min(var(--width-s)/2, 45vw));
+    /* Snap margin */
+    background: var(--color-bg-alt);
+    border-radius: var(--radius-l);
+    padding: var(--space-l);
+    text-align: left;
+    box-shadow: var(--shadow-s);
+    transition: transform var(--transition-normal);
+}
+
+.snap-card:hover {
+    transform: translateY(-5px);
+}
+
+/* CSS Only Next/Prev Navigation Buttons overlaying the carousel edges */
+.carousel-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3rem;
+    height: 3rem;
+    background: var(--color-bg-surface);
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-m);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--primary);
+    font-size: 1.5rem;
+    z-index: 10;
+    transition: transform var(--transition-fast), background var(--transition-fast);
+}
+
+.carousel-nav-btn:hover {
+    background: var(--primary);
+    color: var(--color-text-invert);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-nav-btn--prev {
+    left: var(--space-m);
+}
+
+.carousel-nav-btn--next {
+    right: var(--space-m);
+}
+
+@media (max-width: 768px) {
+    .carousel-nav-btn {
+        display: none;
+        /* Mobile implies natural horizontal swipe */
+    }
+}
+
+/* ══════════════════════════════════════════════════
+   15. INFINITE LOGO SCROLLER TRACK
+   ══════════════════════════════════════════════════ */
+.infinite-scroller {
+    padding-block: var(--space-l);
+    background: var(--color-bg);
+    overflow: hidden;
+    position: relative;
+    border-block: 1px solid light-dark(rgba(0, 0, 0, 0.05), rgba(255, 255, 255, 0.05));
+    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+
+.infinite-scroller__track {
+    display: flex;
+    gap: var(--space-xl);
+    width: max-content;
+    animation: lf-infinite-scroll 40s linear infinite;
+}
+
+.infinite-scroller__img {
+    height: 48px;
+    width: auto;
+    opacity: 0.5;
+    filter: grayscale(100%);
+    transition: opacity var(--transition-fast), filter var(--transition-fast);
+}
+
+.infinite-scroller__img:hover {
+    opacity: 1;
+    filter: grayscale(0%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .infinite-scroller__track {
+        animation-play-state: paused;
+    }
+}
+
+/* ══════════════════════════════════════════════════
+   16. CSS-ONLY ACCORDION (<details> / <summary>)
+   ══════════════════════════════════════════════════ */
+.accordion {
+    background-color: var(--color-bg-surface);
+    border: 1px solid light-dark(oklch(0.85 0.01 220), oklch(0.2 0.02 220));
+    border-radius: var(--radius-m);
+    margin-bottom: var(--space-s);
+    transition: background-color var(--transition-fast);
+}
+
+.accordion[open] {
+    background-color: var(--color-bg-alt);
+    border-color: var(--primary);
+}
+
+.accordion__summary {
+    padding: var(--space-s) var(--space-m);
+    cursor: pointer;
+    font-family: var(--font-heading);
+    font-weight: var(--weight-bold);
+    font-size: var(--text-m);
+    color: var(--color-text-heading);
+    list-style: none;
+    /* Hide default arrow */
+    position: relative;
+    user-select: none;
+    transition: color var(--transition-fast);
+}
+
+.accordion__summary::-webkit-details-marker {
+    display: none;
+    /* Hide default arrow in Safari */
+}
+
+/* Custom Arrow Indicator */
+.accordion__summary::after {
+    content: "";
+    /* We use a border angle or arrow */
+    position: absolute;
+    right: var(--space-m);
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid var(--primary);
+    border-bottom: 2px solid var(--primary);
+    transition: transform var(--transition-fast);
+}
+
+.accordion[open] .accordion__summary::after {
+    transform: translateY(-20%) rotate(225deg);
+}
+
+.accordion__summary:hover {
+    color: var(--primary);
+}
+
+.accordion__content {
+    padding: 0 var(--space-m) var(--space-m);
+    color: var(--color-text-muted);
+    font-size: var(--text-m);
+    line-height: var(--leading-body);
+    animation: lf-fade-in var(--transition-normal) ease-out;
+}
