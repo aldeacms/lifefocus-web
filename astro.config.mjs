@@ -1,12 +1,11 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
-import cloudflare from '@astrojs/cloudflare';
 
-// https://astro.build/config
+// Sitio estático para Cloudflare Pages
+// No necesita adapter — Cloudflare Pages sirve dist/ directamente
 export default defineConfig({
   output: 'static',
-  adapter: cloudflare(),
   vite: {
     plugins: [tailwindcss()],
   },
