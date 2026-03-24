@@ -1,0 +1,157 @@
+---
+/** Footer.astro */
+---
+
+<footer class="site-footer">
+  <div class="site-footer__container container">
+    <!-- Top: logo + columnas -->
+    <div class="site-footer__top">
+      <div class="site-footer__brand">
+        <a href="/" aria-label="Life Focus">
+          <img src="/logo-dark.png" alt="Life Focus" class="site-footer__logo" width="150" height="38" />
+        </a>
+        <p class="site-footer__tagline">
+          Agencia de performance para negocios latinos en USA. Web de alto rendimiento + campañas que sí convierten.
+        </p>
+        <a class="btn btn--primary btn--sm" href="/contacto">Agenda tu llamada gratuita</a>
+      </div>
+
+      <nav class="site-footer__nav" aria-label="Navegación del footer">
+        <div class="site-footer__col">
+          <strong class="site-footer__col-title">Servicios</strong>
+          <ul role="list">
+            <li><a href="/servicios/waas">WaaS — Web as a Service</a></li>
+            <li><a href="/servicios/diseno-web">Diseño Web Premium</a></li>
+            <li><a href="/servicios/google-ads">Google Ads</a></li>
+            <li><a href="/servicios/meta-ads">Meta Ads</a></li>
+            <li><a href="/servicios/redes-sociales">Redes Sociales</a></li>
+          </ul>
+        </div>
+
+        <div class="site-footer__col">
+          <strong class="site-footer__col-title">Empresa</strong>
+          <ul role="list">
+            <li><a href="/nosotros">Nosotros</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/contacto">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div class="site-footer__col">
+          <strong class="site-footer__col-title">Contacto</strong>
+          <ul role="list">
+            <li><a href="mailto:hola@lifefocus.agency">hola@lifefocus.agency</a></li>
+            <li><a href="/contacto">Agenda una llamada</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class="divider-brand"></div>
+
+    <div class="site-footer__bottom">
+      <p>&copy; {new Date().getFullYear()} Life Focus Agency. Todos los derechos reservados.</p>
+      <p class="site-footer__credit">Hecho con ❤️ para negocios latinos en USA</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background-color: var(--color-dark-bg);
+    border-block-start: 1px solid var(--color-border);
+    padding-block: var(--spacing-space-2xl) var(--spacing-space-l);
+    padding-inline: var(--spacing-gutter);
+  }
+
+  [data-theme="light"] .site-footer {
+    background-color: var(--color-light-surface);
+  }
+
+  .site-footer__top {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--spacing-space-2xl);
+    margin-block-end: var(--spacing-space-xl);
+
+    @container (inline-size < 52rem) {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-space-xl);
+    }
+  }
+
+  .site-footer__container {
+    :has(> &) { container-type: inline-size; }
+  }
+
+  .site-footer__brand {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    align-items: flex-start;
+  }
+
+  .site-footer__logo {
+    block-size: 34px;
+    inline-size: auto;
+    object-fit: contain;
+  }
+
+  .site-footer__tagline {
+    font-size: var(--font-size-small);
+    color: var(--color-text-muted);
+    max-inline-size: 28rem;
+    line-height: 1.7;
+  }
+
+  .site-footer__nav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-space-l);
+
+    @container (inline-size < 40rem) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .site-footer__col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+
+    & ul {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      list-style: none;
+    }
+
+    & a {
+      font-size: var(--font-size-small);
+      color: var(--color-text-muted);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+
+      &:hover { color: var(--color-primary); }
+    }
+  }
+
+  .site-footer__col-title {
+    font-size: var(--font-size-eyebrow);
+    font-weight: var(--font-weight-heading);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+  }
+
+  .site-footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding-block-start: var(--spacing-space-l);
+    font-size: var(--font-size-small);
+    color: var(--color-text-muted);
+  }
+</style>

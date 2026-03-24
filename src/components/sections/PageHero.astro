@@ -1,0 +1,90 @@
+---
+/** PageHero.astro — Hero para páginas internas (h1 + breadcrumb) */
+
+interface Props {
+  eyebrow: string;
+  headline: string;
+  description?: string;
+  breadcrumb?: string;
+}
+
+const { eyebrow, headline, description, breadcrumb } = Astro.props;
+---
+
+<section class="page-hero section">
+  <div class="page-hero__container container">
+    {breadcrumb && (
+      <nav class="page-hero__breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Inicio</a>
+        <span aria-hidden="true">→</span>
+        <span>{breadcrumb}</span>
+      </nav>
+    )}
+
+    <header class="page-hero__header">
+      <!-- SEO: keyword en h1 -->
+      <h1 class="page-hero__eyebrow eyebrow">{eyebrow}</h1>
+      <!-- VISUAL: titular impacto en párrafo -->
+      <p class="page-hero__title h1">{headline}</p>
+      {description && (
+        <p class="page-hero__desc">{description}</p>
+      )}
+    </header>
+  </div>
+</section>
+
+<style>
+  .page-hero {
+    padding-block-start: clamp(3rem, 6vw, 5rem);
+    padding-block-end: clamp(2rem, 4vw, 3.5rem);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset-block-start: -30%;
+      inset-inline-start: -10%;
+      inline-size: 50vw;
+      block-size: 50vw;
+      background: radial-gradient(ellipse, rgba(56,178,240,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+  }
+
+  .page-hero__container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .page-hero__breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: var(--font-size-small);
+    color: var(--color-text-muted);
+
+    & a {
+      color: var(--color-text-muted);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+
+      &:hover { color: var(--color-primary); }
+    }
+  }
+
+  .page-hero__header {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-inline-size: 48rem;
+  }
+
+  .page-hero__desc {
+    color: var(--color-text-muted);
+    font-size: clamp(1rem, 2vw, 1.125rem);
+    max-inline-size: 48ch;
+    line-height: 1.7;
+  }
+</style>

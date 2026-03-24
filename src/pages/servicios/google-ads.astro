@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/sections/PageHero.astro';
+import CtaBanner from '../../components/sections/CtaBanner.astro';
+import type { PageMeta } from '../../types/cms';
+
+const meta: PageMeta = {
+  title: 'Google Ads para Negocios Latinos en USA | Life Focus Agency',
+  description: 'Gestión profesional de Google Ads con estrategia long tail. Setup $390 + gestión $290/mes. Campañas de búsqueda que convierten para negocios latinos.',
+  lang: 'es',
+};
+---
+
+<BaseLayout meta={meta} currentPage="/servicios">
+  <main id="main-content">
+    <PageHero
+      eyebrow="Google Ads — Campañas de Búsqueda para Negocios Latinos en USA"
+      headline="Deja de alimentar a Google. Empieza a convertir búsquedas en clientes."
+      description="Setup $390 + gestión desde $290/mes. Estrategia de long tail con negativos bien trabajados para maximizar tu ROI."
+      breadcrumb="Servicios / Google Ads"
+    />
+
+    <section class="gads section">
+      <div class="gads__container container">
+        <div class="gads__grid">
+          <div>
+            <header class="section-header">
+              <h2 class="eyebrow">Nuestra Metodología Google Ads</h2>
+              <p class="h2">Long tail: menos gasto, más conversión.</p>
+              <p class="section-header__desc">El secreto está en las palabras clave de alta intención y en los negativos. Así tu presupuesto va exactamente donde debe ir.</p>
+            </header>
+            <ol class="gads__steps">
+              {[
+                ['Auditoría de tu negocio', 'Analizamos tu negocio, competencia y palabras clave de alta intención para tu rubro.'],
+                ['Estructura de campaña', 'Grupos de anuncios bien segmentados, sin mezclar intenciones. Copy persuasivo en cada anuncio.'],
+                ['Estrategia de negativos', 'Lista exhaustiva de palabras negativas para evitar clics irrelevantes desde el día uno.'],
+                ['Optimización continua', 'Alertas semanales, ajustes de pujas y negativos según datos reales de conversión.'],
+                ['Reportes comprensibles', 'Informe mensual en español, con métricas que entiende un dueño de negocio, no solo un técnico.'],
+              ].map(([title, body], i) => (
+                <li class="gads__step">
+                  <span class="gads__step-num">{String(i + 1).padStart(2, '0')}</span>
+                  <div>
+                    <h3 class="eyebrow">{title}</h3>
+                    <p>{body}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+
+          <div class="gads__pricing card">
+            <h3 class="eyebrow">Inversión</h3>
+            <div class="gads__price-row">
+              <span class="gads__price-label">Setup inicial</span>
+              <span class="gads__price-amount">$390</span>
+            </div>
+            <div class="gads__price-row">
+              <span class="gads__price-label">Gestión mensual</span>
+              <span class="gads__price-amount">$290<span style="font-size:1rem;font-weight:300">/mes</span></span>
+            </div>
+            <p class="gads__price-note">El presupuesto de pauta en Google va por separado (recomendamos mínimo $500/mes para resultados óptimos).</p>
+            <a class="btn btn--primary" href="/contacto" style="inline-size:100%;justify-content:center">Comenzar con Google Ads</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <CtaBanner
+      title="¿Tus campañas de Google no convierten?"
+      subtitle="Agenda una auditoría gratuita. Revisamos tu cuenta y te decimos qué está pasando en menos de 24 horas."
+      ctaText="Solicitar auditoría gratuita"
+    />
+  </main>
+</BaseLayout>
+
+<style>
+  .gads__container { :has(> &) { container-type: inline-size; } }
+  .gads__grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: var(--spacing-space-xl);
+    align-items: start;
+    @container (inline-size < 48rem) { grid-template-columns: 1fr; }
+  }
+  .gads__steps { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; margin-block-start: 2rem; counter-reset: none; }
+  .gads__step {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    & div { display: flex; flex-direction: column; gap: 0.35rem; }
+    & p { font-size: var(--font-size-small); color: var(--color-text-muted); line-height: 1.65; }
+  }
+  .gads__step-num {
+    font-size: 1.75rem;
+    font-weight: var(--font-weight-bold);
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    flex-shrink: 0;
+    opacity: 0.6;
+  }
+  .gads__pricing { display: flex; flex-direction: column; gap: 1.25rem; padding: 2rem; position: sticky; inset-block-start: 6rem; }
+  .gads__price-row { display: flex; justify-content: space-between; align-items: center; padding-block: 0.85rem; border-block-end: 1px solid var(--color-border); }
+  .gads__price-label { font-size: var(--font-size-small); color: var(--color-text-muted); }
+  .gads__price-amount {
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-heading);
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .gads__price-note { font-size: 0.75rem; color: var(--color-text-muted); line-height: 1.5; }
+</style>

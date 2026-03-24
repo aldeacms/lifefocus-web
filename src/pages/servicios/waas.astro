@@ -1,0 +1,153 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/sections/PageHero.astro';
+import Pricing from '../../components/sections/Pricing.astro';
+import Testimonials from '../../components/sections/Testimonials.astro';
+import Faq from '../../components/sections/Faq.astro';
+import CtaBanner from '../../components/sections/CtaBanner.astro';
+import type { PageMeta } from '../../types/cms';
+
+const meta: PageMeta = {
+  title: 'WaaS — Web as a Service | Life Focus Agency',
+  description: 'Sistema completo: sitio web de alto rendimiento + CRM + chatbot. Genera leads 24/7. Setup $390 + desde $270/mes. Para negocios latinos en USA.',
+  lang: 'es',
+};
+
+const includes = [
+  { icon: '🌐', title: 'Sitio web de alto rendimiento', body: 'HTML semántico, SEO técnico, Core Web Vitals optimizados, diseño a medida.' },
+  { icon: '📱', title: 'CMS para gestión de contenidos', body: 'Actualiza textos, imágenes y contenido básico sin necesidad de un desarrollador.' },
+  { icon: '📊', title: 'CRM integrado', body: 'Registro automático de leads, seguimiento de estado e historial completo de contactos.' },
+  { icon: '🤖', title: 'Chatbot entrenado 24/7', body: 'Captura leads automáticamente, responde preguntas frecuentes y envía datos al CRM.' },
+  { icon: '🔧', title: 'Hosting y mantenimiento', body: 'Infraestructura de alto rendimiento en Cloudflare, actualizaciones y soporte técnico incluidos.' },
+  { icon: '📈', title: 'Reportes claros', body: 'Informes comprensibles cada mes. Sabes exactamente qué pasa con tu sitio y tus leads.' },
+];
+---
+
+<BaseLayout meta={meta} currentPage="/servicios">
+  <main id="main-content">
+    <PageHero
+      eyebrow="WaaS — Web as a Service"
+      headline="No es un sitio web. Es un sistema de leads que trabaja las 24 horas."
+      description="Setup único de $390 + mensualidad desde $270/mes. Contrato mínimo 6 meses. Sistemas completos para el mercado latinoamericano en USA."
+      breadcrumb="Servicios / WaaS"
+    />
+
+    <!-- Qué incluye -->
+    <section class="waas-includes section">
+      <div class="waas-includes__container container">
+        <header class="section-header section-header--centered">
+          <h2 class="eyebrow">Qué incluye el WaaS</h2>
+          <p class="h2">Todo lo necesitas, sin complicaciones</p>
+          <p class="section-header__desc">Un solo servicio que integra todo lo que tu negocio necesita para generar leads de calidad de forma consistente.</p>
+        </header>
+
+        <div class="waas-includes__grid">
+          {includes.map(item => (
+            <div class="waas-includes__item card">
+              <span class="waas-includes__icon" aria-hidden="true">{item.icon}</span>
+              <div>
+                <h3 class="eyebrow" style="margin-block-end: 0.4rem">{item.title}</h3>
+                <p style="font-size: var(--font-size-small); color: var(--color-text-muted); line-height: 1.65">{item.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Cómo se diferencia -->
+    <section class="waas-diff section section--alt">
+      <div class="waas-diff__container container">
+        <div class="waas-diff__grid">
+          <header class="section-header">
+            <h2 class="eyebrow">Cómo se diferencia</h2>
+            <p class="h2">No es como los demás sitios web.</p>
+            <p class="section-header__desc">La mayoría de agencias te entregan un sitio y desaparecen. Con el WaaS, somos parte de tu equipo de crecimiento.</p>
+          </header>
+
+          <div class="waas-diff__compare">
+            <div class="waas-diff__col">
+              <h3 class="eyebrow" style="color: var(--color-text-muted)">Un sitio web normal</h3>
+              <ul class="waas-diff__list waas-diff__list--bad">
+                <li>Te entregan el sitio y te olvidan</li>
+                <li>No incluye CRM ni seguimiento de leads</li>
+                <li>Sin soporte ni actualizaciones</li>
+                <li>Sin estrategia de conversión</li>
+                <li>Pagas de nuevo por cada cambio</li>
+              </ul>
+            </div>
+            <div class="waas-diff__col">
+              <h3 class="eyebrow">WaaS — Life Focus</h3>
+              <ul class="waas-diff__list waas-diff__list--good">
+                <li>Soporte y acompañamiento continuo</li>
+                <li>CRM + chatbot integrados desde el inicio</li>
+                <li>Mantenimiento y cambios incluidos</li>
+                <li>Diseñado para convertir visitas en leads</li>
+                <li>Reportes mensuales transparentes</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <Pricing />
+    <Testimonials />
+    <Faq />
+    <CtaBanner
+      title="¿Listo para comenzar?"
+      subtitle="En 30 días tendrás tu sistema de leads funcionando."
+      ctaText="Empieza con el WaaS"
+    />
+  </main>
+</BaseLayout>
+
+<style>
+  .waas-includes__container { :has(> &) { container-type: inline-size; } display: flex; flex-direction: column; gap: var(--spacing-space-xl); }
+  .waas-includes__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    @container (inline-size < 52rem) { grid-template-columns: repeat(2, 1fr); }
+    @container (inline-size < 32rem) { grid-template-columns: 1fr; }
+  }
+  .waas-includes__item { display: flex; gap: 1rem; align-items: flex-start; }
+  .waas-includes__icon { font-size: 1.75rem; flex-shrink: 0; }
+
+  .waas-diff__container { :has(> &) { container-type: inline-size; } }
+  .waas-diff__grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: var(--spacing-space-xl);
+    align-items: start;
+    @container (inline-size < 48rem) { grid-template-columns: 1fr; }
+  }
+  .waas-diff__compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    @container (inline-size < 30rem) { grid-template-columns: 1fr; }
+  }
+  .waas-diff__col { display: flex; flex-direction: column; gap: 1rem; }
+  .waas-diff__list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .waas-diff__list li {
+    font-size: var(--font-size-small);
+    color: var(--color-text-muted);
+    padding-inline-start: 1.25rem;
+    position: relative;
+
+    &::before {
+      content: '×';
+      position: absolute;
+      inset-inline-start: 0;
+      color: #ef4444;
+    }
+  }
+  .waas-diff__list--good li {
+    color: var(--color-text);
+    &::before {
+      content: '✓';
+      color: var(--color-secondary);
+    }
+  }
+</style>

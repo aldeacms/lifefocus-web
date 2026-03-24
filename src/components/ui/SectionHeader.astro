@@ -1,0 +1,63 @@
+---
+/**
+ * SectionHeader.astro — Patrón Eyebrow SEO Aldea (automático)
+ *
+ * El `headingTag` (h1/h2/h3) lleva la keyword → visualmente pequeño (.eyebrow)
+ * El titular de impacto va en <p class="hX"> → visualmente grande
+ * El subtítulo siempre es <p>
+ *
+ * NUNCA usar headings para el titular de impacto ni para el subtítulo.
+ */
+
+interface Props {
+  eyebrow: string;
+  headline: string;
+  description?: string;
+  headingTag?: 'h1' | 'h2' | 'h3';
+  centered?: boolean;
+  class?: string;
+}
+
+const {
+  eyebrow,
+  headline,
+  description,
+  headingTag = 'h2',
+  centered = false,
+  class: extraClass = '',
+} = Astro.props;
+
+const Tag = headingTag;
+const visualClass = headingTag; // .h1, .h2, .h3
+---
+
+<header class:list={['section-header', centered && 'section-header--centered', extraClass]}>
+  <!-- SEO: keyword en el tag semántico, visual pequeño -->
+  <Tag class={`${headingTag === 'h1' ? 'hero__eyebrow' : `${Astro.slots.has('default') ? '' : ''}`} eyebrow`}>
+    {eyebrow}
+  </Tag>
+
+  <!-- VISUAL: titular de impacto, semánticamente párrafo -->
+  <p class={`section-header__title ${visualClass}`}>{headline}</p>
+
+  <!-- SOPORTE: descripción, siempre párrafo -->
+  {description && (
+    <p class="section-header__desc">{description}</p>
+  )}
+
+  <!-- Slot para contenido adicional (ej: CTA) -->
+  <slot />
+</header>
+
+<style>
+  .section-header__desc {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-body);
+    line-height: 1.7;
+    max-inline-size: 52ch;
+  }
+
+  .section-header--centered .section-header__desc {
+    margin-inline: auto;
+  }
+</style>

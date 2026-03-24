@@ -1,0 +1,144 @@
+---
+/** Faq.astro — Preguntas frecuentes con accordion */
+
+const faqs = [
+  {
+    q: '¿Qué incluye el servicio WaaS?',
+    a: 'El WaaS incluye tu sitio web de alto rendimiento con HTML semántico y SEO técnico, un CMS para actualizar tu contenido, un CRM para gestionar tus leads, un chatbot que captura contactos 24/7, hosting, mantenimiento y soporte continuo. Todo en un solo pago mensual.',
+  },
+  {
+    q: '¿Cuánto cuesta?',
+    a: 'El WaaS requiere un setup único de $390 USD (antes de comenzar) y una mensualidad desde $270 USD/mes con un contrato mínimo de 6 meses. El plan de diseño premium (sitio a medida) parte desde $4,000 USD de pago único.',
+  },
+  {
+    q: '¿Cómo se paga?',
+    a: 'El setup se paga al inicio del proyecto. La mensualidad se paga por adelantado antes del día 5 de cada mes. Aceptamos transferencia bancaria y tarjeta de crédito/débito.',
+  },
+  {
+    q: '¿Pueden garantizar que aumenten las ventas?',
+    a: 'Si tu servicio es bueno y estás dispuesto a invertir según lo recomendado, en menos de 90 días vas a ver claramente más contactos de calidad que antes de comenzar. Life Focus prepara el escenario: visibilidad, mensajes claros y leads. La conversión final depende de tu negocio.',
+  },
+  {
+    q: '¿Realmente se puede lograr en menos de 90 días?',
+    a: 'Sí. El primer mes se corrige la base (sitio web alineado a performance, tracking, sistema de leads). Del mes 2 al 3, se acelera con campañas de long tail y optimización continua. Más de 400 clientes lo avalan.',
+  },
+  {
+    q: '¿Aceptan cualquier tipo de cliente o empresa?',
+    a: 'Trabajamos principalmente con negocios de servicios B2C en USA: salud, consultoría, servicios legales y similares. El perfil ideal es un negocio que ya factura y está listo para invertir en crecer. Si no eres nuestro cliente ideal, te lo vamos a decir honestamente.',
+  },
+];
+---
+
+<section class="faq section">
+  <div class="faq__container container">
+    <header class="faq__header section-header section-header--centered">
+      <h2 class="faq__eyebrow eyebrow">Preguntas Frecuentes</h2>
+      <p class="faq__title h2">¿Qué te detiene de comenzar hoy?</p>
+      <p class="section-header__desc">
+        Resuelve tus dudas o agéndanos una videollamada de claridad.
+      </p>
+    </header>
+
+    <div class="faq__list">
+      {faqs.map((item, i) => (
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>{item.q}</span>
+            <span class="faq__icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </span>
+          </summary>
+          <p class="faq__answer">{item.a}</p>
+        </details>
+      ))}
+    </div>
+
+    <div class="faq__cta">
+      <p>¿Tienes otras preguntas?</p>
+      <a class="btn btn--secondary" href="/contacto">Agenda una videollamada gratuita</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq {
+    background-color: var(--color-surface);
+  }
+
+  .faq__container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-space-xl);
+    max-inline-size: 56rem;
+    margin-inline: auto;
+  }
+
+  .faq__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .faq__item {
+    background: var(--color-surface-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-l);
+    overflow: hidden;
+    transition: border-color var(--transition-fast);
+
+    &[open] {
+      border-color: rgba(56,178,240,0.3);
+    }
+  }
+
+  .faq__question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    font-weight: var(--font-weight-heading);
+    font-size: var(--font-size-body);
+    color: var(--color-heading);
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    transition: color var(--transition-fast);
+
+    &::-webkit-details-marker { display: none; }
+
+    &:hover { color: var(--color-primary); }
+  }
+
+  .faq__icon {
+    flex-shrink: 0;
+    color: var(--color-primary);
+    transition: transform var(--transition-fast);
+  }
+
+  details[open] .faq__icon {
+    transform: rotate(180deg);
+  }
+
+  .faq__answer {
+    padding-inline: 1.5rem;
+    padding-block-end: 1.25rem;
+    font-size: var(--font-size-small);
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    border-block-start: 1px solid var(--color-border);
+    padding-block-start: 1rem;
+  }
+
+  .faq__cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding-block-start: var(--spacing-space-m);
+    font-size: var(--font-size-small);
+    color: var(--color-text-muted);
+  }
+</style>

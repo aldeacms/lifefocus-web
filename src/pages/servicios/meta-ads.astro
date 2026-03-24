@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/sections/PageHero.astro';
+import CtaBanner from '../../components/sections/CtaBanner.astro';
+import type { PageMeta } from '../../types/cms';
+
+const meta: PageMeta = {
+  title: 'Meta Ads — Facebook e Instagram Ads | Life Focus Agency',
+  description: 'Gestión de campañas en Facebook e Instagram para negocios latinos en USA. Desde $490/mes. Incluye diseño de gráficas y segmentación precisa.',
+  lang: 'es',
+};
+---
+
+<BaseLayout meta={meta} currentPage="/servicios">
+  <main id="main-content">
+    <PageHero
+      eyebrow="Meta Ads — Facebook e Instagram para Negocios Latinos en USA"
+      headline="Llega a tus clientes ideales donde ya pasan su tiempo."
+      description="Desde $490/mes con diseño de gráficas incluido. Segmentación precisa del público latino en USA para generar leads de calidad."
+      breadcrumb="Servicios / Meta Ads"
+    />
+
+    <section class="meta section">
+      <div class="meta__container container">
+        <div class="meta__grid">
+          <div>
+            <header class="section-header">
+              <h2 class="eyebrow">Qué incluye Meta Ads</h2>
+              <p class="h2">Más que publicidad: una estrategia visual completa.</p>
+            </header>
+
+            <div class="meta__items">
+              {[
+                ['🎯', 'Estrategia de audiencias', 'Segmentación por ubicación, idioma, intereses y comportamientos del público latino en USA.'],
+                ['🖼️', 'Diseño de gráficas', 'Creación de creativos visuales adaptados a cada formato: feed, stories, reels y más.'],
+                ['✍️', 'Copy persuasivo', 'Textos de anuncios orientados a generar clics y contactos, no solo impresiones.'],
+                ['📊', 'Reportes mensuales', 'Informe comprensible con métricas reales de alcance, clics, leads y costo por resultado.'],
+                ['🔄', 'Optimización continua', 'Ajustes semanales basados en datos para mejorar el rendimiento campaña a campaña.'],
+              ].map(([icon, title, body]) => (
+                <div class="meta__item">
+                  <span class="meta__icon" aria-hidden="true">{icon}</span>
+                  <div>
+                    <h3 class="eyebrow">{title}</h3>
+                    <p>{body}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <div class="card meta__pricing">
+              <h3 class="eyebrow">Inversión mensual</h3>
+              <div style="padding-block: 1.25rem; border-block: 1px solid var(--color-border); margin-block: 0.5rem;">
+                <div style="font-size: clamp(2rem, 5vw, 3rem); font-weight: 500; background: var(--gradient-brand); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1;">
+                  $490<span style="font-size: 1rem; font-weight: 300">/mes</span>
+                </div>
+              </div>
+              <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem; font-size: var(--font-size-small);">
+                <li>✓ Gestión completa de campañas</li>
+                <li>✓ Diseño de gráficas incluido</li>
+                <li>✓ Reporte mensual</li>
+                <li>✓ Optimización semanal</li>
+                <li>✓ Facebook + Instagram</li>
+              </ul>
+              <p style="font-size: 0.75rem; color: var(--color-text-muted);">El presupuesto de pauta en Meta va por separado (mínimo recomendado: $300/mes).</p>
+              <a class="btn btn--primary" href="/contacto" style="inline-size:100%;justify-content:center">Comenzar con Meta Ads</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <CtaBanner
+      title="¿Listo para llegar a tus clientes ideales?"
+      subtitle="Cuéntanos de tu negocio y te mostramos cómo podemos segmentar exactamente a tu público objetivo."
+      ctaText="Hablar con un experto"
+    />
+  </main>
+</BaseLayout>
+
+<style>
+  .meta__container { :has(> &) { container-type: inline-size; } }
+  .meta__grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: var(--spacing-space-xl);
+    align-items: start;
+    @container (inline-size < 48rem) { grid-template-columns: 1fr; }
+  }
+  .meta__items { display: flex; flex-direction: column; gap: 1.5rem; margin-block-start: 2rem; }
+  .meta__item { display: flex; gap: 1rem; align-items: flex-start; }
+  .meta__icon { font-size: 1.5rem; flex-shrink: 0; }
+  .meta__item div { display: flex; flex-direction: column; gap: 0.3rem; }
+  .meta__item p { font-size: var(--font-size-small); color: var(--color-text-muted); line-height: 1.65; }
+  .meta__pricing { display: flex; flex-direction: column; gap: 1.25rem; padding: 2rem; position: sticky; inset-block-start: 6rem; }
+</style>

@@ -1,0 +1,168 @@
+---
+/** Testimonials.astro */
+const testimonials = [
+  {
+    name: 'Leah Nicoló',
+    role: 'Clínica Dental, Miami',
+    text: 'Life Focus transformó por completo cómo conseguimos pacientes nuevos. Pasamos de depender del boca a boca a tener un flujo constante de leads calificados cada semana. El acompañamiento es de primer nivel.',
+    initial: 'L',
+    color: '#38B2F0',
+  },
+  {
+    name: 'Homero Roy',
+    role: 'Consultor Financiero, Houston',
+    text: 'Daniel entiende el negocio de verdad. No solo "toca botones": educa, explica y propone. Por primera vez entiendo qué se hace con mi inversión en marketing y por qué funciona.',
+    initial: 'H',
+    color: '#67C587',
+  },
+  {
+    name: 'Felipe Bustamante',
+    role: 'Clínica de Terapia, Chicago',
+    text: 'En menos de 60 días ya estábamos recibiendo consultas de pacientes nuevos. La web nueva es increíble y las campañas de Google están muy bien segmentadas. Muy profesional.',
+    initial: 'F',
+    color: '#f59e0b',
+  },
+  {
+    name: 'Roxana Zurita',
+    role: 'Abogada, Los Angeles',
+    text: 'Lo que más valoro es la transparencia. Hay reporte claro de todo. Sé exactamente qué inversión estoy haciendo y cuántos leads generé. No había encontrado eso antes en ninguna agencia.',
+    initial: 'R',
+    color: '#ec4899',
+  },
+  {
+    name: 'Francesca Núñez',
+    role: 'Centro de Estética, New York',
+    text: 'Llevaba 2 años gastando en marketing sin ver resultados. Con Life Focus en 3 meses recuperé la inversión y ahora tenemos lista de espera. Ojalá los hubiera encontrado antes.',
+    initial: 'F',
+    color: '#8b5cf6',
+  },
+  {
+    name: 'Luis Paredes',
+    role: 'Servicios Legales, Dallas',
+    text: 'El chatbot del WaaS captura leads mientras yo duermo. Literalmente. Me llegan notificaciones en la mañana con potenciales clientes que llenaron el formulario de noche. Es increíble.',
+    initial: 'L',
+    color: '#14b8a6',
+  },
+];
+---
+
+<section class="testimonials section">
+  <div class="testimonials__container container">
+    <header class="testimonials__header section-header section-header--centered">
+      <h2 class="testimonials__eyebrow eyebrow">Nuestro Trabajo</h2>
+      <p class="testimonials__title h2">Clientes que han aumentado sus ventas</p>
+      <p class="section-header__desc">
+        Más de 400 clientes alrededor del mundo han experimentado incrementos en sus ventas gracias a nuestros servicios.
+      </p>
+    </header>
+
+    <div class="testimonials__grid">
+      {testimonials.map(t => (
+        <article class="testimonials__card card">
+          <div class="testimonials__stars" aria-label="5 estrellas">
+            {'★★★★★'}
+          </div>
+          <blockquote class="testimonials__quote">
+            <p>"{t.text}"</p>
+          </blockquote>
+          <footer class="testimonials__author">
+            <span
+              class="testimonials__avatar"
+              style={`background: linear-gradient(135deg, ${t.color}, ${t.color}99)`}
+              aria-hidden="true"
+            >
+              {t.initial}
+            </span>
+            <div>
+              <cite class="testimonials__name">{t.name}</cite>
+              <p class="testimonials__role">{t.role}</p>
+            </div>
+          </footer>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials {
+    background-color: var(--color-surface);
+  }
+
+  .testimonials__container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-space-xl);
+  }
+
+  .testimonials__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+
+    :has(> &) { container-type: inline-size; }
+
+    @container (inline-size < 56rem) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @container (inline-size < 36rem) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .testimonials__card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .testimonials__stars {
+    color: #f59e0b;
+    font-size: 0.875rem;
+    letter-spacing: 0.05em;
+  }
+
+  .testimonials__quote p {
+    font-size: var(--font-size-small);
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    flex: 1;
+    font-style: italic;
+  }
+
+  .testimonials__author {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding-block-start: 0.75rem;
+    border-block-start: 1px solid var(--color-border);
+    margin-block-start: auto;
+  }
+
+  .testimonials__avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: 2.5rem;
+    block-size: 2.5rem;
+    border-radius: 50%;
+    font-weight: var(--font-weight-bold);
+    font-size: 0.875rem;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .testimonials__name {
+    display: block;
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-heading);
+    color: var(--color-heading);
+    font-style: normal;
+  }
+
+  .testimonials__role {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+  }
+</style>

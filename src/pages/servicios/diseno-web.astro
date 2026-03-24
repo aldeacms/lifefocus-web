@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/sections/PageHero.astro';
+import Testimonials from '../../components/sections/Testimonials.astro';
+import CtaBanner from '../../components/sections/CtaBanner.astro';
+import type { PageMeta } from '../../types/cms';
+
+const meta: PageMeta = {
+  title: 'Diseño Web Premium | Life Focus Agency — Sitios a Medida desde $4,000',
+  description: 'Sitios web corporativos a medida para negocios latinos en USA. WordPress + Etch o Astro estático. HTML semántico, SEO técnico, Core Web Vitals. Desde $4,000.',
+  lang: 'es',
+};
+---
+
+<BaseLayout meta={meta} currentPage="/servicios">
+  <main id="main-content">
+    <PageHero
+      eyebrow="Diseño Web Premium para Negocios Latinos en USA"
+      headline="Sitios web que trabajan para tu negocio, no solo para verse bonitos."
+      description="Proyectos web corporativos completos con propiedad total desde el día uno. No hay plantillas: cada proyecto es único, con arquitectura SEO y diseño orientado a conversión."
+      breadcrumb="Servicios / Diseño Web"
+    />
+
+    <section class="dw-content section">
+      <div class="dw-content__container container">
+        <div class="dw-content__grid">
+          <div>
+            <header class="section-header">
+              <h2 class="eyebrow">Qué incluye</h2>
+              <p class="h2">Un sitio que convierte, no solo impresiona.</p>
+            </header>
+            <ul class="dw-content__list">
+              {[
+                ['🎨', 'Diseño 100% a medida', 'Sin plantillas genéricas. Tu sitio refleja exactamente tu marca y propuesta de valor.'],
+                ['⚡', 'Performance técnica', 'Core Web Vitals optimizados, HTML semántico, carga rápida desde el primer acceso.'],
+                ['🔍', 'SEO técnico integrado', 'Arquitectura de URLs, headings, schema markup, meta tags y velocidad desde el día uno.'],
+                ['📄', 'Páginas completas', 'Home, nosotros, servicios, casos de éxito, blog, contacto y más.'],
+                ['🔗', 'Integraciones a medida', 'CRM, formularios, tracking, Google Analytics, mapas y más.'],
+                ['🔑', 'Propiedad total', 'El sitio es tuyo desde el primer día. Sin dependencias ni contratos de por vida.'],
+              ].map(([icon, title, body]) => (
+                <li class="dw-content__list-item">
+                  <span aria-hidden="true">{icon}</span>
+                  <div>
+                    <strong>{title}</strong>
+                    <p>{body}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <div class="card dw-content__pricing-card">
+              <h3 class="eyebrow">Inversión</h3>
+              <div class="dw-content__price">
+                <span class="dw-content__price-from">desde</span>
+                <span class="dw-content__price-amount">$4,000</span>
+                <span class="dw-content__price-note">USD · Pago único</span>
+              </div>
+              <ul class="dw-content__pricing-list">
+                <li>✓ Sitio corporativo completo</li>
+                <li>✓ Diseño a medida</li>
+                <li>✓ HTML semántico + SEO técnico</li>
+                <li>✓ Entrega en 4–6 semanas</li>
+                <li>✓ Propiedad total desde el día 1</li>
+                <li>✓ Capacitación incluida</li>
+              </ul>
+              <a class="btn btn--primary" href="/contacto" style="inline-size:100%;justify-content:center">Solicitar propuesta</a>
+              <p style="font-size:0.75rem;color:var(--color-text-muted);text-align:center">El precio final depende del alcance del proyecto.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <Testimonials />
+    <CtaBanner title="¿Tienes un proyecto en mente?" subtitle="Cuéntanos de tu negocio y te enviamos una propuesta personalizada sin costo." ctaText="Solicitar propuesta" />
+  </main>
+</BaseLayout>
+
+<style>
+  .dw-content__container { :has(> &) { container-type: inline-size; } }
+  .dw-content__grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: var(--spacing-space-xl);
+    align-items: start;
+    @container (inline-size < 48rem) { grid-template-columns: 1fr; }
+  }
+  .dw-content__list { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; margin-block-start: 2rem; }
+  .dw-content__list-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    font-size: 1.25rem;
+
+    & div { display: flex; flex-direction: column; gap: 0.25rem; }
+    & strong { font-weight: var(--font-weight-heading); color: var(--color-heading); font-size: var(--font-size-body); }
+    & p { font-size: var(--font-size-small); color: var(--color-text-muted); line-height: 1.6; }
+  }
+  .dw-content__pricing-card { display: flex; flex-direction: column; gap: 1.25rem; padding: 2rem; }
+  .dw-content__price { display: flex; flex-direction: column; gap: 0.1rem; padding-block: 1.25rem; border-block: 1px solid var(--color-border); }
+  .dw-content__price-from { font-size: var(--font-size-small); color: var(--color-text-muted); }
+  .dw-content__price-amount {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: var(--font-weight-heading);
+    line-height: 1;
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .dw-content__price-note { font-size: var(--font-size-small); color: var(--color-text-muted); }
+  .dw-content__pricing-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; font-size: var(--font-size-small); color: var(--color-text); }
+  .dw-content__pricing-list li { padding-inline-start: 0.25rem; }
+</style>

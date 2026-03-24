@@ -1,0 +1,115 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/sections/PageHero.astro';
+import CtaBanner from '../../components/sections/CtaBanner.astro';
+import type { PageMeta } from '../../types/cms';
+
+const meta: PageMeta = {
+  title: 'Servicios | Life Focus — Marketing Digital para Negocios Latinos en USA',
+  description: 'WaaS, diseño web, Google Ads, Meta Ads y redes sociales. Servicios de marketing digital de alto rendimiento para negocios latinos en USA.',
+  lang: 'es',
+};
+
+const services = [
+  {
+    eyebrow: 'WaaS — Web as a Service',
+    title: 'Sistema de leads 24/7 desde $270/mes',
+    description: 'No es solo un sitio web. Es un sistema completo: web de rendimiento + CRM + chatbot. Todo incluido, con soporte continuo.',
+    href: '/servicios/waas',
+    tag: 'Más popular',
+    featured: true,
+  },
+  {
+    eyebrow: 'Diseño Web Premium',
+    title: 'Sitios a medida desde $4,000',
+    description: 'Proyectos web corporativos completos con propiedad total desde el día uno. WordPress o Astro con arquitectura SEO.',
+    href: '/servicios/diseno-web',
+    tag: null,
+    featured: false,
+  },
+  {
+    eyebrow: 'Google Ads',
+    title: 'Búsquedas de alta intención',
+    description: 'Setup $390 + gestión desde $290/mes. Estrategia de long tail con negativos trabajados para maximizar conversión.',
+    href: '/servicios/google-ads',
+    tag: null,
+    featured: false,
+  },
+  {
+    eyebrow: 'Meta Ads',
+    title: 'Facebook + Instagram Ads',
+    description: 'Desde $490/mes. Incluye diseño de gráficas. Segmentación precisa para el público latino en USA.',
+    href: '/servicios/meta-ads',
+    tag: null,
+    featured: false,
+  },
+  {
+    eyebrow: 'Redes Sociales',
+    title: 'Contenido orgánico con propósito',
+    description: 'Desde $490/mes. Creación de gráficas y contenido. Estrategia orientada a construir autoridad y confianza.',
+    href: '/servicios/redes-sociales',
+    tag: null,
+    featured: false,
+  },
+];
+---
+
+<BaseLayout meta={meta} currentPage="/servicios">
+  <main id="main-content">
+    <PageHero
+      eyebrow="Servicios de Marketing Digital"
+      headline="Todo lo que necesitas para crecer en USA."
+      description="Desde tu sitio web hasta tus campañas publicitarias, somos tu equipo de marketing digital integral para el mercado estadounidense."
+      breadcrumb="Servicios"
+    />
+
+    <section class="services-list section">
+      <div class="services-list__container container">
+        <div class="services-list__grid">
+          {services.map(s => (
+            <article class={`services-list__card card${s.featured ? ' services-list__card--featured' : ''}`}>
+              {s.tag && <div class="badge">{s.tag}</div>}
+              <h2 class="services-list__eyebrow eyebrow">{s.eyebrow}</h2>
+              <p class="services-list__title h2">{s.title}</p>
+              <p class="services-list__body">{s.description}</p>
+              <a class="btn btn--primary" href={s.href}>Ver servicio →</a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <CtaBanner
+      title="¿No sabes cuál es el mejor para ti?"
+      subtitle="Agenda una videollamada gratuita de 30 minutos y lo determinamos juntos."
+      ctaText="Agenda gratis"
+    />
+  </main>
+</BaseLayout>
+
+<style>
+  .services-list__container { :has(> &) { container-type: inline-size; } }
+  .services-list__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    @container (inline-size < 44rem) { grid-template-columns: 1fr; }
+  }
+  .services-list__card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2rem;
+    position: relative;
+  }
+  .services-list__card--featured {
+    border-color: rgba(56,178,240,0.4);
+    background: linear-gradient(135deg, rgba(56,178,240,0.06) 0%, rgba(103,197,135,0.06) 100%);
+  }
+  .services-list__body {
+    font-size: var(--font-size-small);
+    color: var(--color-text-muted);
+    line-height: 1.65;
+    flex: 1;
+  }
+</style>

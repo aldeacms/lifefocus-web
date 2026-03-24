@@ -1,0 +1,123 @@
+---
+/** Features.astro — "Por qué elegirnos" con 4 razones */
+---
+
+<section class="features section">
+  <div class="features__container container">
+    <header class="features__header section-header section-header--centered">
+      <!-- SEO: keyword en h2 -->
+      <h2 class="features__eyebrow eyebrow">Razones para elegirnos</h2>
+      <!-- VISUAL: titular impacto en párrafo -->
+      <p class="features__title h2">¿Por qué deberías elegirnos?</p>
+      <p class="section-header__desc">
+        Existen 4 razones fundamentales por las cuales puedes confiar en nuestro servicio.
+      </p>
+    </header>
+
+    <div class="features__grid">
+      <div class="features__item card">
+        <span class="features__number" aria-hidden="true">01</span>
+        <div class="features__content">
+          <!-- SEO: h3 con keyword de cada feature -->
+          <h3 class="features__item-eyebrow eyebrow">Trabajo Profesional</h3>
+          <p class="features__item-title h3">Estándares técnicos de primer nivel</p>
+          <p class="features__item-body">
+            Nos diferenciamos de cada simple publicista. Nuestros desarrollos cumplen con las mejores prácticas, que fortalecen tu posicionamiento en buscadores e inteligencia artificial.
+          </p>
+        </div>
+      </div>
+
+      <div class="features__item card">
+        <span class="features__number" aria-hidden="true">02</span>
+        <div class="features__content">
+          <h3 class="features__item-eyebrow eyebrow">Trabajo a Medida</h3>
+          <p class="features__item-title h3">Estrategia personalizada a tu negocio</p>
+          <p class="features__item-body">
+            Tanto el sitio web como el marketing digital se propone y realiza específicamente, de acuerdo a tu necesidad. Nuestro objetivo es ajustarnos en lo situacional particular en que te encuentres tú.
+          </p>
+        </div>
+      </div>
+
+      <div class="features__item card">
+        <span class="features__number" aria-hidden="true">03</span>
+        <div class="features__content">
+          <h3 class="features__item-eyebrow eyebrow">Resultados Garantizados</h3>
+          <p class="features__item-title h3">90 días para ver resultados reales</p>
+          <p class="features__item-body">
+            Si tu servicio es bueno y estás realmente dispuesto a invertir, te garantizamos que lograrás tus objetivos. Participamos en el resultado comprometiendo nuestras ventas en menos de 90 días.
+          </p>
+        </div>
+      </div>
+
+      <div class="features__item card">
+        <span class="features__number" aria-hidden="true">04</span>
+        <div class="features__content">
+          <h3 class="features__item-eyebrow eyebrow">Ciclos de 3 Meses</h3>
+          <p class="features__item-title h3">Acompañamiento continuo sin compromisos eternos</p>
+          <p class="features__item-body">
+            Nuestros contratos son de 3 meses, renovables. Por un lado te protege si no quieres continuar y a nosotros nos obliga a tener buenos resultados. Sabemos que continuarás con nosotros.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .features {
+    background-color: var(--color-surface);
+  }
+
+  .features__container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-space-xl);
+  }
+
+  .features__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+
+    :has(> &) { container-type: inline-size; }
+
+    @container (inline-size < 42rem) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .features__item {
+    display: flex;
+    gap: 1.5rem;
+    border-color: var(--color-border);
+  }
+
+  .features__number {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: var(--font-weight-bold);
+    line-height: 1;
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    flex-shrink: 0;
+    opacity: 0.6;
+    transition: opacity var(--transition-base);
+  }
+
+  .features__item:hover .features__number {
+    opacity: 1;
+  }
+
+  .features__content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .features__item-body {
+    font-size: var(--font-size-small);
+    color: var(--color-text-muted);
+    line-height: 1.7;
+  }
+</style>

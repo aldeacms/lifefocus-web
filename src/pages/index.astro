@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/sections/Hero.astro';
+import Features from '../components/sections/Features.astro';
+import ServicesGrid from '../components/sections/ServicesGrid.astro';
+import Testimonials from '../components/sections/Testimonials.astro';
+import Pricing from '../components/sections/Pricing.astro';
+import Faq from '../components/sections/Faq.astro';
+import CtaBanner from '../components/sections/CtaBanner.astro';
+import type { PageMeta } from '../types/cms';
+
+const meta: PageMeta = {
+  title: 'Life Focus Agency — Agencia de Marketing Digital para Negocios Latinos en USA',
+  description: 'Agencia de performance para negocios latinos en USA. Web de alto rendimiento + campañas que sí convierten. Resultados en menos de 90 días. WaaS desde $270/mes.',
+  lang: 'es',
+};
+---
+
+<BaseLayout meta={meta} currentPage="/">
+  <main id="main-content">
+    <Hero />
+    <Features />
+    <ServicesGrid />
+    <Testimonials />
+    <Pricing />
+    <Faq />
+    <CtaBanner />
+  </main>
+</BaseLayout>

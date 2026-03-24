@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/sections/PageHero.astro';
+import CtaBanner from '../../components/sections/CtaBanner.astro';
+import type { PageMeta } from '../../types/cms';
+
+const meta: PageMeta = {
+  title: 'Gestión de Redes Sociales para Negocios Latinos en USA | Life Focus Agency',
+  description: 'Creación de contenido orgánico y gestión de redes sociales para negocios latinos en USA. Desde $490/mes. Estrategia, gráficas y copywriting incluidos.',
+  lang: 'es',
+};
+---
+
+<BaseLayout meta={meta} currentPage="/servicios">
+  <main id="main-content">
+    <PageHero
+      eyebrow="Redes Sociales Orgánicas para Negocios Latinos en USA"
+      headline="Construye autoridad y confianza, mes a mes."
+      description="Desde $490/mes. Estrategia de contenido, creación de gráficas, copywriting y gestión completa de tus redes sociales."
+      breadcrumb="Servicios / Redes Sociales"
+    />
+
+    <section class="social section">
+      <div class="social__container container">
+        <div class="social__grid">
+          <div>
+            <header class="section-header">
+              <h2 class="eyebrow">Qué incluye la gestión de redes</h2>
+              <p class="h2">Contenido con propósito, no solo publicaciones.</p>
+            </header>
+
+            <div class="social__items">
+              {[
+                ['📋', 'Estrategia de contenido', 'Calendario editorial mensual alineado a tus objetivos de negocio y al ciclo de compra de tu cliente.'],
+                ['🖼️', 'Creación de gráficas', 'Diseño de piezas visuales para feed, stories y reels. Consistente con tu identidad de marca.'],
+                ['✍️', 'Copywriting incluido', 'Textos persuasivos para cada publicación, adaptados al tono de tu negocio.'],
+                ['📱', 'Gestión completa', 'Publicación programada, respuesta a comentarios básicos y monitoreo de la cuenta.'],
+                ['📊', 'Reporte mensual', 'Métricas de alcance, interacción y crecimiento. Informe en español y fácil de entender.'],
+              ].map(([icon, title, body]) => (
+                <div class="social__item">
+                  <span class="social__icon" aria-hidden="true">{icon}</span>
+                  <div>
+                    <h3 class="eyebrow">{title}</h3>
+                    <p>{body}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <div class="card social__pricing">
+              <h3 class="eyebrow">Inversión mensual</h3>
+              <div style="padding-block: 1.25rem; border-block: 1px solid var(--color-border); margin-block: 0.5rem;">
+                <div style="font-size: clamp(2rem, 5vw, 3rem); font-weight: 500; background: var(--gradient-brand); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1;">
+                  $490<span style="font-size: 1rem; font-weight: 300">/mes</span>
+                </div>
+              </div>
+              <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem; font-size: var(--font-size-small);">
+                <li>✓ Estrategia de contenido</li>
+                <li>✓ Gráficas incluidas</li>
+                <li>✓ Copywriting</li>
+                <li>✓ Gestión y publicación</li>
+                <li>✓ Reporte mensual</li>
+              </ul>
+              <a class="btn btn--primary" href="/contacto" style="inline-size:100%;justify-content:center">Comenzar ahora</a>
+            </div>
+
+            <div class="card social__note" style="margin-block-start: 1rem; padding: 1.25rem;">
+              <p class="eyebrow" style="margin-block-end: 0.4rem">💡 Recomendado combinar con</p>
+              <p style="font-size: var(--font-size-small); color: var(--color-text-muted);">Las redes sociales orgánicas funcionan mejor cuando se complementan con campañas de Meta Ads para amplificar el alcance.</p>
+              <a href="/servicios/meta-ads" style="font-size: var(--font-size-small); color: var(--color-primary); margin-block-start: 0.5rem; display: block">Ver Meta Ads →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <CtaBanner
+      title="¿Quieres una presencia digital que inspire confianza?"
+      subtitle="Agenda una llamada y diseñamos juntos la estrategia de contenido para tu negocio."
+      ctaText="Hablar con un experto"
+    />
+  </main>
+</BaseLayout>
+
+<style>
+  .social__container { :has(> &) { container-type: inline-size; } }
+  .social__grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: var(--spacing-space-xl);
+    align-items: start;
+    @container (inline-size < 48rem) { grid-template-columns: 1fr; }
+  }
+  .social__items { display: flex; flex-direction: column; gap: 1.5rem; margin-block-start: 2rem; }
+  .social__item { display: flex; gap: 1rem; align-items: flex-start; }
+  .social__icon { font-size: 1.5rem; flex-shrink: 0; }
+  .social__item div { display: flex; flex-direction: column; gap: 0.3rem; }
+  .social__item p { font-size: var(--font-size-small); color: var(--color-text-muted); line-height: 1.65; }
+  .social__pricing { display: flex; flex-direction: column; gap: 1.25rem; padding: 2rem; position: sticky; inset-block-start: 6rem; }
+</style>

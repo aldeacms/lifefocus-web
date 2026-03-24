@@ -1,0 +1,168 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/sections/PageHero.astro';
+import CtaBanner from '../../components/sections/CtaBanner.astro';
+import type { PageMeta } from '../../types/cms';
+
+const meta: PageMeta = {
+  title: 'Blog | Life Focus Agency — Marketing Digital para Negocios Latinos en USA',
+  description: 'Artículos, guías y estrategias de marketing digital para negocios latinos en USA. SEO, Google Ads, Meta Ads, diseño web y más.',
+  lang: 'es',
+};
+
+// Placeholder posts — se reemplazarán con datos del CMS
+const posts = [
+  {
+    eyebrow: 'Google Ads',
+    title: 'Cómo dejar de desperdiciar dinero en Google Ads: la guía completa de long tail',
+    description: 'La mayoría de negocios latinos en USA pierde más del 60% de su presupuesto en búsquedas irrelevantes. Te explicamos cómo estructurar tus campañas para maximizar conversión.',
+    date: '2025-03-15',
+    readTime: '8 min',
+    href: '#',
+  },
+  {
+    eyebrow: 'Diseño Web',
+    title: '¿Por qué tu sitio web no genera leads? 5 errores técnicos que debes corregir hoy',
+    description: 'Un sitio web bonito pero lento, sin estructura semántica ni propuesta de valor clara, es dinero tirado a la basura. Aquí los 5 errores más comunes que vemos en negocios latinos.',
+    date: '2025-03-08',
+    readTime: '6 min',
+    href: '#',
+  },
+  {
+    eyebrow: 'Marketing Digital',
+    title: 'WaaS vs sitio web tradicional: ¿qué es mejor para tu negocio en USA?',
+    description: 'Comparamos los dos modelos: el sitio web de pago único vs el Web as a Service. Cuándo conviene cada uno y cómo tomar la mejor decisión para tu negocio.',
+    date: '2025-03-01',
+    readTime: '7 min',
+    href: '#',
+  },
+  {
+    eyebrow: 'Meta Ads',
+    title: 'Cómo segmentar a clientes latinos en USA con Facebook e Instagram Ads',
+    description: 'Las audiencias latinas en USA tienen comportamientos de consumo únicos. Aquí cómo estructurar tu segmentación para llegar exactamente al público correcto.',
+    date: '2025-02-22',
+    readTime: '5 min',
+    href: '#',
+  },
+  {
+    eyebrow: 'SEO',
+    title: 'SEO técnico para clínicas y servicios de salud: la guía paso a paso',
+    description: 'Los negocios de salud tienen características SEO específicas. Desde schema markup de medico hasta la gestión correcta de Google Business Profile.',
+    date: '2025-02-15',
+    readTime: '9 min',
+    href: '#',
+  },
+  {
+    eyebrow: 'Estrategia Digital',
+    title: 'De 0 a 30 leads al mes: el proceso de 90 días de Life Focus',
+    description: 'Así funciona nuestro proceso en detalle: qué hacemos el mes 1, el mes 2 y el mes 3 para que tu negocio pase de no recibir contactos a tener un flujo constante.',
+    date: '2025-02-08',
+    readTime: '10 min',
+    href: '#',
+  },
+];
+---
+
+<BaseLayout meta={meta} currentPage="/blog">
+  <main id="main-content">
+    <PageHero
+      eyebrow="Blog — Marketing Digital para Negocios Latinos en USA"
+      headline="Estrategias reales para crecer digitalmente en USA."
+      description="Artículos prácticos, sin humo. Todo lo que necesitas saber sobre web, SEO y campañas de publicidad para negocios de servicios."
+      breadcrumb="Blog"
+    />
+
+    <section class="blog-list section">
+      <div class="blog-list__container container">
+        <div class="blog-list__grid">
+          {posts.map((post, i) => (
+            <article class={`blog-list__card card${i === 0 ? ' blog-list__card--featured' : ''}`}>
+              <div class="blog-list__meta">
+                <span class="eyebrow">{post.eyebrow}</span>
+                <span class="blog-list__sep" aria-hidden="true">·</span>
+                <time class="blog-list__date" datetime={post.date}>
+                  {new Date(post.date).toLocaleDateString('es', { day: 'numeric', month: 'long', year: 'numeric' })}
+                </time>
+                <span class="blog-list__sep" aria-hidden="true">·</span>
+                <span class="blog-list__read">{post.readTime} lectura</span>
+              </div>
+              <h2 class="blog-list__title h3">{post.title}</h2>
+              <p class="blog-list__excerpt">{post.description}</p>
+              <a class="blog-list__link" href={post.href}>
+                Leer artículo →
+              </a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <CtaBanner
+      title="¿Quieres implementar estas estrategias en tu negocio?"
+      subtitle="Agenda una videollamada gratuita y te mostramos cómo aplicarlas en tu caso específico."
+      ctaText="Agenda gratis"
+    />
+  </main>
+</BaseLayout>
+
+<style>
+  .blog-list__container { :has(> &) { container-type: inline-size; } }
+  .blog-list__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+
+    @container (inline-size < 56rem) { grid-template-columns: repeat(2, 1fr); }
+    @container (inline-size < 36rem) { grid-template-columns: 1fr; }
+  }
+
+  .blog-list__card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .blog-list__card--featured {
+    grid-column: span 2;
+    border-color: rgba(56,178,240,0.3);
+    background: linear-gradient(135deg, rgba(56,178,240,0.06) 0%, rgba(103,197,135,0.04) 100%);
+
+    @container (inline-size < 56rem) { grid-column: span 1; }
+  }
+
+  .blog-list__meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .blog-list__date,
+  .blog-list__read {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+  }
+
+  .blog-list__sep {
+    color: var(--color-text-muted);
+    font-size: 0.75rem;
+  }
+
+  .blog-list__excerpt {
+    font-size: var(--font-size-small);
+    color: var(--color-text-muted);
+    line-height: 1.65;
+    flex: 1;
+  }
+
+  .blog-list__link {
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-heading);
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+    margin-block-start: auto;
+
+    &:hover { color: var(--color-primary-light); }
+  }
+</style>

@@ -1,0 +1,223 @@
+---
+/** Hero.astro — Sección hero del homepage */
+---
+
+<section class="hero">
+  <div class="hero__container container">
+    <header class="hero__header">
+      <!-- SEO: keyword principal en h1 — visualmente pequeño -->
+      <h1 class="hero__eyebrow eyebrow">Agencia de Marketing Digital para Negocios Latinos en USA</h1>
+
+      <!-- VISUAL: titular de impacto — semánticamente párrafo -->
+      <p class="hero__title h1">
+        Aumenta tus ventas<br/>
+        <span class="text-gradient">en menos de 90 días.</span>
+      </p>
+
+      <!-- SOPORTE -->
+      <p class="hero__subtitle">
+        Comienza a recibir contactos desde el primer mes, con nuestra estrategia validada en más de 400 clientes alrededor del mundo.
+      </p>
+    </header>
+
+    <div class="hero__ctas">
+      <a class="btn btn--primary" href="/contacto">
+        ¡Agenda Hoy!
+      </a>
+      <a class="btn btn--ghost" href="/servicios/waas">
+        Conoce el WaaS →
+      </a>
+    </div>
+
+    <!-- Social proof -->
+    <div class="hero__social-proof">
+      <div class="hero__avatars" aria-hidden="true">
+        <span class="hero__avatar" style="background: linear-gradient(135deg, #38B2F0, #1a8fcc)">D</span>
+        <span class="hero__avatar" style="background: linear-gradient(135deg, #67C587, #4aaa6e)">R</span>
+        <span class="hero__avatar" style="background: linear-gradient(135deg, #f59e0b, #d97706)">L</span>
+        <span class="hero__avatar" style="background: linear-gradient(135deg, #ec4899, #db2777)">F</span>
+      </div>
+      <p class="hero__social-text">
+        <strong>+400 clientes</strong> confían en nuestros servicios
+      </p>
+    </div>
+
+    <!-- Mockup visual -->
+    <div class="hero__mockup" aria-hidden="true">
+      <div class="hero__mockup-inner">
+        <div class="hero__mockup-screen">
+          <div class="hero__mockup-bar">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="hero__mockup-content">
+            <div class="hero__mockup-line" style="inline-size:60%;"></div>
+            <div class="hero__mockup-line" style="inline-size:80%;block-size:2.5rem;margin-block:0.75rem;background:var(--gradient-brand);opacity:0.3;"></div>
+            <div class="hero__mockup-line" style="inline-size:45%;"></div>
+            <div class="hero__mockup-line" style="inline-size:70%;"></div>
+            <div class="hero__mockup-cards">
+              <div class="hero__mockup-card"></div>
+              <div class="hero__mockup-card"></div>
+              <div class="hero__mockup-card"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-block-start: clamp(4rem, 10vw, 7rem);
+    padding-block-end: clamp(3rem, 8vw, 5rem);
+    padding-inline: var(--spacing-gutter);
+    position: relative;
+    overflow: hidden;
+
+    /* Glow sutil de fondo */
+    &::before {
+      content: '';
+      position: absolute;
+      inset-block-start: -20%;
+      inset-inline-start: 50%;
+      transform: translateX(-50%);
+      inline-size: 80vw;
+      block-size: 60vw;
+      background: radial-gradient(ellipse, rgba(56,178,240,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+  }
+
+  .hero__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--spacing-space-l);
+  }
+
+  .hero__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    max-inline-size: 52rem;
+  }
+
+  .hero__title {
+    text-wrap: balance;
+  }
+
+  .hero__subtitle {
+    font-size: clamp(1rem, 2vw, 1.125rem);
+    color: var(--color-text-muted);
+    max-inline-size: 44ch;
+    line-height: 1.7;
+  }
+
+  .hero__ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  /* Social proof */
+  .hero__social-proof {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+  }
+
+  .hero__avatars {
+    display: flex;
+
+    & .hero__avatar:not(:first-child) {
+      margin-inline-start: -0.6rem;
+    }
+  }
+
+  .hero__avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: 2.25rem;
+    block-size: 2.25rem;
+    border-radius: 50%;
+    border: 2px solid var(--color-dark-bg);
+    font-size: 0.7rem;
+    font-weight: var(--font-weight-bold);
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .hero__social-text {
+    font-size: var(--font-size-small);
+    color: var(--color-text-muted);
+
+    & strong {
+      color: var(--color-heading);
+      font-weight: var(--font-weight-heading);
+    }
+  }
+
+  /* Mockup */
+  .hero__mockup {
+    inline-size: 100%;
+    max-inline-size: 52rem;
+    margin-block-start: var(--spacing-space-m);
+  }
+
+  .hero__mockup-inner {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-l), 0 0 60px rgba(56,178,240,0.08);
+  }
+
+  .hero__mockup-bar {
+    display: flex;
+    gap: 0.4rem;
+    padding: 0.85rem 1rem;
+    background: var(--color-surface-alt);
+    border-block-end: 1px solid var(--color-border);
+
+    & span {
+      display: block;
+      inline-size: 0.6rem;
+      block-size: 0.6rem;
+      border-radius: 50%;
+      background: var(--color-border);
+    }
+
+    & span:nth-child(1) { background: #ef4444; }
+    & span:nth-child(2) { background: #f59e0b; }
+    & span:nth-child(3) { background: #22c55e; }
+  }
+
+  .hero__mockup-content {
+    padding: 1.5rem;
+  }
+
+  .hero__mockup-line {
+    block-size: 0.75rem;
+    background: rgba(255,255,255,0.07);
+    border-radius: var(--radius-s);
+    margin-block-end: 0.5rem;
+  }
+
+  .hero__mockup-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin-block-start: 1rem;
+  }
+
+  .hero__mockup-card {
+    block-size: 5rem;
+    background: rgba(56,178,240,0.06);
+    border: 1px solid rgba(56,178,240,0.1);
+    border-radius: var(--radius-m);
+  }
+</style>

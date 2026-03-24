@@ -1,0 +1,222 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/sections/PageHero.astro';
+import CtaBanner from '../components/sections/CtaBanner.astro';
+import type { PageMeta } from '../types/cms';
+
+const meta: PageMeta = {
+  title: 'Nosotros | Life Focus Agency — Agencia de Marketing Digital para Latinos en USA',
+  description: 'Conoce a Daniel Aldea y el equipo de Life Focus. +25 años de experiencia en marketing digital. Transparencia, excelencia técnica y resultados reales.',
+  lang: 'es',
+};
+---
+
+<BaseLayout meta={meta} currentPage="/nosotros">
+  <main id="main-content">
+    <PageHero
+      eyebrow="Quiénes somos"
+      headline="Más de 25 años construyendo negocios digitales que sí convierten."
+      description="Life Focus nació de Luam (Chile, 2018): una agencia probada que ayudó a más de 400 negocios a crecer digitalmente. Ahora llevamos ese modelo a USA."
+      breadcrumb="Nosotros"
+    />
+
+    <!-- Historia -->
+    <section class="about section">
+      <div class="about__container container">
+        <div class="about__grid">
+          <div class="about__content">
+            <header class="about__header section-header">
+              <h2 class="about__eyebrow eyebrow">Nuestra Historia</h2>
+              <p class="about__title h2">De Chile a USA, con un modelo probado.</p>
+            </header>
+            <div class="about__text prose">
+              <p>
+                Life Focus es una agencia de performance y marketing digital para <strong>negocios latinos en USA</strong>, fundada por Daniel Aldea. Daniel tiene más de 25 años de experiencia en internet, diseño web y marketing digital.
+              </p>
+              <p>
+                La agencia nace a partir de <strong>Luam</strong> (Chile, fundada en 2018), trasladando a Estados Unidos un modelo probado de sitios web de alto rendimiento y campañas que sí convierten.
+              </p>
+              <p>
+                Daniel es cristiano y entiende su trabajo como un <strong>win–win–win</strong>: él gana, su cliente gana, y los clientes de su cliente también ganan porque reciben un servicio mejor y más claro.
+              </p>
+            </div>
+          </div>
+
+          <div class="about__visual">
+            <div class="about__stats-grid">
+              <div class="about__stat card">
+                <span class="about__stat-number">+25</span>
+                <span class="about__stat-label">Años de experiencia</span>
+              </div>
+              <div class="about__stat card">
+                <span class="about__stat-number">+400</span>
+                <span class="about__stat-label">Clientes atendidos</span>
+              </div>
+              <div class="about__stat card">
+                <span class="about__stat-number">90</span>
+                <span class="about__stat-label">Días o menos para resultados</span>
+              </div>
+              <div class="about__stat card">
+                <span class="about__stat-number">100%</span>
+                <span class="about__stat-label">Transparencia en reportes</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Valores -->
+    <section class="values section section--alt">
+      <div class="values__container container">
+        <header class="values__header section-header section-header--centered">
+          <h2 class="values__eyebrow eyebrow">Nuestros Valores</h2>
+          <p class="values__title h2">Lo que nos diferencia de las demás agencias</p>
+        </header>
+
+        <div class="values__grid">
+          <div class="values__item card">
+            <div class="values__icon" aria-hidden="true">⚡</div>
+            <h3 class="values__item-eyebrow eyebrow">Excelencia Técnica</h3>
+            <p class="values__item-title h3">Todo se hace bien</p>
+            <p class="values__item-body">Estructura, diseño, SEO, campañas. No hay atajos ni soluciones genéricas. Cada proyecto se desarrolla con los más altos estándares técnicos.</p>
+          </div>
+
+          <div class="values__item card">
+            <div class="values__icon" aria-hidden="true">🔍</div>
+            <h3 class="values__item-eyebrow eyebrow">Transparencia Total</h3>
+            <p class="values__item-title h3">Sin cajas negras</p>
+            <p class="values__item-body">Nada de cajas negras. Sabes exactamente qué se está haciendo, por qué y con qué resultados. Reportes claros que puedes entender sin ser experto.</p>
+          </div>
+
+          <div class="values__item card">
+            <div class="values__icon" aria-hidden="true">📚</div>
+            <h3 class="values__item-eyebrow eyebrow">Educación Constante</h3>
+            <p class="values__item-title h3">Te enseñamos, no solo ejecutamos</p>
+            <p class="values__item-body">El conocimiento se comparte para que el marketing se integre a tu negocio. No queremos clientes dependientes, queremos clientes empoderados.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Metodología -->
+    <section class="methodology section">
+      <div class="methodology__container container">
+        <header class="methodology__header section-header section-header--centered">
+          <h2 class="methodology__eyebrow eyebrow">Nuestro Proceso</h2>
+          <p class="methodology__title h2">Cómo trabajamos en 3 fases</p>
+        </header>
+
+        <div class="methodology__steps">
+          <div class="methodology__step">
+            <span class="methodology__step-num">01</span>
+            <div>
+              <h3 class="methodology__step-eyebrow eyebrow">Mes 1 — Corrección de base</h3>
+              <p class="methodology__step-title h3">Sitio web + sistema de leads</p>
+              <p class="methodology__step-body">Sitio web alineado a performance, tracking implementado, CRM y chatbot configurados. La base técnica correcta desde el inicio.</p>
+            </div>
+          </div>
+          <div class="methodology__step">
+            <span class="methodology__step-num">02</span>
+            <div>
+              <h3 class="methodology__step-eyebrow eyebrow">Meses 2–3 — Aceleración</h3>
+              <p class="methodology__step-title h3">Campañas de long tail</p>
+              <p class="methodology__step-body">Campañas enfocadas en búsquedas de alta intención. Optimización continua para aumentar cantidad y calidad de contactos.</p>
+            </div>
+          </div>
+          <div class="methodology__step">
+            <span class="methodology__step-num">03</span>
+            <div>
+              <h3 class="methodology__step-eyebrow eyebrow">A partir del mes 3 — Escala</h3>
+              <p class="methodology__step-title h3">Resultados garantizados</p>
+              <p class="methodology__step-body">Más contactos de calidad que antes de comenzar. Reportes claros, acompañamiento continuo y estrategia en evolución constante.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <CtaBanner
+      title="¿Listo para trabajar juntos?"
+      subtitle="Agenda una videollamada de 30 minutos. Sin compromiso. Solo claridad."
+    />
+  </main>
+</BaseLayout>
+
+<style>
+  .about__container { :has(> &) { container-type: inline-size; } }
+  .about__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-space-xl);
+    align-items: start;
+
+    @container (inline-size < 48rem) { grid-template-columns: 1fr; }
+  }
+  .about__content { display: flex; flex-direction: column; gap: 1.5rem; }
+  .about__stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .about__stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+    padding: 1.5rem;
+  }
+  .about__stat-number {
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    font-weight: var(--font-weight-heading);
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+  }
+  .about__stat-label {
+    font-size: var(--font-size-small);
+    color: var(--color-text-muted);
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  .values__container { :has(> &) { container-type: inline-size; } }
+  .values { background-color: var(--color-surface); }
+  .values__container { display: flex; flex-direction: column; gap: var(--spacing-space-xl); }
+  .values__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    @container (inline-size < 44rem) { grid-template-columns: 1fr; }
+  }
+  .values__item { display: flex; flex-direction: column; gap: 0.75rem; }
+  .values__icon { font-size: 2rem; }
+  .values__item-body { font-size: var(--font-size-small); color: var(--color-text-muted); line-height: 1.65; }
+
+  .methodology__container { display: flex; flex-direction: column; gap: var(--spacing-space-xl); :has(> &) { container-type: inline-size; } }
+  .methodology__steps { display: flex; flex-direction: column; gap: 0; }
+  .methodology__step {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    padding-block: 2rem;
+    border-block-end: 1px solid var(--color-border);
+
+    &:last-child { border-block-end: none; }
+  }
+  .methodology__step-num {
+    font-size: 3rem;
+    font-weight: var(--font-weight-bold);
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    flex-shrink: 0;
+    opacity: 0.5;
+  }
+  .methodology__step-body { font-size: var(--font-size-small); color: var(--color-text-muted); line-height: 1.65; margin-block-start: 0.5rem; }
+</style>

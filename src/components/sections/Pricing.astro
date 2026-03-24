@@ -1,0 +1,212 @@
+---
+/** Pricing.astro — WaaS pricing section */
+---
+
+<section class="pricing section">
+  <div class="pricing__container container">
+    <header class="pricing__header section-header section-header--centered">
+      <h2 class="pricing__eyebrow eyebrow">WaaS — Precios</h2>
+      <p class="pricing__title h2">Invierte menos, gana más con el WaaS</p>
+      <p class="section-header__desc">
+        No es "un sitio web barato". Es un sistema completo de adquisición de leads con soporte continuo.
+      </p>
+    </header>
+
+    <div class="pricing__grid">
+      <!-- Plan principal WaaS -->
+      <article class="pricing__card pricing__card--featured card">
+        <header class="pricing__card-header">
+          <div class="badge">Oferta principal</div>
+          <h3 class="pricing__card-eyebrow eyebrow">WaaS — Web as a Service</h3>
+          <p class="pricing__card-title h3">Sistema completo de leads</p>
+        </header>
+
+        <div class="pricing__price">
+          <div class="pricing__setup">
+            <span class="pricing__setup-label">Setup único</span>
+            <span class="pricing__setup-amount">$390</span>
+          </div>
+          <div class="pricing__monthly">
+            <span class="pricing__amount">$270</span>
+            <span class="pricing__period">/mes</span>
+          </div>
+          <p class="pricing__min">Contrato mínimo 6 meses</p>
+        </div>
+
+        <ul class="pricing__features" role="list">
+          {[
+            'Sitio web de alto rendimiento (Astro)',
+            'HTML semántico + SEO técnico',
+            'Core Web Vitals optimizados',
+            'Diseño a medida (sin plantillas)',
+            'CMS para gestión de contenidos',
+            'CRM integrado para seguimiento de leads',
+            'Chatbot entrenado para capturar leads 24/7',
+            'Hosting y mantenimiento técnico',
+            'Soporte continuo y cambios de contenido',
+            'Reportes claros y entendibles',
+          ].map(feature => (
+            <li class="pricing__feature">
+              <span class="pricing__check" aria-hidden="true">✓</span>
+              {feature}
+            </li>
+          ))}
+        </ul>
+
+        <a class="btn btn--primary" href="/contacto">Empieza ahora</a>
+        <p class="pricing__note">Si decides salir, recibes tu sitio listo en Cloudflare Pages.</p>
+      </article>
+
+      <!-- Plan high-end -->
+      <article class="pricing__card card">
+        <header class="pricing__card-header">
+          <h3 class="pricing__card-eyebrow eyebrow">Proyecto Premium</h3>
+          <p class="pricing__card-title h3">Sitio web a medida</p>
+        </header>
+
+        <div class="pricing__price">
+          <div class="pricing__monthly">
+            <span class="pricing__amount">$4,000</span>
+            <span class="pricing__period">+</span>
+          </div>
+          <p class="pricing__min">Pago único · Propiedad total</p>
+        </div>
+
+        <ul class="pricing__features" role="list">
+          {[
+            'Sitio corporativo completo',
+            'Home, nosotros, servicios, blog, contacto',
+            'Arquitectura SEO y funnels',
+            'Diseño 100% a medida',
+            'WordPress con Etch + ACSS o Astro',
+            'Integraciones a medida',
+            'Propiedad total desde el día 1',
+            'Entrega en 4-6 semanas',
+          ].map(feature => (
+            <li class="pricing__feature">
+              <span class="pricing__check" aria-hidden="true">✓</span>
+              {feature}
+            </li>
+          ))}
+        </ul>
+
+        <a class="btn btn--secondary" href="/contacto">Solicitar propuesta</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .pricing__container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-space-xl);
+  }
+
+  .pricing__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    align-items: start;
+
+    :has(> &) { container-type: inline-size; }
+
+    @container (inline-size < 44rem) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .pricing__card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    padding: 2.5rem;
+  }
+
+  .pricing__card--featured {
+    border-color: rgba(56,178,240,0.4);
+    background: linear-gradient(160deg, rgba(56,178,240,0.07) 0%, rgba(103,197,135,0.04) 100%);
+    box-shadow: var(--shadow-glow);
+  }
+
+  .pricing__card-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .pricing__price {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding-block: 1.5rem;
+    border-block: 1px solid var(--color-border);
+  }
+
+  .pricing__setup {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: var(--font-size-small);
+    color: var(--color-text-muted);
+  }
+
+  .pricing__setup-label { }
+  .pricing__setup-amount { font-weight: var(--font-weight-heading); color: var(--color-text); }
+
+  .pricing__monthly {
+    display: flex;
+    align-items: baseline;
+    gap: 0.25rem;
+  }
+
+  .pricing__amount {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: var(--font-weight-heading);
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+  }
+
+  .pricing__period {
+    font-size: var(--font-size-body);
+    color: var(--color-text-muted);
+  }
+
+  .pricing__min {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+  }
+
+  .pricing__features {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    list-style: none;
+    flex: 1;
+  }
+
+  .pricing__feature {
+    display: flex;
+    gap: 0.65rem;
+    align-items: flex-start;
+    font-size: var(--font-size-small);
+    color: var(--color-text);
+  }
+
+  .pricing__check {
+    color: var(--color-secondary);
+    font-weight: var(--font-weight-bold);
+    flex-shrink: 0;
+    margin-block-start: 0.05em;
+  }
+
+  .pricing__note {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    text-align: center;
+    line-height: 1.5;
+  }
+</style>
