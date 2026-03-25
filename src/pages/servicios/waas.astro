@@ -193,25 +193,23 @@ const includes = [
   }
 
   .waas-price__container { :has(> &) { container-type: inline-size; } display: flex; flex-direction: column; gap: var(--spacing-space-xl); }
-  .waas-price__card { max-inline-size: 54rem; margin-inline: auto; container-type: inline-size; }
+  .waas-price__card { max-inline-size: 56rem; margin-inline: auto; container-type: inline-size; padding: 3rem; }
   .waas-price__cols {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem;
-    @container (inline-size < 34rem) { grid-template-columns: 1fr; }
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
+    @container (inline-size < 34rem) { grid-template-columns: 1fr; gap: 2rem; }
   }
-  .waas-price__footer { margin-block-start: 1.5rem; text-align: center; }
+  .waas-price__footer { margin-block-start: 2.5rem; text-align: center; }
   .waas-price__info { display: flex; flex-direction: column; }
-  .waas-price__rows { margin-block: 0.75rem; border-block: 1px solid var(--color-border); }
+  .waas-price__rows { margin-block: 1rem; border-block: 1px solid var(--color-border); }
   .waas-price__row {
     display: flex; justify-content: space-between; align-items: center;
-    padding-block: 0.9rem; border-block-end: 1px solid var(--color-border); font-size: var(--font-size-small); color: var(--color-text-muted);
+    padding-block: 1rem; border-block-end: 1px solid var(--color-border); font-size: var(--font-size-small); color: var(--color-text-muted);
     &:last-child { border-block-end: none; }
   }
   .waas-price__amount {
-    font-size: 1.5rem; font-weight: var(--font-weight-heading);
-    background: var(--gradient-brand); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    & small { font-size: 0.85rem; font-weight: 300; }
+    font-size: 1.75rem; font-weight: var(--font-weight-heading); color: var(--color-heading);
+    & small { font-size: 0.9rem; font-weight: 300; opacity: 0.7; }
   }
-  .waas-price__note { font-size: 0.8rem; color: var(--color-text-muted); line-height: 1.55; margin-block-start: 0.75rem; }
-  .waas-price__list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; font-size: var(--font-size-small); }
-  .waas-price__cta { margin-block-start: 1.5rem; grid-column: span 2; justify-content: center; @container (inline-size < 36rem) { grid-column: span 1; } }
+  .waas-price__note { font-size: 0.8rem; color: var(--color-text-muted); line-height: 1.5; margin-block-start: 0.75rem; }
+  .waas-price__list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; font-size: var(--font-size-small); color: var(--color-text); }
 </style>

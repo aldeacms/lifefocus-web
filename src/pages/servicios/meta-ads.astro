@@ -56,8 +56,44 @@ const includes = [
       </div>
     </section>
 
+    <!-- Cómo se diferencia -->
+    <section class="meta-diff section section--alt">
+      <div class="meta-diff__container container">
+        <div class="meta-diff__grid">
+          <header class="section-header">
+            <h2 class="eyebrow">Cómo se diferencia</h2>
+            <p class="h2">Estrategia visual nativa.</p>
+            <p class="section-header__desc">No solo prendemos anuncios. Creamos piezas gráficas que resuenan con la cultura latina para generar confianza inmediata.</p>
+          </header>
+
+          <div class="meta-diff__compare">
+            <div class="meta-diff__col">
+              <h3 class="eyebrow" style="color: var(--color-text-muted)">Gestión normal</h3>
+              <ul class="meta-diff__list meta-diff__list--bad">
+                <li>Boost post sin segmentación</li>
+                <li>Sin diseño de gráficas</li>
+                <li>Sin pruebas A/B de mensajes</li>
+                <li>Solo buscan "Likes" de vanidad</li>
+                <li>Sin integración con CRM</li>
+              </ul>
+            </div>
+            <div class="meta-diff__col">
+              <h3 class="eyebrow">Life Focus — Resultados</h3>
+              <ul class="meta-diff__list meta-diff__list--good">
+                <li>Segmentación cultural precisa</li>
+                <li>Diseño gráfico incluido</li>
+                <li>Test A/B constante de copy</li>
+                <li>Enfoque total en Leads / ROAS</li>
+                <li>Estrategia visual completa</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Por qué funciona -->
-    <section class="meta-why section section--alt">
+    <section class="meta-why section">
       <div class="meta-why__container container">
         <div class="meta-why__grid">
           <header class="section-header">
@@ -99,31 +135,38 @@ const includes = [
     </section>
 
     <!-- Precio -->
-    <section class="meta-price section">
+    <section class="meta-price section section--alt">
       <div class="meta-price__container container">
         <header class="section-header section-header--centered">
           <h2 class="eyebrow">Inversión</h2>
-          <p class="h2">Todo incluido en un solo precio mensual.</p>
+          <p class="h2">Precio mensual, todo incluido.</p>
         </header>
 
         <div class="meta-price__card card">
-          <div class="meta-price__inner">
-            <div>
+          <div class="meta-price__cols">
+            <div class="meta-price__info">
               <p class="eyebrow" style="margin-block-end: 0.75rem">Meta Ads — Facebook + Instagram</p>
-              <div class="meta-price__price">
+              <div class="meta-price__price-wrap">
                 <span class="meta-price__from">desde</span>
-                <span class="meta-price__amount">$490<small>/mes</small></span>
+                <span class="meta-price__amount">$490</span>
+                <span class="meta-price__currency">USD/mes</span>
               </div>
-              <p style="font-size: 0.8rem; color: var(--color-text-muted); line-height: 1.5; margin-block-start: 1rem;">
-                El presupuesto de pauta va por separado (recomendamos mínimo $300/mes).
-              </p>
+              <p class="meta-price__desc">Incluye gestión y diseño de creativos. Presupuesto de pauta por separado.</p>
             </div>
 
             <ul class="meta-price__list">
-              {['Estrategia de audiencias', 'Diseño de gráficas incluido', 'Copywriting de anuncios', 'Test A/B de creativos', 'Optimización semanal', 'Reporte mensual en español', 'Facebook + Instagram', 'Soporte directo al equipo'].map(f => <li>✓ {f}</li>)}
+              {[
+                'Estrategia de audiencias latina',
+                'Diseño de piezas gráficas',
+                'Copywriting persuasivo',
+                'Pruebas A/B de anuncios',
+                'Optimización semanal',
+                'Reporte mensual en español',
+              ].map(f => <li>✓ {f}</li>)}
             </ul>
-
-            <a class="btn btn--primary meta-price__cta" href="/contacto">
+          </div>
+          <div class="meta-price__footer">
+            <a class="btn btn--primary" href="/contacto">
               Comenzar con Meta Ads →
             </a>
           </div>
@@ -158,9 +201,30 @@ const includes = [
   [data-theme="light"] .svc-icon { background: rgba(56,178,240,0.1); border-color: rgba(56,178,240,0.25); }
   .svc-body { font-size: var(--font-size-small); color: var(--color-text-muted); line-height: 1.65; }
 
+  .meta-diff__container { :has(> &) { container-type: inline-size; } }
+  .meta-diff__grid {
+    display: grid; grid-template-columns: 1fr 1.5fr; gap: var(--spacing-space-xl); align-items: start;
+    @container (inline-size < 48rem) { grid-template-columns: 1fr; }
+  }
+  .meta-diff__compare {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+    @container (inline-size < 30rem) { grid-template-columns: 1fr; }
+  }
+  .meta-diff__col { display: flex; flex-direction: column; gap: 1rem; }
+  .meta-diff__list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+  .meta-diff__list li {
+    font-size: var(--font-size-small); color: var(--color-text-muted);
+    padding-inline-start: 1.5rem; position: relative;
+    &::before { content: '×'; position: absolute; inset-inline-start: 0; color: #ef4444; font-weight: bold; }
+  }
+  .meta-diff__list--good li {
+    color: var(--color-text);
+    &::before { content: '✓'; color: var(--color-secondary); }
+  }
+
   .meta-why__container { :has(> &) { container-type: inline-size; } }
   .meta-why__grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-space-xl); align-items: start;
+    display: grid; grid-template-columns: 1fr 1.5fr; gap: var(--spacing-space-xl); align-items: start;
     @container (inline-size < 48rem) { grid-template-columns: 1fr; }
   }
   .meta-why__list { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; }
@@ -177,18 +241,17 @@ const includes = [
   .meta-why__item p { font-size: var(--font-size-small); color: var(--color-text-muted); line-height: 1.65; }
 
   .meta-price__container { :has(> &) { container-type: inline-size; } display: flex; flex-direction: column; gap: var(--spacing-space-xl); }
-  .meta-price__card { max-inline-size: 52rem; margin-inline: auto; padding: 2.5rem; }
-  .meta-price__inner {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
-    @container (inline-size < 36rem) { grid-template-columns: 1fr; }
+  .meta-price__card { max-inline-size: 56rem; margin-inline: auto; container-type: inline-size; padding: 3rem; }
+  .meta-price__cols {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
+    @container (inline-size < 34rem) { grid-template-columns: 1fr; gap: 2rem; }
   }
-  .meta-price__price { padding-block: 1.25rem; border-block: 1px solid var(--color-border); margin-block: 0.75rem; display: flex; flex-direction: column; gap: 0.25rem; }
+  .meta-price__footer { margin-block-start: 2.5rem; text-align: center; }
+  .meta-price__info { display: flex; flex-direction: column; }
+  .meta-price__price-wrap { display: flex; align-items: baseline; gap: 0.5rem; padding-block: 1rem; border-block: 1px solid var(--color-border); margin-block: 1rem; }
+  .meta-price__amount { font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: var(--font-weight-heading); color: var(--color-heading); line-height: 1; }
   .meta-price__from { font-size: var(--font-size-small); color: var(--color-text-muted); }
-  .meta-price__amount {
-    font-size: clamp(2rem, 5vw, 3rem); font-weight: var(--font-weight-heading); line-height: 1;
-    background: var(--gradient-brand); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    & small { font-size: 1rem; font-weight: 300; }
-  }
-  .meta-price__list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; font-size: var(--font-size-small); }
-  .meta-price__cta { margin-block-start: 1.5rem; grid-column: span 2; justify-content: center; @container (inline-size < 36rem) { grid-column: span 1; } }
+  .meta-price__currency { font-size: 1rem; color: var(--color-text-muted); font-weight: 300; }
+  .meta-price__desc { font-size: 0.8rem; color: var(--color-text-muted); line-height: 1.5; }
+  .meta-price__list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; font-size: var(--font-size-small); color: var(--color-text); }
 </style>
