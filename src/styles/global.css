@@ -142,11 +142,11 @@
     scroll-behavior: smooth;
     background-color: var(--color-bg);
     color: var(--color-text);
-    /* Grid de líneas — feel design agency premium */
+    /* Grid de líneas — visible en dark mode */
     background-image:
-      linear-gradient(rgba(56,178,240,0.06) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(56,178,240,0.06) 1px, transparent 1px);
-    background-size: 72px 72px;
+      linear-gradient(rgba(56,178,240,0.10) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(56,178,240,0.10) 1px, transparent 1px);
+    background-size: 48px 48px;
     background-attachment: fixed;
   }
 
@@ -154,8 +154,9 @@
   [data-theme="light"] html {
     background-color: #f4f7fb;
     background-image:
-      linear-gradient(rgba(56,130,210,0.09) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(56,130,210,0.09) 1px, transparent 1px);
+      linear-gradient(rgba(56,130,210,0.13) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(56,130,210,0.13) 1px, transparent 1px);
+    background-size: 48px 48px;
   }
   [data-theme="light"] body {
     background-color: transparent;
