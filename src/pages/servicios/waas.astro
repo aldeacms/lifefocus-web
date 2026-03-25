@@ -101,7 +101,7 @@ const includes = [
         </header>
 
         <div class="waas-price__card card">
-          <div class="waas-price__inner">
+          <div class="waas-price__cols">
             <div class="waas-price__info">
               <p class="eyebrow" style="margin-block-end: 0.75rem">WaaS — Web as a Service</p>
               <div class="waas-price__rows">
@@ -131,8 +131,10 @@ const includes = [
                 'Sin costos ocultos ni sorpresas',
               ].map(f => <li>✓ {f}</li>)}
             </ul>
+          </div>
 
-            <a class="btn btn--primary waas-price__cta" href="/contacto">
+          <div class="waas-price__footer">
+            <a class="btn btn--primary" href="/contacto">
               Empieza con el WaaS →
             </a>
           </div>
@@ -191,11 +193,12 @@ const includes = [
   }
 
   .waas-price__container { :has(> &) { container-type: inline-size; } display: flex; flex-direction: column; gap: var(--spacing-space-xl); }
-  .waas-price__card { max-inline-size: 54rem; margin-inline: auto; padding: 2.5rem; container-type: inline-size; }
-  .waas-price__inner {
+  .waas-price__card { max-inline-size: 54rem; margin-inline: auto; container-type: inline-size; }
+  .waas-price__cols {
     display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem;
-    @container (inline-size < 36rem) { grid-template-columns: 1fr; }
+    @container (inline-size < 34rem) { grid-template-columns: 1fr; }
   }
+  .waas-price__footer { margin-block-start: 1.5rem; text-align: center; }
   .waas-price__info { display: flex; flex-direction: column; }
   .waas-price__rows { margin-block: 0.75rem; border-block: 1px solid var(--color-border); }
   .waas-price__row {

@@ -67,12 +67,26 @@ const includes = [
           </header>
           <ul class="meta-why__list">
             {[
-              ['🎯', 'Audiencias que conocemos', 'Años de experiencia segmentando el público latino en USA. Sabemos qué funciona y qué no.'],
-              ['🖼️', 'Creativos nativos', 'Gráficas y mensajes que resuenan con la cultura y valores de tu audiencia. No adaptaciones mediocres.'],
-              ['🔄', 'Test y aprende constante', 'Cada mes probamos nuevas variantes de audiencias, creativos y mensajes para mejorar resultados.'],
-            ].map(([icon, title, body]) => (
+              [
+                `<circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>`,
+                'Audiencias que conocemos',
+                'Años de experiencia segmentando el público latino en USA. Sabemos qué funciona y qué no.'
+              ],
+              [
+                `<rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>`,
+                'Creativos nativos',
+                'Gráficas y mensajes que resuenan con la cultura y valores de tu audiencia. No adaptaciones mediocres.'
+              ],
+              [
+                `<polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/>`,
+                'Test y aprende constante',
+                'Cada mes probamos nuevas variantes de audiencias, creativos y mensajes para mejorar resultados.'
+              ],
+            ].map(([iconPath, title, body]) => (
               <li class="meta-why__item">
-                <span class="meta-why__icon" aria-hidden="true">{icon}</span>
+                <div class="meta-why__icon" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" set:html={iconPath}></svg>
+                </div>
                 <div>
                   <strong>{title}</strong>
                   <p>{body}</p>
@@ -151,7 +165,14 @@ const includes = [
   }
   .meta-why__list { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; }
   .meta-why__item { display: flex; gap: 1rem; align-items: flex-start; }
-  .meta-why__icon { font-size: 1.5rem; flex-shrink: 0; }
+  .meta-why__icon {
+    display: inline-flex; align-items: center; justify-content: center;
+    inline-size: 2.5rem; block-size: 2.5rem; flex-shrink: 0;
+    border-radius: var(--radius-m);
+    background: rgba(56,178,240,0.08); border: 1px solid rgba(56,178,240,0.2);
+    color: var(--color-primary);
+  }
+  [data-theme="light"] .meta-why__icon { background: rgba(56,178,240,0.1); border-color: rgba(56,178,240,0.25); }
   .meta-why__item strong { display: block; font-weight: var(--font-weight-heading); color: var(--color-heading); font-size: var(--font-size-body); margin-block-end: 0.25rem; }
   .meta-why__item p { font-size: var(--font-size-small); color: var(--color-text-muted); line-height: 1.65; }
 

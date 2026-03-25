@@ -67,12 +67,26 @@ const includes = [
           </header>
           <ul class="social-why__list">
             {[
-              ['🎯', 'Contenido alineado a ventas', 'Cada publicación tiene un rol dentro del ciclo de compra: awareness, consideración o conversión.'],
-              ['🌎', 'Enfoque en el mercado latino en USA', 'Mensajes que hablan el idioma cultural de tu audiencia, no traducciones genéricas.'],
-              ['📊', 'Combinado con pauta, multiplica', 'Las redes orgánicas funcionan mejor con Meta Ads. Te ayudamos a integrar ambas cuando sea el momento.'],
-            ].map(([icon, title, body]) => (
+              [
+                `<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>`,
+                'Contenido alineado a ventas',
+                'Cada publicación tiene un rol dentro del ciclo de compra: awareness, consideración o conversión.'
+              ],
+              [
+                `<circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>`,
+                'Enfoque en el mercado latino en USA',
+                'Mensajes que hablan el idioma cultural de tu audiencia, no traducciones genéricas.'
+              ],
+              [
+                `<line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>`,
+                'Combinado con pauta, multiplica',
+                'Las redes orgánicas funcionan mejor con Meta Ads. Te ayudamos a integrar ambas cuando sea el momento.'
+              ],
+            ].map(([iconPath, title, body]) => (
               <li class="social-why__item">
-                <span aria-hidden="true">{icon}</span>
+                <div class="social-why__icon" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" set:html={iconPath}></svg>
+                </div>
                 <div>
                   <strong>{title}</strong>
                   <p>{body}</p>
@@ -156,7 +170,15 @@ const includes = [
     @container (inline-size < 48rem) { grid-template-columns: 1fr; }
   }
   .social-why__list { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; }
-  .social-why__item { display: flex; gap: 1rem; align-items: flex-start; font-size: 1.5rem; }
+  .social-why__item { display: flex; gap: 1rem; align-items: flex-start; }
+  .social-why__icon {
+    display: inline-flex; align-items: center; justify-content: center;
+    inline-size: 2.5rem; block-size: 2.5rem; flex-shrink: 0;
+    border-radius: var(--radius-m);
+    background: rgba(56,178,240,0.08); border: 1px solid rgba(56,178,240,0.2);
+    color: var(--color-primary);
+  }
+  [data-theme="light"] .social-why__icon { background: rgba(56,178,240,0.1); border-color: rgba(56,178,240,0.25); }
   .social-why__item div { display: flex; flex-direction: column; gap: 0.25rem; }
   .social-why__item strong { font-weight: var(--font-weight-heading); color: var(--color-heading); font-size: var(--font-size-body); }
   .social-why__item p { font-size: var(--font-size-small); color: var(--color-text-muted); line-height: 1.65; }
