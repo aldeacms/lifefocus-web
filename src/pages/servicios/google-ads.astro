@@ -153,39 +153,59 @@ const includes = [
         </header>
 
         <div class="gads-price__card card">
-          <div class="gads-price__cols">
-            <div class="gads-price__info">
-              <p class="eyebrow" style="margin-block-end: 0.75rem">Google Ads — Gestión profesional</p>
+          <div class="gads-price__content">
+            <div class="gads-price__main">
+              <span class="eyebrow" style="color: var(--color-primary)">Google Ads — Gestión Pro</span>
               <div class="gads-price__rows">
                 <div class="gads-price__row">
-                  <span>Setup inicial (única vez)</span>
-                  <span class="gads-price__amount">$390</span>
+                  <div class="gads-price__label-group">
+                    <span class="gads-price__label">Setup inicial</span>
+                    <span class="gads-price__sub">Única vez</span>
+                  </div>
+                  <span class="gads-price__amount">$390<small>USD</small></span>
                 </div>
                 <div class="gads-price__row">
-                  <span>Gestión mensual</span>
-                  <span class="gads-price__amount">$290<small>/mes</small></span>
+                  <div class="gads-price__label-group">
+                    <span class="gads-price__label">Gestión mensual</span>
+                    <span class="gads-price__sub">Sin contratos forzosos</span>
+                  </div>
+                  <span class="gads-price__amount">$290<small>USD/mes</small></span>
                 </div>
               </div>
-              <p class="gads-price__note">Presupuesto de pauta por separado (recomendamos mín. $500/mes para resultados).</p>
+              <p class="gads-price__tagline">Optimización continua para maximizar tu ROI. Tú pones el presupuesto, nosotros los resultados.</p>
+              <div class="gads-price__cta-desktop">
+                <a class="btn btn--primary" href="/contacto">Comenzar con Google Ads →</a>
+              </div>
             </div>
 
-            <ul class="gads-price__list">
-              {[
-                'Auditoría estratégica gratuita',
-                'Setup completo de campaña',
-                'Lista de negativos estratégica',
-                'Revisión y optimización semanal',
-                'Reporte mensual en español',
-                'Acceso al tracking de conversiones',
-              ].map(f => <li>✓ {f}</li>)}
-            </ul>
+            <div class="gads-price__separator" aria-hidden="true"></div>
+
+            <div class="gads-price__features">
+              <p class="gads-price__features-title">Incluido en la gestión:</p>
+              <ul class="gads-price__list">
+                {[
+                  'Auditoría estratégica inicial',
+                  'Setup completo de campañas',
+                  'Búsqueda de keywords Ganadoras',
+                  'Gestión de Negativos semanal',
+                  'Configuración de Conversiones Pro',
+                  'Reporte mensual de rendimiento',
+                ].map(item => (
+                  <li>
+                    <svg class="gads-price__check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-          <div class="gads-price__footer">
-            <a class="btn btn--primary" href="/contacto">
-              Comenzar con Google Ads →
-            </a>
+
+          <div class="gads-price__cta-mobile">
+            <a class="btn btn--primary btn--full" href="/contacto">Comenzar con Google Ads →</a>
           </div>
         </div>
+      </div>
+    </section>
       </div>
     </section>
 
@@ -258,24 +278,43 @@ const includes = [
   .gads-step__content strong { font-weight: var(--font-weight-heading); color: var(--color-heading); font-size: var(--font-size-body); }
   .gads-step__content p { font-size: var(--font-size-small); color: var(--color-text-muted); line-height: 1.65; }
 
-  .gads-price__container { :has(> &) { container-type: inline-size; } display: flex; flex-direction: column; gap: var(--spacing-space-xl); }
-  .gads-price__card { max-inline-size: 56rem; margin-inline: auto; container-type: inline-size; padding: 3rem; }
-  .gads-price__cols {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
-    @container (inline-size < 34rem) { grid-template-columns: 1fr; gap: 2rem; }
+  .gads-price__card {
+    max-inline-size: 64rem; margin-inline: auto; padding: 4rem; overflow: hidden;
+    background: linear-gradient(145deg, var(--color-surface), rgba(56,178,240,0.03));
   }
-  .gads-price__footer { margin-block-start: 2.5rem; text-align: center; }
-  .gads-price__rows { display: flex; flex-direction: column; gap: 0; margin-block: 0.75rem; border-block: 1px solid var(--color-border); }
+  .gads-price__content { display: flex; gap: 4rem; align-items: stretch; }
+  .gads-price__main { flex: 1.2; display: flex; flex-direction: column; justify-content: center; }
+  .gads-price__separator { inline-size: 1px; background: var(--color-border); filter: opacity(0.5); }
+  .gads-price__features { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+
+  .gads-price__rows { margin-block: 2rem; display: flex; flex-direction: column; gap: 1rem; }
   .gads-price__row {
     display: flex; justify-content: space-between; align-items: center;
-    padding-block: 0.85rem; border-block-end: 1px solid var(--color-border);
-    font-size: var(--font-size-small); color: var(--color-text-muted);
-    &:last-child { border-block-end: none; }
+    padding: 1.25rem; background: rgba(255,255,255,0.02); border: 1px solid var(--color-border); border-radius: var(--radius-m);
   }
-  .gads-price__amount {
-    font-size: 1.75rem; font-weight: var(--font-weight-heading); color: var(--color-heading);
-    & small { font-size: 0.9rem; font-weight: 300; opacity: 0.7; }
+  .gads-price__label-group { display: flex; flex-direction: column; gap: 0.15rem; }
+  .gads-price__label { font-size: var(--font-size-body); font-weight: 500; color: var(--color-heading); }
+  .gads-price__sub { font-size: 0.75rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+  
+  .gads-price__amount { font-size: 1.75rem; font-weight: 600; color: var(--color-primary); }
+  .gads-price__amount small { font-size: 0.85rem; font-weight: 300; margin-inline-start: 0.35rem; color: var(--color-text-muted); }
+
+  .gads-price__tagline { font-size: var(--font-size-small); color: var(--color-text-muted); line-height: 1.5; margin-block-end: 2rem; }
+
+  .gads-price__features-title { font-weight: 500; color: var(--color-heading); margin-block-end: 1.5rem; font-size: var(--font-size-body); }
+  .gads-price__list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+  .gads-price__list li { display: flex; align-items: center; gap: 0.75rem; font-size: var(--font-size-small); color: var(--color-text); }
+  .gads-price__check { color: var(--color-secondary); flex-shrink: 0; }
+
+  .gads-price__cta-mobile { display: none; margin-block-start: 2.5rem; }
+
+  @media (max-width: 54rem) {
+    .gads-price__card { padding: 2.5rem; }
+    .gads-price__content { flex-direction: column; gap: 2.5rem; }
+    .gads-price__main { items: center; text-align: center; }
+    .gads-price__separator { inline-size: 100%; block-size: 1px; }
+    .gads-price__cta-desktop { display: none; }
+    .gads-price__cta-mobile { display: block; }
+    .gads-price__row { padding: 1rem; }
   }
-  .gads-price__note { font-size: 0.8rem; color: var(--color-text-muted); margin-block-start: 0.75rem; line-height: 1.5; }
-  .gads-price__list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; font-size: var(--font-size-small); }
 </style>
