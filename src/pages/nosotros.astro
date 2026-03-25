@@ -76,21 +76,35 @@ const meta: PageMeta = {
 
         <div class="values__grid">
           <div class="values__item card">
-            <div class="values__icon" aria-hidden="true">⚡</div>
+            <div class="values__icon-wrap" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+              </svg>
+            </div>
             <h3 class="values__item-eyebrow eyebrow">Excelencia Técnica</h3>
             <p class="values__item-title h3">Todo se hace bien</p>
             <p class="values__item-body">Estructura, diseño, SEO, campañas. No hay atajos ni soluciones genéricas. Cada proyecto se desarrolla con los más altos estándares técnicos.</p>
           </div>
 
           <div class="values__item card">
-            <div class="values__icon" aria-hidden="true">🔍</div>
+            <div class="values__icon-wrap" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
+              </svg>
+            </div>
             <h3 class="values__item-eyebrow eyebrow">Transparencia Total</h3>
             <p class="values__item-title h3">Sin cajas negras</p>
             <p class="values__item-body">Nada de cajas negras. Sabes exactamente qué se está haciendo, por qué y con qué resultados. Reportes claros que puedes entender sin ser experto.</p>
           </div>
 
           <div class="values__item card">
-            <div class="values__icon" aria-hidden="true">📚</div>
+            <div class="values__icon-wrap" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+              </svg>
+            </div>
             <h3 class="values__item-eyebrow eyebrow">Educación Constante</h3>
             <p class="values__item-title h3">Te enseñamos, no solo ejecutamos</p>
             <p class="values__item-body">El conocimiento se comparte para que el marketing se integre a tu negocio. No queremos clientes dependientes, queremos clientes empoderados.</p>
@@ -193,11 +207,35 @@ const meta: PageMeta = {
     @container (inline-size < 44rem) { grid-template-columns: 1fr; }
   }
   .values__item { display: flex; flex-direction: column; gap: 0.75rem; }
-  .values__icon { font-size: 2rem; }
+  /* Icon wrap estilo ServicesGrid */
+  .values__icon-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: 3rem;
+    block-size: 3rem;
+    border-radius: var(--radius-m);
+    background: rgba(56,178,240,0.08);
+    border: 1px solid rgba(56,178,240,0.2);
+    color: var(--color-primary);
+    flex-shrink: 0;
+  }
+  [data-theme="light"] .values__icon-wrap {
+    background: rgba(56,178,240,0.1);
+    border-color: rgba(56,178,240,0.25);
+  }
   .values__item-body { font-size: var(--font-size-small); color: var(--color-text-muted); line-height: 1.65; }
 
   .methodology__container { display: flex; flex-direction: column; gap: var(--spacing-space-xl); :has(> &) { container-type: inline-size; } }
-  .methodology__steps { display: flex; flex-direction: column; gap: 0; }
+  /* Pasos centrados y contenidos */
+  .methodology__steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-inline-size: 52rem;
+    margin-inline: auto;
+    inline-size: 100%;
+  }
   .methodology__step {
     display: flex;
     gap: 2rem;

@@ -53,8 +53,54 @@ const ogType = meta.ogType ?? 'website';
   </head>
 
   <body>
+    <!-- Cursor personalizado (solo en pointer: fine) -->
+    <div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
+    <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+    <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+
     <Header currentPage={currentPage} />
     <slot />
     <Footer />
   </body>
 </html>
+
+<script>
+  // ── Cursor personalizado ──
+  const dot  = document.getElementById('cursor-dot');
+  const ring = document.getElementById('cursor-ring');
+  const root = document.documentElement;
+
+  let rx = window.innerWidth / 2, ry = window.innerHeight / 2;
+  let dx = rx, dy = ry;
+
+  window.addEventListener('mousemove', e => {
+    dx = e.clientX;
+    dy = e.clientY;
+    // Cursor dot sigue inmediatamente
+    if (dot)  { dot.style.left  = dx + 'px'; dot.style.top  = dy + 'px'; }
+    // Cursor glow usa CSS var para el radial-gradient
+    root.style.setProperty('--lf-cx', dx + 'px');
+    root.style.setProperty('--lf-cy', dy + 'px');
+  }, { passive: true });
+
+  // Ring con lerp suave
+  function animate() {
+    rx += (dx - rx) * 0.12;
+    ry += (dy - ry) * 0.12;
+    if (ring) { ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; }
+    requestAnimationFrame(animate);
+  }
+  animate();
+
+  // Efecto hover en links/botones
+  document.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      if (dot)  { dot.style.width  = '14px'; dot.style.height = '14px'; }
+      if (ring) { ring.style.width = '52px'; ring.style.height = '52px'; ring.style.borderColor = 'rgba(56,178,240,0.8)'; }
+    });
+    el.addEventListener('mouseleave', () => {
+      if (dot)  { dot.style.width  = ''; dot.style.height = ''; }
+      if (ring) { ring.style.width = ''; ring.style.height = ''; ring.style.borderColor = ''; }
+    });
+  });
+</script>

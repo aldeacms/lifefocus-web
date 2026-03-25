@@ -1,72 +1,129 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/sections/PageHero.astro';
+import Testimonials from '../../components/sections/Testimonials.astro';
+import Faq from '../../components/sections/Faq.astro';
 import CtaBanner from '../../components/sections/CtaBanner.astro';
 import type { PageMeta } from '../../types/cms';
 
 const meta: PageMeta = {
   title: 'Google Ads para Negocios Latinos en USA | Life Focus Agency',
-  description: 'Gestión profesional de Google Ads con estrategia long tail. Setup $390 + gestión $290/mes. Campañas de búsqueda que convierten para negocios latinos.',
+  description: 'Gestión profesional de Google Ads con estrategia long tail. Setup $390 + gestión $290/mes. Campañas que convierten para negocios latinos en USA.',
   lang: 'es',
 };
+
+const includes = [
+  { icon: `<circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>`, title: 'Auditoría inicial gratuita', body: 'Analizamos tu negocio, competencia y palabras clave de alta intención. Identificamos oportunidades reales.' },
+  { icon: `<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/>`, title: 'Estructura de campaña', body: 'Grupos de anuncios bien segmentados sin mezclar intenciones. Copy persuasivo y extensiones bien configuradas.' },
+  { icon: `<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>`, title: 'Lista de negativos exhaustiva', body: 'Trabajamos los negativos desde el día uno para evitar clics irrelevantes y no desperdiciar tu presupuesto.' },
+  { icon: `<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>`, title: 'Optimización continua', body: 'Revisión semanal de datos, ajustes de puja, negativos nuevos y mejoras de copy basadas en rendimiento real.' },
+  { icon: `<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>`, title: 'Consultoría incluida', body: 'Acceso directo al equipo para consultas. No somos una caja negra: explicamos cada decisión.' },
+  { icon: `<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>`, title: 'Reporte mensual claro', body: 'Informe en español con métricas que entiende un dueño de negocio: leads, costo por lead, y next steps.' },
+];
 ---
 
 <BaseLayout meta={meta} currentPage="/servicios">
   <main id="main-content">
     <PageHero
-      eyebrow="Google Ads — Campañas de Búsqueda para Negocios Latinos en USA"
+      eyebrow="Google Ads — Búsquedas de Alta Intención para Negocios Latinos en USA"
       headline="Deja de alimentar a Google. Empieza a convertir búsquedas en clientes."
-      description="Setup $390 + gestión desde $290/mes. Estrategia de long tail con negativos bien trabajados para maximizar tu ROI."
+      description="Setup $390 + gestión desde $290/mes. Estrategia long tail con negativos trabajados para maximizar conversión desde el primer mes."
       breadcrumb="Servicios / Google Ads"
     />
 
-    <section class="gads section">
-      <div class="gads__container container">
-        <div class="gads__grid">
-          <div>
-            <header class="section-header">
-              <h2 class="eyebrow">Nuestra Metodología Google Ads</h2>
-              <p class="h2">Long tail: menos gasto, más conversión.</p>
-              <p class="section-header__desc">El secreto está en las palabras clave de alta intención y en los negativos. Así tu presupuesto va exactamente donde debe ir.</p>
-            </header>
-            <ol class="gads__steps">
-              {[
-                ['Auditoría de tu negocio', 'Analizamos tu negocio, competencia y palabras clave de alta intención para tu rubro.'],
-                ['Estructura de campaña', 'Grupos de anuncios bien segmentados, sin mezclar intenciones. Copy persuasivo en cada anuncio.'],
-                ['Estrategia de negativos', 'Lista exhaustiva de palabras negativas para evitar clics irrelevantes desde el día uno.'],
-                ['Optimización continua', 'Alertas semanales, ajustes de pujas y negativos según datos reales de conversión.'],
-                ['Reportes comprensibles', 'Informe mensual en español, con métricas que entiende un dueño de negocio, no solo un técnico.'],
-              ].map(([title, body], i) => (
-                <li class="gads__step">
-                  <span class="gads__step-num">{String(i + 1).padStart(2, '0')}</span>
-                  <div>
-                    <h3 class="eyebrow">{title}</h3>
-                    <p>{body}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </div>
+    <!-- Qué incluye -->
+    <section class="gads-includes section">
+      <div class="gads-includes__container container">
+        <header class="section-header section-header--centered">
+          <h2 class="eyebrow">Qué incluye la gestión de Google Ads</h2>
+          <p class="h2">Long tail: menos gasto, más conversión.</p>
+          <p class="section-header__desc">El secreto está en las palabras clave de alta intención y los negativos bien trabajados. Tu presupuesto va exactamente donde debe ir.</p>
+        </header>
 
-          <div class="gads__pricing card">
-            <h3 class="eyebrow">Inversión</h3>
-            <div class="gads__price-row">
-              <span class="gads__price-label">Setup inicial</span>
-              <span class="gads__price-amount">$390</span>
+        <div class="gads-grid">
+          {includes.map(item => (
+            <div class="gads-item card">
+              <div class="svc-icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" set:html={item.icon}></svg>
+              </div>
+              <div>
+                <h3 class="eyebrow" style="margin-block-end: 0.35rem">{item.title}</h3>
+                <p class="svc-body">{item.body}</p>
+              </div>
             </div>
-            <div class="gads__price-row">
-              <span class="gads__price-label">Gestión mensual</span>
-              <span class="gads__price-amount">$290<span style="font-size:1rem;font-weight:300">/mes</span></span>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Nuestra metodología -->
+    <section class="gads-method section section--alt">
+      <div class="gads-method__container container">
+        <div class="gads-method__grid">
+          <header class="section-header">
+            <h2 class="eyebrow">Nuestra Metodología</h2>
+            <p class="h2">Un proceso probado en más de 400 negocios.</p>
+            <p class="section-header__desc">No improvisamos. Tenemos un proceso sistemático que ha funcionado para restaurantes, clínicas, constructoras y servicios en USA.</p>
+          </header>
+          <ol class="gads-steps">
+            {[
+              ['Semana 1', 'Auditoría + estrategia de keywords', 'Investigación profunda de palabras clave con intención de compra real.'],
+              ['Semana 2', 'Setup de campaña', 'Estructura, anuncios, extensiones, negativos y tracking de conversiones.'],
+              ['Semanas 3–4', 'Primera optimización', 'Con datos reales ajustamos pujas, pausamos lo que no convierte.'],
+              ['Mes 2+', 'Optimización continua', 'Ciclo mensual de mejora: ROAS en constante crecimiento.'],
+            ].map(([label, title, body]) => (
+              <li class="gads-step">
+                <span class="gads-step__label eyebrow">{label}</span>
+                <strong>{title}</strong>
+                <p>{body}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- Precio -->
+    <section class="gads-price section">
+      <div class="gads-price__container container">
+        <header class="section-header section-header--centered">
+          <h2 class="eyebrow">Inversión</h2>
+          <p class="h2">Precio transparente, sin sorpresas.</p>
+        </header>
+
+        <div class="gads-price__card card">
+          <div class="gads-price__card-inner">
+            <div>
+              <p class="eyebrow" style="margin-block-end: 0.75rem">Google Ads — Gestión profesional</p>
+              <div class="gads-price__rows">
+                <div class="gads-price__row">
+                  <span>Setup inicial (única vez)</span>
+                  <span class="gads-price__amount">$390</span>
+                </div>
+                <div class="gads-price__row">
+                  <span>Gestión mensual</span>
+                  <span class="gads-price__amount">$290<small>/mes</small></span>
+                </div>
+              </div>
+              <p style="font-size: 0.8rem; color: var(--color-text-muted); margin-block-start: 1rem; line-height: 1.5;">El presupuesto de pauta va por separado (recomendamos mínimo $500/mes para resultados óptimos).</p>
             </div>
-            <p class="gads__price-note">El presupuesto de pauta en Google va por separado (recomendamos mínimo $500/mes para resultados óptimos).</p>
-            <a class="btn btn--primary" href="/contacto" style="inline-size:100%;justify-content:center">Comenzar con Google Ads</a>
+
+            <ul class="gads-price__list">
+              {['Auditoría de keywords gratuita', 'Setup completo de campaña', 'Lista de negativos desde el día 1', 'Revisión y optimización semanal', 'Reporte mensual en español', 'Acceso a tracking de conversiones', 'Soporte directo con el equipo'].map(f => <li>✓ {f}</li>)}
+            </ul>
+
+            <a class="btn btn--primary" href="/contacto" style="grid-column: span 2; justify-content: center;">
+              Comenzar con Google Ads →
+            </a>
           </div>
         </div>
       </div>
     </section>
 
+    <Testimonials />
+    <Faq />
     <CtaBanner
-      title="¿Tus campañas de Google no convierten?"
+      title="¿Tus Google Ads no convierten?"
       subtitle="Agenda una auditoría gratuita. Revisamos tu cuenta y te decimos qué está pasando en menos de 24 horas."
       ctaText="Solicitar auditoría gratuita"
     />
@@ -74,43 +131,54 @@ const meta: PageMeta = {
 </BaseLayout>
 
 <style>
-  .gads__container { :has(> &) { container-type: inline-size; } }
-  .gads__grid {
-    display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    gap: var(--spacing-space-xl);
-    align-items: start;
+  .gads-includes__container { :has(> &) { container-type: inline-size; } display: flex; flex-direction: column; gap: var(--spacing-space-xl); }
+  .gads-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
+    @container (inline-size < 52rem) { grid-template-columns: repeat(2, 1fr); }
+    @container (inline-size < 32rem) { grid-template-columns: 1fr; }
+  }
+  .gads-item { display: flex; gap: 1rem; align-items: flex-start; }
+  .svc-icon {
+    display: inline-flex; align-items: center; justify-content: center;
+    inline-size: 3rem; block-size: 3rem; flex-shrink: 0;
+    border-radius: var(--radius-m); background: rgba(56,178,240,0.08);
+    border: 1px solid rgba(56,178,240,0.2); color: var(--color-primary);
+  }
+  [data-theme="light"] .svc-icon { background: rgba(56,178,240,0.1); border-color: rgba(56,178,240,0.25); }
+  .svc-body { font-size: var(--font-size-small); color: var(--color-text-muted); line-height: 1.65; }
+
+  .gads-method__container { :has(> &) { container-type: inline-size; } }
+  .gads-method__grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-space-xl); align-items: start;
     @container (inline-size < 48rem) { grid-template-columns: 1fr; }
   }
-  .gads__steps { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; margin-block-start: 2rem; counter-reset: none; }
-  .gads__step {
-    display: flex;
-    gap: 1.25rem;
-    align-items: flex-start;
-    & div { display: flex; flex-direction: column; gap: 0.35rem; }
+  .gads-steps { list-style: none; display: flex; flex-direction: column; gap: 0; }
+  .gads-step {
+    display: flex; flex-direction: column; gap: 0.3rem;
+    padding-block: 1.5rem; border-block-end: 1px solid var(--color-border);
+    &:last-child { border-block-end: none; }
+    & strong { font-weight: var(--font-weight-heading); color: var(--color-heading); font-size: var(--font-size-body); }
     & p { font-size: var(--font-size-small); color: var(--color-text-muted); line-height: 1.65; }
   }
-  .gads__step-num {
-    font-size: 1.75rem;
-    font-weight: var(--font-weight-bold);
-    background: var(--gradient-brand);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    line-height: 1;
-    flex-shrink: 0;
-    opacity: 0.6;
+  .gads-step__label { margin-block-end: 0.1rem; }
+
+  .gads-price__container { :has(> &) { container-type: inline-size; } display: flex; flex-direction: column; gap: var(--spacing-space-xl); }
+  .gads-price__card { max-inline-size: 52rem; margin-inline: auto; padding: 2.5rem; }
+  .gads-price__card-inner {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+    @container (inline-size < 36rem) { grid-template-columns: 1fr; }
   }
-  .gads__pricing { display: flex; flex-direction: column; gap: 1.25rem; padding: 2rem; position: sticky; inset-block-start: 6rem; }
-  .gads__price-row { display: flex; justify-content: space-between; align-items: center; padding-block: 0.85rem; border-block-end: 1px solid var(--color-border); }
-  .gads__price-label { font-size: var(--font-size-small); color: var(--color-text-muted); }
-  .gads__price-amount {
-    font-size: 1.5rem;
-    font-weight: var(--font-weight-heading);
-    background: var(--gradient-brand);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  .gads-price__rows { display: flex; flex-direction: column; gap: 0; margin-block: 0.75rem; border-block: 1px solid var(--color-border); }
+  .gads-price__row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-block: 0.85rem; border-block-end: 1px solid var(--color-border);
+    font-size: var(--font-size-small); color: var(--color-text-muted);
+    &:last-child { border-block-end: none; }
   }
-  .gads__price-note { font-size: 0.75rem; color: var(--color-text-muted); line-height: 1.5; }
+  .gads-price__amount {
+    font-size: 1.5rem; font-weight: var(--font-weight-heading);
+    background: var(--gradient-brand); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    & small { font-size: 0.9rem; font-weight: 300; -webkit-text-fill-color: currentcolor; filter: opacity(0.7); }
+  }
+  .gads-price__list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; font-size: var(--font-size-small); }
 </style>

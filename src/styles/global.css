@@ -14,15 +14,15 @@
   /* ── TIPOGRAFÍA ── */
   --font-family-sans: 'Barlow', system-ui, sans-serif;
 
-  /* Tamaños con clamp() — Nivel 1 Intrínseco */
-  --font-size-display: clamp(2.5rem, 5vw + 1rem, 4.5rem);
-  --font-size-h1:      clamp(2rem, 4vw + 0.5rem, 3.5rem);
-  --font-size-h2:      clamp(1.5rem, 3vw + 0.25rem, 2.5rem);
-  --font-size-h3:      clamp(1.25rem, 2vw + 0.25rem, 1.875rem);
-  --font-size-h4:      clamp(1.05rem, 1.5vw, 1.25rem);
-  --font-size-body:    clamp(1rem, 1.5vw, 1.0625rem);
-  --font-size-small:   0.875rem;
-  --font-size-eyebrow: clamp(0.6875rem, 1.5vw, 0.8125rem);
+  /* Tamaños con clamp() — Nivel 1 Intrínseco (+1-2px vs versión anterior) */
+  --font-size-display: clamp(2.625rem, 5vw + 1rem, 4.75rem);
+  --font-size-h1:      clamp(2.125rem, 4vw + 0.5rem, 3.75rem);
+  --font-size-h2:      clamp(1.625rem, 3vw + 0.25rem, 2.625rem);
+  --font-size-h3:      clamp(1.375rem, 2vw + 0.25rem, 2rem);
+  --font-size-h4:      clamp(1.125rem, 1.5vw, 1.375rem);
+  --font-size-body:    clamp(1.0625rem, 1.75vw, 1.125rem);
+  --font-size-small:   0.9375rem;
+  --font-size-eyebrow: clamp(0.75rem, 1.5vw, 0.875rem);
 
   /* Pesos: Barlow 300 body / 500 headings */
   --font-weight-body:    300;
@@ -140,9 +140,17 @@
     font-size: 100%;
     -webkit-text-size-adjust: 100%;
     scroll-behavior: smooth;
-    /* Dark mode por defecto */
     background-color: var(--color-bg);
     color: var(--color-text);
+    /* Dot grid sutil — feel de design agency */
+    background-image: radial-gradient(rgba(56,178,240,0.045) 1px, transparent 1px);
+    background-size: 38px 38px;
+    background-attachment: fixed;
+  }
+
+  [data-theme="light"] html,
+  [data-theme="light"] body {
+    background-image: radial-gradient(rgba(56,178,240,0.1) 1px, transparent 1px);
   }
 
   body {
@@ -153,6 +161,53 @@
     color: var(--color-text);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    cursor: none;
+  }
+
+  /* Cursor personalizado */
+  a, button, [role="button"], label[for], select { cursor: none; }
+  .cursor-dot {
+    position: fixed;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    inline-size: 8px;
+    block-size: 8px;
+    background: var(--color-primary);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.15s, height 0.15s, opacity 0.15s;
+    mix-blend-mode: screen;
+  }
+  .cursor-ring {
+    position: fixed;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    inline-size: 36px;
+    block-size: 36px;
+    border: 1.5px solid rgba(56,178,240,0.5);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: width 0.25s, height 0.25s, border-color 0.25s, opacity 0.25s;
+  }
+  /* Cursor glow — halo que sigue el mouse */
+  .cursor-glow {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background: radial-gradient(600px circle at var(--lf-cx, 50%) var(--lf-cy, -20%), rgba(56,178,240,0.06), transparent 40%);
+  }
+  [data-theme="light"] .cursor-glow {
+    background: radial-gradient(600px circle at var(--lf-cx, 50%) var(--lf-cy, -20%), rgba(56,178,240,0.1), transparent 40%);
+  }
+  /* Ocultar cursor custom en touch devices */
+  @media (pointer: coarse) {
+    .cursor-dot, .cursor-ring, .cursor-glow { display: none; }
+    body, a, button { cursor: auto; }
   }
 
   img, video {
@@ -361,13 +416,45 @@
     border-radius: var(--radius-l);
     padding: 2rem;
     transition: border-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base);
+    position: relative;
 
     :has(> &) { container-type: inline-size; }
 
+    /* Reflection line on top */
+    &::before {
+      content: '';
+      position: absolute;
+      inset-block-start: 0;
+      inset-inline: 20% 20%;
+      block-size: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+      border-radius: 1px;
+    }
+
     &:hover {
       border-color: rgba(56,178,240,0.3);
-      box-shadow: var(--shadow-glow);
+      box-shadow: 0 0 35px rgba(56,178,240,0.18), 0 8px 32px rgba(0,0,0,0.4);
       transform: translateY(-2px);
+
+      &::before {
+        background: linear-gradient(90deg, transparent, rgba(56,178,240,0.2), transparent);
+      }
+    }
+  }
+
+  /* Light mode: cards con personalidad */
+  [data-theme="light"] .card {
+    background: #ffffff;
+    border-color: rgba(56,178,240,0.12);
+    box-shadow: 0 2px 12px rgba(56,178,240,0.06), 0 1px 2px rgba(0,0,0,0.04);
+
+    &::before {
+      background: linear-gradient(90deg, transparent, rgba(56,178,240,0.15), transparent);
+    }
+
+    &:hover {
+      border-color: rgba(56,178,240,0.3);
+      box-shadow: 0 8px 32px rgba(56,178,240,0.14), 0 2px 8px rgba(0,0,0,0.06);
     }
   }
 
@@ -447,6 +534,42 @@
     & ul { padding-inline-start: 1.5rem; list-style: disc; margin-block-end: 1.25rem; }
     & li { margin-block-end: 0.5rem; }
     & strong { font-weight: var(--font-weight-bold); color: var(--color-heading); }
+  }
+}
+
+/* ============================================================
+   LIGHT MODE — Mejoras de percepción high-ticket
+   ============================================================ */
+
+/* Secciones con fondo tintado sutil */
+[data-theme="light"] .features,
+[data-theme="light"] .testimonials,
+[data-theme="light"] .faq,
+[data-theme="light"] .pricing {
+  background: linear-gradient(160deg, rgba(56,178,240,0.03) 0%, rgba(103,197,135,0.025) 100%);
+}
+
+[data-theme="light"] .section--alt {
+  background: linear-gradient(135deg, #f4f8fc 0%, #f0f7f4 100%);
+}
+
+[data-theme="light"] .hero::before {
+  background: radial-gradient(ellipse, rgba(56,178,240,0.1) 0%, transparent 70%);
+}
+
+[data-theme="light"] .divider-brand {
+  opacity: 0.25;
+}
+
+/* Botón ghost en light mode */
+[data-theme="light"] .btn--ghost {
+  background: rgba(0,0,0,0.04);
+  color: var(--color-light-heading);
+  border-color: rgba(0,0,0,0.12);
+
+  &:hover {
+    background: rgba(0,0,0,0.07);
+    border-color: rgba(56,178,240,0.3);
   }
 }
 

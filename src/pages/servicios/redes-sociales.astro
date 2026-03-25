@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/sections/PageHero.astro';
+import Testimonials from '../../components/sections/Testimonials.astro';
+import Faq from '../../components/sections/Faq.astro';
 import CtaBanner from '../../components/sections/CtaBanner.astro';
 import type { PageMeta } from '../../types/cms';
 
@@ -9,6 +11,15 @@ const meta: PageMeta = {
   description: 'Creación de contenido orgánico y gestión de redes sociales para negocios latinos en USA. Desde $490/mes. Estrategia, gráficas y copywriting incluidos.',
   lang: 'es',
 };
+
+const includes = [
+  { icon: `<path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>`, title: 'Estrategia de contenido', body: 'Calendario editorial mensual alineado a tus objetivos de negocio y al ciclo de compra de tu cliente.' },
+  { icon: `<rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>`, title: 'Diseño de gráficas', body: 'Piezas visuales para feed, stories y reels. Consistentes con tu identidad de marca y optimizadas para cada formato.' },
+  { icon: `<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>`, title: 'Copywriting incluido', body: 'Textos persuasivos y naturales para cada publicación, adaptados al tono de tu negocio y al idioma de tu audiencia.' },
+  { icon: `<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>`, title: 'Gestión y publicación', body: 'Publicación programada, respuesta a comentarios básicos y monitoreo activo de tu comunidad online.' },
+  { icon: `<path d="M22 12h-4l-3 9L9 3l-3 9H2"/>`, title: 'Análisis mensual', body: 'Revisión de métricas de rendimiento y ajuste de estrategia cada mes. No trabajamos en piloto automático.' },
+  { icon: `<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>`, title: 'Reporte mensual', body: 'Métricas de alcance, interacción y crecimiento. Informe en español, claro y fácil de entender.' },
+];
 ---
 
 <BaseLayout meta={meta} currentPage="/servicios">
@@ -16,66 +27,104 @@ const meta: PageMeta = {
     <PageHero
       eyebrow="Redes Sociales Orgánicas para Negocios Latinos en USA"
       headline="Construye autoridad y confianza, mes a mes."
-      description="Desde $490/mes. Estrategia de contenido, creación de gráficas, copywriting y gestión completa de tus redes sociales."
+      description="Desde $490/mes. Estrategia de contenido, creación de gráficas, copywriting y gestión completa de tus redes sociales para el mercado latino en USA."
       breadcrumb="Servicios / Redes Sociales"
     />
 
-    <section class="social section">
-      <div class="social__container container">
-        <div class="social__grid">
-          <div>
-            <header class="section-header">
-              <h2 class="eyebrow">Qué incluye la gestión de redes</h2>
-              <p class="h2">Contenido con propósito, no solo publicaciones.</p>
-            </header>
+    <!-- Qué incluye -->
+    <section class="social-includes section">
+      <div class="social-includes__container container">
+        <header class="section-header section-header--centered">
+          <h2 class="eyebrow">Qué incluye la gestión de redes</h2>
+          <p class="h2">Contenido con propósito, no solo publicaciones.</p>
+          <p class="section-header__desc">No publicamos por publicar. Cada pieza de contenido tiene un objetivo claro dentro de tu estrategia de crecimiento digital.</p>
+        </header>
 
-            <div class="social__items">
-              {[
-                ['📋', 'Estrategia de contenido', 'Calendario editorial mensual alineado a tus objetivos de negocio y al ciclo de compra de tu cliente.'],
-                ['🖼️', 'Creación de gráficas', 'Diseño de piezas visuales para feed, stories y reels. Consistente con tu identidad de marca.'],
-                ['✍️', 'Copywriting incluido', 'Textos persuasivos para cada publicación, adaptados al tono de tu negocio.'],
-                ['📱', 'Gestión completa', 'Publicación programada, respuesta a comentarios básicos y monitoreo de la cuenta.'],
-                ['📊', 'Reporte mensual', 'Métricas de alcance, interacción y crecimiento. Informe en español y fácil de entender.'],
-              ].map(([icon, title, body]) => (
-                <div class="social__item">
-                  <span class="social__icon" aria-hidden="true">{icon}</span>
-                  <div>
-                    <h3 class="eyebrow">{title}</h3>
-                    <p>{body}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <div class="card social__pricing">
-              <h3 class="eyebrow">Inversión mensual</h3>
-              <div style="padding-block: 1.25rem; border-block: 1px solid var(--color-border); margin-block: 0.5rem;">
-                <div style="font-size: clamp(2rem, 5vw, 3rem); font-weight: 500; background: var(--gradient-brand); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1;">
-                  $490<span style="font-size: 1rem; font-weight: 300">/mes</span>
-                </div>
+        <div class="social-grid">
+          {includes.map(item => (
+            <div class="social-item card">
+              <div class="svc-icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" set:html={item.icon}></svg>
               </div>
-              <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem; font-size: var(--font-size-small);">
-                <li>✓ Estrategia de contenido</li>
-                <li>✓ Gráficas incluidas</li>
-                <li>✓ Copywriting</li>
-                <li>✓ Gestión y publicación</li>
-                <li>✓ Reporte mensual</li>
-              </ul>
-              <a class="btn btn--primary" href="/contacto" style="inline-size:100%;justify-content:center">Comenzar ahora</a>
+              <div>
+                <h3 class="eyebrow" style="margin-block-end: 0.35rem">{item.title}</h3>
+                <p class="svc-body">{item.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Por qué funciona -->
+    <section class="social-why section section--alt">
+      <div class="social-why__container container">
+        <div class="social-why__grid">
+          <header class="section-header">
+            <h2 class="eyebrow">Por qué funciona</h2>
+            <p class="h2">Las redes sociales no son sobre likes. Son sobre confianza.</p>
+            <p class="section-header__desc">En el mercado latino, la confianza lo es todo. A nadie le contratas si no lo conoces. Las redes son el camino más natural para construir esa relación.</p>
+          </header>
+          <ul class="social-why__list">
+            {[
+              ['🎯', 'Contenido alineado a ventas', 'Cada publicación tiene un rol dentro del ciclo de compra: awareness, consideración o conversión.'],
+              ['🌎', 'Enfoque en el mercado latino en USA', 'Mensajes que hablan el idioma cultural de tu audiencia, no traducciones genéricas.'],
+              ['📊', 'Combinado con pauta, multiplica', 'Las redes orgánicas funcionan mejor con Meta Ads. Te ayudamos a integrar ambas cuando sea el momento.'],
+            ].map(([icon, title, body]) => (
+              <li class="social-why__item">
+                <span aria-hidden="true">{icon}</span>
+                <div>
+                  <strong>{title}</strong>
+                  <p>{body}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Precio -->
+    <section class="social-price section">
+      <div class="social-price__container container">
+        <header class="section-header section-header--centered">
+          <h2 class="eyebrow">Inversión</h2>
+          <p class="h2">Todo incluido en un solo precio mensual.</p>
+        </header>
+
+        <div class="social-price__card card">
+          <div class="social-price__inner">
+            <div>
+              <p class="eyebrow" style="margin-block-end: 0.75rem">Gestión de Redes Sociales</p>
+              <div class="social-price__price">
+                <span style="font-size: var(--font-size-small); color: var(--color-text-muted)">desde</span>
+                <span class="social-price__amount">$490<small>/mes</small></span>
+              </div>
+              <p style="font-size: 0.8rem; color: var(--color-text-muted); line-height: 1.5; margin-block-start: 1rem;">
+                El plan base incluye 12 publicaciones mensuales + stories.
+                Para mayor volumen o plataformas adicionales, cotizamos a medida.
+              </p>
+              <div class="social-price__note">
+                <p class="eyebrow" style="margin-block-end: 0.35rem">💡 Recomendado combinar con</p>
+                <p style="font-size: var(--font-size-small); color: var(--color-text-muted)">Las redes orgánicas se amplifican con Meta Ads.</p>
+                <a href="/servicios/meta-ads" style="font-size: var(--font-size-small); color: var(--color-primary); margin-block-start: 0.3rem; display: block;">Ver Meta Ads →</a>
+              </div>
             </div>
 
-            <div class="card social__note" style="margin-block-start: 1rem; padding: 1.25rem;">
-              <p class="eyebrow" style="margin-block-end: 0.4rem">💡 Recomendado combinar con</p>
-              <p style="font-size: var(--font-size-small); color: var(--color-text-muted);">Las redes sociales orgánicas funcionan mejor cuando se complementan con campañas de Meta Ads para amplificar el alcance.</p>
-              <a href="/servicios/meta-ads" style="font-size: var(--font-size-small); color: var(--color-primary); margin-block-start: 0.5rem; display: block">Ver Meta Ads →</a>
-            </div>
+            <ul class="social-price__list">
+              {['Estrategia editorial mensual', 'Diseño de gráficas incluido', 'Copywriting para cada post', 'Publicación y gestión', 'Stories semanales', 'Respuesta a comentarios', 'Análisis mensual de métricas', 'Reporte en español'].map(f => <li>✓ {f}</li>)}
+            </ul>
+
+            <a class="btn btn--primary social-price__cta" href="/contacto">
+              Comenzar con redes sociales →
+            </a>
           </div>
         </div>
       </div>
     </section>
 
+    <Testimonials />
+    <Faq />
     <CtaBanner
       title="¿Quieres una presencia digital que inspire confianza?"
       subtitle="Agenda una llamada y diseñamos juntos la estrategia de contenido para tu negocio."
@@ -85,18 +134,46 @@ const meta: PageMeta = {
 </BaseLayout>
 
 <style>
-  .social__container { :has(> &) { container-type: inline-size; } }
-  .social__grid {
-    display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    gap: var(--spacing-space-xl);
-    align-items: start;
+  .social-includes__container { :has(> &) { container-type: inline-size; } display: flex; flex-direction: column; gap: var(--spacing-space-xl); }
+  .social-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
+    @container (inline-size < 52rem) { grid-template-columns: repeat(2, 1fr); }
+    @container (inline-size < 32rem) { grid-template-columns: 1fr; }
+  }
+  .social-item { display: flex; gap: 1rem; align-items: flex-start; }
+  .svc-icon {
+    display: inline-flex; align-items: center; justify-content: center;
+    inline-size: 3rem; block-size: 3rem; flex-shrink: 0;
+    border-radius: var(--radius-m); background: rgba(56,178,240,0.08);
+    border: 1px solid rgba(56,178,240,0.2); color: var(--color-primary);
+  }
+  [data-theme="light"] .svc-icon { background: rgba(56,178,240,0.1); border-color: rgba(56,178,240,0.25); }
+  .svc-body { font-size: var(--font-size-small); color: var(--color-text-muted); line-height: 1.65; }
+
+  .social-why__container { :has(> &) { container-type: inline-size; } }
+  .social-why__grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-space-xl); align-items: start;
     @container (inline-size < 48rem) { grid-template-columns: 1fr; }
   }
-  .social__items { display: flex; flex-direction: column; gap: 1.5rem; margin-block-start: 2rem; }
-  .social__item { display: flex; gap: 1rem; align-items: flex-start; }
-  .social__icon { font-size: 1.5rem; flex-shrink: 0; }
-  .social__item div { display: flex; flex-direction: column; gap: 0.3rem; }
-  .social__item p { font-size: var(--font-size-small); color: var(--color-text-muted); line-height: 1.65; }
-  .social__pricing { display: flex; flex-direction: column; gap: 1.25rem; padding: 2rem; position: sticky; inset-block-start: 6rem; }
+  .social-why__list { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; }
+  .social-why__item { display: flex; gap: 1rem; align-items: flex-start; font-size: 1.5rem; }
+  .social-why__item div { display: flex; flex-direction: column; gap: 0.25rem; }
+  .social-why__item strong { font-weight: var(--font-weight-heading); color: var(--color-heading); font-size: var(--font-size-body); }
+  .social-why__item p { font-size: var(--font-size-small); color: var(--color-text-muted); line-height: 1.65; }
+
+  .social-price__container { :has(> &) { container-type: inline-size; } display: flex; flex-direction: column; gap: var(--spacing-space-xl); }
+  .social-price__card { max-inline-size: 52rem; margin-inline: auto; padding: 2.5rem; }
+  .social-price__inner {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+    @container (inline-size < 36rem) { grid-template-columns: 1fr; }
+  }
+  .social-price__price { padding-block: 1.25rem; border-block: 1px solid var(--color-border); margin-block: 0.75rem; display: flex; flex-direction: column; gap: 0.25rem; }
+  .social-price__amount {
+    font-size: clamp(2rem, 5vw, 3rem); font-weight: var(--font-weight-heading); line-height: 1;
+    background: var(--gradient-brand); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    & small { font-size: 1rem; font-weight: 300; }
+  }
+  .social-price__note { margin-block-start: 1.25rem; padding: 1rem; background: rgba(56,178,240,0.05); border: 1px solid rgba(56,178,240,0.12); border-radius: var(--radius-m); }
+  .social-price__list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; font-size: var(--font-size-small); }
+  .social-price__cta { margin-block-start: 1.5rem; grid-column: span 2; justify-content: center; @container (inline-size < 36rem) { grid-column: span 1; } }
 </style>

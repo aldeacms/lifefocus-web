@@ -162,25 +162,22 @@ const navItems = [
 </header>
 
 <style>
-  /* ── Header ── */
+  /* Siempre dark — incluso en light mode */
   .site-header {
     position: sticky;
     inset-block-start: 0;
     z-index: 100;
-    background-color: rgba(13,13,13,0.85);
-    backdrop-filter: blur(16px);
-    border-block-end: 1px solid var(--color-border);
+    background-color: rgba(13,13,13,0.88);
+    backdrop-filter: blur(20px) saturate(1.2);
+    border-block-end: 1px solid rgba(255,255,255,0.07);
     transition: background var(--transition-base);
   }
 
-  [data-theme="light"] .site-header {
-    background-color: rgba(255,255,255,0.9);
-  }
-
   .site-header__inner {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
-    gap: 2rem;
+    gap: 1.5rem;
     max-inline-size: var(--width-content);
     margin-inline: auto;
     padding-inline: var(--spacing-gutter);
@@ -190,12 +187,11 @@ const navItems = [
   /* Logo */
   .site-header__logo { display: flex; align-items: center; flex-shrink: 0; }
   .site-header__logo-img { block-size: 36px; inline-size: auto; object-fit: contain; }
+  /* Siempre dark: ocultar logo light */
   .site-header__logo-img--light { display: none; }
-  [data-theme="light"] .site-header__logo-img--dark  { display: none; }
-  [data-theme="light"] .site-header__logo-img--light { display: block; }
 
-  /* Nav desktop */
-  .site-header__nav { flex: 1; }
+  /* Nav desktop — centrado en la columna 2 del grid */
+  .site-header__nav { display: flex; justify-content: center; }
 
   .site-header__nav-list {
     display: flex;
@@ -210,27 +206,30 @@ const navItems = [
     align-items: center;
     gap: 0.3rem;
     padding-block: 0.5rem;
-    padding-inline: 0.85rem;
+    padding-inline: 0.75rem;
     border-radius: var(--radius-m);
-    font-size: var(--font-size-small);
+    font-size: 0.7rem;
     font-weight: var(--font-weight-heading);
-    color: var(--color-text);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    /* Siempre colores dark independiente del tema de la página */
+    color: rgba(230, 230, 230, 0.75);
     text-decoration: none;
     transition: color var(--transition-fast), background var(--transition-fast);
     background: none;
     border: none;
-    cursor: pointer;
+    cursor: none;
     font-family: var(--font-family-sans);
     white-space: nowrap;
 
     &:hover {
-      color: var(--color-heading);
+      color: #ffffff;
       background: rgba(255,255,255,0.06);
     }
   }
 
   .site-header__nav-link--active {
-    color: var(--color-primary);
+    color: var(--color-primary) !important;
   }
 
   /* Dropdown servicios */
@@ -286,12 +285,10 @@ const navItems = [
     }
   }
 
-  /* Acciones */
   .site-header__actions {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    margin-inline-start: auto;
   }
 
   /* Theme toggle */
@@ -311,6 +308,7 @@ const navItems = [
     &:hover { background: rgba(255,255,255,0.1); color: var(--color-heading); }
   }
 
+  /* Theme toggle — iconos responden al tema aunque header sea dark */
   .site-header__theme-icon--moon { display: none; }
   [data-theme="light"] .site-header__theme-icon--sun  { display: none; }
   [data-theme="light"] .site-header__theme-icon--moon { display: block; }
