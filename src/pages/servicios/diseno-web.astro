@@ -170,7 +170,7 @@ const includes = [
   .dw-why__item p { font-size: var(--font-size-small); color: var(--color-text-muted); line-height: 1.65; }
 
   .dw-pricing__container { :has(> &) { container-type: inline-size; } display: flex; flex-direction: column; gap: var(--spacing-space-xl); }
-  .dw-pricing__card { max-inline-size: 52rem; margin-inline: auto; padding: 2.5rem; }
+  .dw-pricing__card { max-inline-size: 52rem; margin-inline: auto; padding: 2.5rem; container-type: inline-size; }
   .dw-pricing__card-inner {
     display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start;
     @container (inline-size < 36rem) { grid-template-columns: 1fr; }
@@ -184,5 +184,5 @@ const includes = [
   }
   .dw-pricing__note { font-size: var(--font-size-small); color: var(--color-text-muted); }
   .dw-pricing__list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; font-size: var(--font-size-small); color: var(--color-text); }
-  .dw-pricing__cta { margin-block-start: 2rem; grid-column: span 2; justify-content: center; @container (inline-size < 36rem) { grid-column: span 1; } }
+  .dw-pricing__cta { margin-block-start: 2rem; grid-column: span 2; justify-self: center; }
 </style>

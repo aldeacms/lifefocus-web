@@ -142,15 +142,24 @@
     scroll-behavior: smooth;
     background-color: var(--color-bg);
     color: var(--color-text);
-    /* Dot grid sutil — feel de design agency */
-    background-image: radial-gradient(rgba(56,178,240,0.045) 1px, transparent 1px);
-    background-size: 38px 38px;
+    /* Grid de líneas — feel design agency premium */
+    background-image:
+      linear-gradient(rgba(56,178,240,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(56,178,240,0.06) 1px, transparent 1px);
+    background-size: 72px 72px;
     background-attachment: fixed;
   }
 
-  [data-theme="light"] html,
+  /* Light mode — fondo azulado slate con grid visible */
+  [data-theme="light"] html {
+    background-color: #f4f7fb;
+    background-image:
+      linear-gradient(rgba(56,130,210,0.09) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(56,130,210,0.09) 1px, transparent 1px);
+  }
   [data-theme="light"] body {
-    background-image: radial-gradient(rgba(56,178,240,0.1) 1px, transparent 1px);
+    background-color: transparent;
+    background-image: none;
   }
 
   body {
@@ -193,16 +202,17 @@
     transform: translate(-50%, -50%);
     transition: width 0.25s, height 0.25s, border-color 0.25s, opacity 0.25s;
   }
-  /* Cursor glow — halo que sigue el mouse */
+  /* Cursor glow — halo grande y visible */
   .cursor-glow {
     position: fixed;
     inset: 0;
     pointer-events: none;
     z-index: 0;
-    background: radial-gradient(600px circle at var(--lf-cx, 50%) var(--lf-cy, -20%), rgba(56,178,240,0.06), transparent 40%);
+    background: radial-gradient(700px circle at var(--lf-cx, 50%) var(--lf-cy, -30%), rgba(56,178,240,0.14), transparent 45%);
+    transition: none;
   }
   [data-theme="light"] .cursor-glow {
-    background: radial-gradient(600px circle at var(--lf-cx, 50%) var(--lf-cy, -20%), rgba(56,178,240,0.1), transparent 40%);
+    background: radial-gradient(700px circle at var(--lf-cx, 50%) var(--lf-cy, -30%), rgba(56,130,210,0.22), transparent 45%);
   }
   /* Ocultar cursor custom en touch devices */
   @media (pointer: coarse) {

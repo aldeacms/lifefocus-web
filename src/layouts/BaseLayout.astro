@@ -29,19 +29,15 @@ const ogType = meta.ogType ?? 'website';
       rel="stylesheet"
     />
 
-    <!-- SEO Principal -->
+    <!-- SEO -->
     <title>{meta.title}</title>
     <meta name="description" content={meta.description} />
     <link rel="canonical" href={canonicalUrl} />
-
-    <!-- Open Graph -->
     <meta property="og:type" content={ogType} />
     <meta property="og:title" content={meta.title} />
     <meta property="og:description" content={meta.description} />
     <meta property="og:url" content={canonicalUrl} />
     {meta.ogImage && <meta property="og:image" content={meta.ogImage} />}
-
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={meta.title} />
     <meta name="twitter:description" content={meta.description} />
@@ -49,11 +45,11 @@ const ogType = meta.ogType ?? 'website';
 
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#38B2F0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Favicon PNG -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
   </head>
 
   <body>
-    <!-- Cursor personalizado (solo en pointer: fine) -->
     <div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
     <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
     <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
@@ -65,41 +61,36 @@ const ogType = meta.ogType ?? 'website';
 </html>
 
 <script>
-  // ── Cursor personalizado ──
   const dot  = document.getElementById('cursor-dot');
   const ring = document.getElementById('cursor-ring');
   const root = document.documentElement;
 
-  let rx = window.innerWidth / 2, ry = window.innerHeight / 2;
-  let dx = rx, dy = ry;
+  let rx = -300, ry = -300;
+  let dx = -300, dy = -300;
 
   window.addEventListener('mousemove', e => {
     dx = e.clientX;
     dy = e.clientY;
-    // Cursor dot sigue inmediatamente
-    if (dot)  { dot.style.left  = dx + 'px'; dot.style.top  = dy + 'px'; }
-    // Cursor glow usa CSS var para el radial-gradient
+    if (dot) { dot.style.left = dx + 'px'; dot.style.top = dy + 'px'; }
     root.style.setProperty('--lf-cx', dx + 'px');
     root.style.setProperty('--lf-cy', dy + 'px');
   }, { passive: true });
 
-  // Ring con lerp suave
   function animate() {
-    rx += (dx - rx) * 0.12;
-    ry += (dy - ry) * 0.12;
+    rx += (dx - rx) * 0.1;
+    ry += (dy - ry) * 0.1;
     if (ring) { ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; }
     requestAnimationFrame(animate);
   }
   animate();
 
-  // Efecto hover en links/botones
   document.querySelectorAll('a, button').forEach(el => {
     el.addEventListener('mouseenter', () => {
-      if (dot)  { dot.style.width  = '14px'; dot.style.height = '14px'; }
-      if (ring) { ring.style.width = '52px'; ring.style.height = '52px'; ring.style.borderColor = 'rgba(56,178,240,0.8)'; }
+      if (dot)  { dot.style.width = '14px'; dot.style.height = '14px'; }
+      if (ring) { ring.style.width = '56px'; ring.style.height = '56px'; ring.style.borderColor = 'rgba(56,178,240,1)'; }
     });
     el.addEventListener('mouseleave', () => {
-      if (dot)  { dot.style.width  = ''; dot.style.height = ''; }
+      if (dot)  { dot.style.width = ''; dot.style.height = ''; }
       if (ring) { ring.style.width = ''; ring.style.height = ''; ring.style.borderColor = ''; }
     });
   });
